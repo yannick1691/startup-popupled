@@ -1,0 +1,1 @@
+{"version":3,"sources":["script.js"],"names":["$","document","ready","wIPopup","querySelector"],"mappings":"AAAAA,EAAEC,QAAF,EAAYC,KAAZ,CAAkB,YAAU;AAC1B,QAAMC,UAAUF,SAASG,aAAT,CAAuB,gBAAvB,CAAhB;AACD,CAFD","file":"script.js","sourcesContent":["$(document).ready(function(){\n  const wIPopup = document.querySelector('#watispopupled');\n});\n\n"]}
