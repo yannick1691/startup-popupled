@@ -2,12 +2,13 @@
 mainred = #E5272D
 maingreen = #00AF00
 mainblue = #36AEBA
-background = #E8E7E7
-mainfont = "Source Sans Pro"
+background = #F0F0F0
+mainfont = 'Source Sans Pro', sans-serif
 fontsizep = 24px
-fontsizeh1 = 60px
-fontsizeh2 = 34px
-fontsizeh3 = 29px
+fontsizeh1 = 2.8em
+fontsizeh2 = 2em
+fontsizeh3 = 1.5em
+fontsizeh4 = 1.2em
 buttonFade = linear-gradient(166.24deg, #F5515F 0%, #F5515F 0.39%, #EE4A5A 8.44%, #E94656 13.64%, #9F041B 100%)
 
 // ---------------------------------------------------------------
@@ -100,6 +101,12 @@ button.landing{
     }
   }
 }
+
+.flex-center{
+  display: flex;
+  flex-direction: row
+  justify-content: center;
+}
 // ---------------------------------------------------------------
 // G
 // ---------------------------------------------------------------
@@ -125,6 +132,11 @@ h3{
   text-align: center;
   font-family: mainfont
   font-size: fontsizeh3
+}
+h4{
+  text-align: center
+  font-family: mainfont
+  font-size: fontsizeh4
 }
 // ---------------------------------------------------------------
 // I
@@ -152,6 +164,18 @@ img{
       right: 3px
     }
   }
+  &.image1{
+    margin-left: 5%
+  }
+  &.image3{
+    margin-left: -5%
+  }
+}
+
+.intro{
+  color: rgba(201, 75, 81, 1.0);
+  font-size: fontsizep
+  font-weight: 300
 }
 // ---------------------------------------------------------------
 // J
@@ -180,7 +204,7 @@ img{
   }
 
   .logo-landing{
-    height: 75vh
+    height: 70vh
     max-width: 94vw
   }
 // ---------------------------------------------------------------
@@ -190,11 +214,54 @@ img{
 // ---------------------------------------------------------------
 // N
 // ---------------------------------------------------------------
-
+  .no-gutter{
+    padding: 0px
+    margin: 0px
+  }
 // ---------------------------------------------------------------
 // O
 // ---------------------------------------------------------------
 
+.onzeKlanten-container{
+  width: 100%;
+  max-width: 100vw
+  padding-top: 25px;
+  padding-bottom: 25px;
+  overflow: hidden;
+  .swiper-wrapper{
+    width: 250px
+    height: 250px
+    .swiper-slide{
+      object-fit: contain;
+      object-fit: center;
+      opacity: 0.0
+      &.swiper-slide-active{
+        opacity: 1
+        margin-left: -50px
+        z-index: 99
+      }
+      &.swiper-slide-prev{
+        padding-left: 50px
+        margin-left: 50px
+        opacity: 0.5
+        z-index: 1
+      }
+      &.swiper-slide-next{
+        padding-right: 50px
+        margin-left: -50px
+        margin-right: 50px
+        opacity: 0.5
+        z-index: 1
+      }
+    }
+  }
+  .swiper-button-prev{
+    background-image: url(../links/img/prev-slide.svg)
+  }
+  .swiper-button-next{
+    background-image: url(../links/img/next-slide.svg)
+  }
+}
 // ---------------------------------------------------------------
 // P
 // ---------------------------------------------------------------
@@ -240,19 +307,23 @@ p{
         max-width: 100vw
         padding-top: 25px;
         padding-bottom: 25px;
-    }
     .swiper-slide {
         background-position: center;
         background-size: cover;
         width: 80%;
         height: 200px;
+        opacity: 0.5
         img {
           width: 15%
           position: absolute
           bottom: 3px;
           right: 3px
         }
+        &.swiper-slide-active{
+          opacity: 1
+        }
     }
+  }
 // ---------------------------------------------------------------
 // T
 // ---------------------------------------------------------------
@@ -268,7 +339,15 @@ p{
 // ---------------------------------------------------------------
 // W
 // ---------------------------------------------------------------
+  .waaromOnsIcon{
+    max-width: 350px;
 
+  }
+
+  .whitespace{
+    width: 100%;
+    height: 20px
+  }
 // ---------------------------------------------------------------
 // X
 // ---------------------------------------------------------------
@@ -280,3 +359,42 @@ p{
 // ---------------------------------------------------------------
 // Z
 // ---------------------------------------------------------------
+
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+  .onzeKlanten-container{
+    width: 100%;
+    max-width: 100vw
+    padding-top: 25px;
+    padding-bottom: 25px;
+    overflow: hidden;
+    .swiper-wrapper{
+      width: 250px
+      height: 250px
+      .swiper-slide{
+        object-fit: contain;
+        object-fit: center;
+        opacity: 0.0
+        &.swiper-slide-active{
+          opacity: 1
+          margin-left: 0
+          z-index: 99
+        }
+        &.swiper-slide-prev{
+          padding-left: 0
+          margin-left: 0
+          opacity: 0.5
+          z-index: 1
+        }
+        &.swiper-slide-next{
+          padding-right: 0
+          margin-left: 0
+          margin-right: 0
+          opacity: 0.5
+          z-index: 1
+        }
+      }
+    }
+  }
+}
