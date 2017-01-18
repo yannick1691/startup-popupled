@@ -9,6 +9,8 @@ fontsizeh1 = 2.8em
 fontsizeh2 = 2em
 fontsizeh3 = 1.5em
 fontsizeh4 = 1.2em
+fontsizeinput = 0.7em
+navelements = linear-gradient(166.22deg, #1C1C1C 0%, #282828 100%)
 buttonFade = linear-gradient(166.24deg, #F5515F 0%, #F5515F 0.39%, #EE4A5A 8.44%, #E94656 13.64%, #9F041B 100%)
 
 // ---------------------------------------------------------------
@@ -37,7 +39,7 @@ button{
 button.landing{
     border: 0px
     font-family: mainfont;
-    font-weight: 300;
+    font-weight: 200;
     text-align: center;
     background: buttonFade;
     box-shadow: 0 3px 11px 0 rgba(0,0,0,0.5)
@@ -63,7 +65,52 @@ button.landing{
 // ---------------------------------------------------------------
 // C
 // ---------------------------------------------------------------
-
+.contact{
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  justify-content: flex-start
+  align-items: baseline
+  width: 100%
+  min-height: 300px
+  font-family: mainfont
+  font-size: fontsizeinput
+  font-weight: 300
+  label{
+    font-weight: 300
+    padding: 6px
+    padding-left: 15px
+    padding-bottom: 0px
+    margin-bottom: 0px
+  }
+  input{
+    flex: 1 0 100%
+    padding: 10px
+    border-radius: 5px
+    box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.5)
+    border: 1px solid #979797
+  }
+  textarea {
+    flex: 1 0 100%
+    height: 300px
+    padding: 10px
+    box-shadow: inset 0 1px 3px 0 rgba(0,0,0,0.5)
+    border: 1px solid #979797
+    border-radius: 5px
+  }
+  button{
+    font-size: fontsizep
+    font-weight: 200
+    flex: 0 0 50%
+    margin-left: 50%
+    margin-top: 20px
+    margin-bottom: 20px
+    border: 0px
+    background: buttonFade
+    border-radius: 5px
+    color: #fff
+  }
+}
 // ---------------------------------------------------------------
 // D
 // ---------------------------------------------------------------
@@ -82,7 +129,7 @@ button.landing{
   align-items: center;
   height: 100px;
   width: 100vw;
-  background #333;
+  background navelements
   a{
     
     flex: 1;
@@ -106,6 +153,50 @@ button.landing{
   display: flex;
   flex-direction: row
   justify-content: center;
+}
+
+.flex-space{
+  display: flex;
+  flex-direction: row
+  justify-content: space-around
+  align-items: stretch
+  flex-wrap: wrap
+  div{
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    img{
+      width: 80px
+    }
+    p{
+      text-align: center
+    }
+  }
+}
+
+footer{
+  display: flex
+  flex-direction: row
+  justify-content: space-around
+  flex-wrap: wrap
+  align-items: center
+  min-height: 100px
+  width: 100vw
+  background navelements
+  padding: 10px
+  p{
+    color: #fff
+    font-weight: 200
+    font-size: 0.9em
+  }
+  a{
+    color: #E5272D
+    &:hover{
+      color: lighten(#E5272D, 15)
+      text-decoration: none
+    }
+  }
 }
 // ---------------------------------------------------------------
 // G
@@ -327,7 +418,9 @@ p{
 // ---------------------------------------------------------------
 // T
 // ---------------------------------------------------------------
-
+  textarea {
+    resize: none;
+  }
 // ---------------------------------------------------------------
 // U
 // ---------------------------------------------------------------
@@ -361,8 +454,31 @@ p{
 // ---------------------------------------------------------------
 
 
+
+
+
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
+  body{
+    font-size: 18px
+  }
+  p{
+    font-size: 18px
+  }
+
+  .logo-landing{
+    margin-top: -10vh;
+  }
+
+  button.landing{
+    position: absolute
+    bottom: 3vh
+    left: calc(50vw - 150px)
+  }
+
+  .intro{
+    font-size: 18px
+  }
   .onzeKlanten-container{
     width: 100%;
     max-width: 100vw
