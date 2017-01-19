@@ -1,5 +1,6 @@
 $(document).ready(function () {
   const wIPopup = document.querySelector('#watispopupled');
+  scrollfixnav();
   //initialize swiper when document ready  
   var mySwiper = new Swiper('.swiper-container', {
     effect: 'coverflow',
@@ -76,4 +77,59 @@ $(document).ready(function () {
   });
   onzeKlanten.disableTouchControl();
 });
+
+// functie om client lagg te verkomen
+function debounce(func, wait = 10, immediate = true) {
+  var timeout;
+  return function () {
+    var context = this,
+        args = arguments;
+    var later = function () {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+};
+
+function onScroll(e) {
+  var scrollPos = $(document).scrollTop();
+  $('.flex-nav a[href^="#"]').each(function () {
+    console.log('hi');
+    var currLink = $(this);
+    var refElement = $(currLink.attr("href"));
+    if (refElement.position().top - 100 <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+      $('.flex-nav a').removeClass("active");
+      currLink.addClass("active-link");
+    } else {
+      currLink.removeClass("active-link");
+    }
+  });
+}
+
+// Make nav fixed after the landing page
+function scrollfixnav() {
+  if (window.scrollY >= window.innerHeight - 100) {
+    flexNav.style.position = 'fixed';
+    flexNav.style.top = '100px';
+    mobileMenu.style.position = 'fixed';
+  } else if (window.scrollY <= window.innerHeight) {
+    flexNav.style.position = 'relative';
+    flexNav.style.top = '0px';
+    mobileMenu.style.position = 'relative';
+  }
+}
+
+function hamburgerMenu(e) {
+  e.preventDefault();
+
+  flexNavJQ.height(flexNavJQ.height() == 0 ? `${ heightNav }px` : `${ hiddenMob }px`);
+}
+
+document.addEventListener('scroll', debounce(onScroll));
+document.addEventListener('scroll', debounce(scrollfixnav));
+mobileMenu.addEventListener('click', hamburgerMenu);
 //# sourceMappingURL=script.js.map

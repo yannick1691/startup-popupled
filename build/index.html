@@ -18,12 +18,13 @@
     <img src="links/img/logo_1.svg" alt="logo popupled" class="logo-landing">
     <button class="landing" onclick="watIsPopupled()" type="button">ondek ons</button>
   </div>
+  <a href="" class="hammenu">&#9776;</a>
   <nav class="flex-nav">
     <a href=""><img src="links/img/logo.svg" alt="logo" height="90"></a>
     <a href="#watispopupled">wat is popupled</a>
     <a href="#over-ons">over ons</a>
-    <a href="">waarom ons</a>
-    <a href="">contact</a>
+    <a href="#waarom-ons">waarom ons</a>
+    <a href="#contact">contact</a>
   </nav>
   <div class="container-fluid">
     <!--Wat is popupled sectie-->
@@ -314,7 +315,11 @@
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.jquery.min.js"></script>
   <script>
-  
+    const flexNav = document.querySelector('.flex-nav');
+    let flexNavJQ = $('.flex-nav');
+    const mobileMenu = document.querySelector('.hammenu');
+    const heightNav = window.innerHeight - 100;
+    const hiddenMob = 0;
   </script>
   <script src="js/script.js"></script>
 </body>
