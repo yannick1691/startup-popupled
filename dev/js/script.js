@@ -79,7 +79,7 @@ $(document).ready(function () {
 });
 
 // functie om client lagg te verkomen
-function debounce(func, wait = 10, immediate = true) {
+function debounce(func, wait = 20, immediate = true) {
       var timeout;
       return function() {
         var context = this, args = arguments;
@@ -112,24 +112,72 @@ function onScroll(e){
 
 // Make nav fixed after the landing page
 function scrollfixnav() {
-  if (window.scrollY >= window.innerHeight - 100) {
+  if (window.scrollY >= window.innerHeight - 100 && window.innerWidth <= 768) {
     flexNav.style.position = 'fixed';
-    flexNav.style.top = '100px'
+    flexNav.style.top = '100px';
     mobileMenu.style.position = 'fixed';
-  } else if(window.scrollY <= window.innerHeight) {
+  } else if(window.scrollY <= window.innerHeight && window.innerWidth <= 768) {
     flexNav.style.position = 'relative';
-    flexNav.style.top = '0px'
+    flexNav.style.top = '0px';
+    mobileMenu.style.position = 'relative';
+  } else if (window.scrollY >= window.innerHeight - 100 && window.innerWidth >= 768) {
+    flexNav.style.position = 'fixed';
+    flexNav.style.top = '0px';
+    flexNav.style.height = '100px';
+    mobileMenu.style.position = 'fixed';
+  } else if(window.scrollY <= window.innerHeight && window.innerWidth >= 768) {
+    flexNav.style.position = 'relative';
+    flexNav.style.top = '0px';
+    flexNav.style.height = '100px';
     mobileMenu.style.position = 'relative';
   }
 }
 
-
 function hamburgerMenu(e) {
   e.preventDefault();
-  
-  flexNavJQ.height(flexNavJQ.height() == 0 ? `${heightNav}px` : `${hiddenMob}px`)
+  if (window.innerWidth <= 768) {
+    flexNavJQ.height(flexNavJQ.height() == 0 ? `85vh` : `${hiddenMob}px`);
+  } else {
+    return;
+  }
 }
 
-document.addEventListener('scroll', debounce(onScroll));
-document.addEventListener('scroll', debounce(scrollfixnav));
+function hamburgerMenu2() {
+  if (window.innerWidth <= 768) {
+    flexNavJQ.height(flexNavJQ.height() == 0 ? `85vh` : `${hiddenMob}px`);
+  } else {
+    return;
+  }
+}
+
+function resizeFix() {
+  if (window.scrollY >= window.innerHeight - 100 && window.innerWidth >= 768) {
+    flexNav.style.position = 'fixed';
+    flexNav.style.top = '0px'
+    flexNav.style.height = '100px'
+    mobileMenu.style.position = 'fixed';
+  } else if(window.scrollY <= window.innerHeight && window.innerWidth >= 768) {
+    flexNav.style.position = 'relative';
+    flexNav.style.top = '0px';
+    flexNav.style.height = '100px'
+    mobileMenu.style.position = 'relative';
+  }else if (window.scrollY >= window.innerHeight - 100 && window.innerWidth <= 768) {
+    flexNav.style.position = 'fixed';
+    flexNav.style.top = '100px';
+    flexNav.style.height = '0px';
+    mobileMenu.style.position = 'fixed';
+  } else if(window.scrollY <= window.innerHeight && window.innerWidth <= 768) {
+    flexNav.style.position = 'relative';
+    flexNav.style.top = '0px';
+    flexNav.style.height = '0px';
+    mobileMenu.style.position = 'relative';
+  }
+}
+flexNavItems.forEach(function (link) {
+  link.addEventListener('click', hamburgerMenu2);
+})
+
+document.addEventListener('scroll', debounce(onScroll, 10));
+document.addEventListener('scroll', debounce(scrollfixnav, 10));
 mobileMenu.addEventListener('click', hamburgerMenu);
+$(window).resize(resizeFix);

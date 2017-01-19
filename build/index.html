@@ -18,9 +18,9 @@
     <img src="links/img/logo_1.svg" alt="logo popupled" class="logo-landing">
     <button class="landing" onclick="watIsPopupled()" type="button">ondek ons</button>
   </div>
-  <a href="" class="hammenu">&#9776;</a>
+  <a href="" class="hammenu"><img src="links/img/logo_1.svg" alt="logo" height="50">&#9776;</a>
   <nav class="flex-nav">
-    <a href=""><img src="links/img/logo.svg" alt="logo" height="90"></a>
+    <a class="hidden-xs hidden-sm"><img src="links/img/logo_1.svg" alt="logo" height="90"></a>
     <a href="#watispopupled">wat is popupled</a>
     <a href="#over-ons">over ons</a>
     <a href="#waarom-ons">waarom ons</a>
@@ -320,6 +320,7 @@
     const mobileMenu = document.querySelector('.hammenu');
     const heightNav = window.innerHeight - 100;
     const hiddenMob = 0;
+    const flexNavItems = document.querySelectorAll('.flex-nav a');
   </script>
   <script src="js/script.js"></script>
 </body>
