@@ -14,7 +14,7 @@ $(document).ready(function () {
         menu = target;
     $target = $(target);
     $('html, body').stop().animate({
-      'scrollTop': $target.offset().top - 100
+      'scrollTop': $target.offset().top
     }, 500, 'swing', function () {
       $(document).on("scroll", onScroll);
     });
@@ -134,20 +134,20 @@ function onScroll(e) {
 
 // Make nav fixed after the landing page
 function scrollfixnav() {
-  if (window.scrollY >= window.innerHeight - 100 && window.innerWidth <= 768) {
+  if (window.scrollY >= window.innerHeight - 100 && window.innerWidth <= 991) {
     flexNav.style.position = 'fixed';
     flexNav.style.top = '100px';
     mobileMenu.style.position = 'fixed';
-  } else if (window.scrollY <= window.innerHeight && window.innerWidth <= 768) {
+  } else if (window.scrollY <= window.innerHeight && window.innerWidth <= 991) {
     flexNav.style.position = 'relative';
     flexNav.style.top = '0px';
     mobileMenu.style.position = 'relative';
-  } else if (window.scrollY >= window.innerHeight - 100 && window.innerWidth >= 768) {
+  } else if (window.scrollY >= window.innerHeight - 100 && window.innerWidth >= 992) {
     flexNav.style.position = 'fixed';
     flexNav.style.top = '0px';
     flexNav.style.height = '100px';
     mobileMenu.style.position = 'fixed';
-  } else if (window.scrollY <= window.innerHeight && window.innerWidth >= 768) {
+  } else if (window.scrollY <= window.innerHeight && window.innerWidth >= 992) {
     flexNav.style.position = 'relative';
     flexNav.style.top = '0px';
     flexNav.style.height = '100px';
@@ -158,16 +158,16 @@ function scrollfixnav() {
 // Hamburger menu funtie
 function hamburgerMenu(e) {
   e.preventDefault();
-  if (window.innerWidth <= 768) {
-    flexNavJQ.height(flexNavJQ.height() == 0 ? `85vh` : `${ hiddenMob }px`);
+  if (window.innerWidth <= 991) {
+    flexNavJQ.height(flexNavJQ.height() == 0 ? `100vh` : `${ hiddenMob }px`);
   } else {
     return;
   }
 }
 
 function hamburgerMenu2() {
-  if (window.innerWidth <= 768) {
-    flexNavJQ.height(flexNavJQ.height() == 0 ? `85vh` : `${ hiddenMob }px`);
+  if (window.innerWidth <= 991) {
+    flexNavJQ.height(flexNavJQ.height() == 0 ? `100vh` : `${ hiddenMob }px`);
   } else {
     return;
   }
@@ -175,22 +175,22 @@ function hamburgerMenu2() {
 
 // zorgt voor een goede switch tussen mobiel en desktop
 function resizeFix() {
-  if (window.scrollY >= window.innerHeight - 100 && window.innerWidth >= 768) {
+  if (window.scrollY >= window.innerHeight - 100 && window.innerWidth >= 992) {
     flexNav.style.position = 'fixed';
     flexNav.style.top = '0px';
     flexNav.style.height = '100px';
     mobileMenu.style.position = 'fixed';
-  } else if (window.scrollY <= window.innerHeight && window.innerWidth >= 768) {
+  } else if (window.scrollY <= window.innerHeight && window.innerWidth >= 992) {
     flexNav.style.position = 'relative';
     flexNav.style.top = '0px';
     flexNav.style.height = '100px';
     mobileMenu.style.position = 'relative';
-  } else if (window.scrollY >= window.innerHeight - 100 && window.innerWidth <= 768) {
+  } else if (window.scrollY >= window.innerHeight - 100 && window.innerWidth <= 991) {
     flexNav.style.position = 'fixed';
     flexNav.style.top = '100px';
     flexNav.style.height = '0px';
     mobileMenu.style.position = 'fixed';
-  } else if (window.scrollY <= window.innerHeight && window.innerWidth <= 768) {
+  } else if (window.scrollY <= window.innerHeight && window.innerWidth <= 991) {
     flexNav.style.position = 'relative';
     flexNav.style.top = '0px';
     flexNav.style.height = '0px';
