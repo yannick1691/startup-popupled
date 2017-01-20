@@ -209,12 +209,25 @@ footer{
     font-weight: 200
     font-size: 0.9em
   }
+  div{
+    flex: 1 1 30%
+    display: flex
+    height: 70px
+    align-items: center
+    justify-content: center
+    &.contact-icon{
+      flex 1 1 50%
+    }
+  }
   a{
     color: #E5272D
     &:hover{
       color: lighten(#E5272D, 15)
       text-decoration: none
     }
+  }
+  img{
+    width: 60px
   }
 }
 // ---------------------------------------------------------------
@@ -502,6 +515,11 @@ section{
     top: 0px
     left: 0px
     z-index: 2000
+    img{
+      position: absolute
+      left: 5px
+      top: 25px
+    }
   }
 
   .flex-nav{

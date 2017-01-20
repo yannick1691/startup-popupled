@@ -1,6 +1,25 @@
 $(document).ready(function () {
   const wIPopup = document.querySelector('#watispopupled');
   scrollfixnav();
+
+  //smoothscroll
+  $('.flex-nav a[href^="#"]').on('click', function (e) {
+    // kijkt naar click op een nav element
+    e.preventDefault(); // stop browser van het toevoegen van # aan url
+    $(document).off("scroll"); // stop scroll door gebruiker
+    $(this).addClass('active-link'); // voegt .active-link toe aan link
+
+    //volgende code is voor het scrollen naar het element
+    var target = this.hash,
+        menu = target;
+    $target = $(target);
+    $('html, body').stop().animate({
+      'scrollTop': $target.offset().top - 100
+    }, 500, 'swing', function () {
+      $(document).on("scroll", onScroll);
+    });
+  });
+
   //initialize swiper when document ready  
   var mySwiper = new Swiper('.swiper-container', {
     effect: 'coverflow',
@@ -37,6 +56,8 @@ $(document).ready(function () {
       }
     }
   });
+
+  // Onze klanten slide show
   var onzeKlanten = new Swiper('.onzeKlanten-container', {
     effect: 'coverflow',
     nextButton: '.swiper-button-next',
@@ -95,6 +116,7 @@ function debounce(func, wait = 20, immediate = true) {
   };
 };
 
+// Functie om .active-link toe te voegen aan de link waar die nu is
 function onScroll(e) {
   var scrollPos = $(document).scrollTop();
   $('.flex-nav a[href^="#"]').each(function () {
@@ -102,7 +124,7 @@ function onScroll(e) {
     var currLink = $(this);
     var refElement = $(currLink.attr("href"));
     if (refElement.position().top - 100 <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-      $('.flex-nav a').removeClass("active");
+      $('.flex-nav a').removeClass("active-link");
       currLink.addClass("active-link");
     } else {
       currLink.removeClass("active-link");
@@ -133,6 +155,7 @@ function scrollfixnav() {
   }
 }
 
+// Hamburger menu funtie
 function hamburgerMenu(e) {
   e.preventDefault();
   if (window.innerWidth <= 768) {
@@ -150,6 +173,7 @@ function hamburgerMenu2() {
   }
 }
 
+// zorgt voor een goede switch tussen mobiel en desktop
 function resizeFix() {
   if (window.scrollY >= window.innerHeight - 100 && window.innerWidth >= 768) {
     flexNav.style.position = 'fixed';
@@ -173,12 +197,24 @@ function resizeFix() {
     mobileMenu.style.position = 'relative';
   }
 }
+
+// zorgt dat menu inklapt op mobiel als er wordt geklikt
 flexNavItems.forEach(function (link) {
   link.addEventListener('click', hamburgerMenu2);
 });
+
+function ontdekOns() {
+  const watIsPopup = $('#watispopupled');
+  $('html, body').stop().animate({
+    'scrollTop': watIsPopup.offset().top - 100
+  }, 500, 'swing', function () {
+    $(document).on("scroll", onScroll);
+  });
+}
 
 document.addEventListener('scroll', debounce(onScroll, 10));
 document.addEventListener('scroll', debounce(scrollfixnav, 10));
 mobileMenu.addEventListener('click', hamburgerMenu);
 $(window).resize(resizeFix);
+ontdekOnsBut.addEventListener('click', ontdekOns);
 //# sourceMappingURL=script.js.map
