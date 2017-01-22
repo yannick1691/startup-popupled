@@ -242,12 +242,12 @@ function popupledLogoShadow(e) {
 const image1 = document.querySelector('.image1');
 const image2 = document.querySelector('.image2');
 const image3 = document.querySelector('.image3');
-let popup1 = $('#popup1');
-let popup2 = $('#popup2');
-let popup3 = $('#popup3');
-const close1 = document.querySelector('#close1');
-const close2 = document.querySelector('#close2');
-const close3 = document.querySelector('#close3');
+let popupid1 = $('#popup1');
+let popupid2 = $('#popup2');
+let popupid3 = $('#popup3');
+const closeid1 = document.querySelector('#close1');
+const closeid2 = document.querySelector('#close2');
+const closeid3 = document.querySelector('#close3');
 
 function popUpCustom(name, dura) {
   name.animate({ opacity: '1', left: '0px'}, dura);
@@ -259,13 +259,13 @@ function popUpCustomOut(name, dura) {
 
 // Event listener voor de popups
 image1.addEventListener('click', function () {
-  popUpCustom(popup1, 200);
+  popUpCustom(popup1, 400);
 });
 image2.addEventListener('click', function () {
-  popUpCustom(popup2, 200);
+  popUpCustom(popup2, 400);
 });
 image3.addEventListener('click', function () {
-  popUpCustom(popup3, 200);
+  popUpCustom(popup3, 400);
 });
 
 close1.addEventListener('click', function () {
