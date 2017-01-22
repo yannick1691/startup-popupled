@@ -72,6 +72,9 @@ button.landing{
     }
 }
 
+.borden{
+  padding-top: 25px;
+}
 
 // ---------------------------------------------------------------
 // C
@@ -122,6 +125,31 @@ button.landing{
     color: #fff
   }
 }
+
+.close{
+  width: 100px;
+  height: 100px;
+  img{
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+#close1{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+#close2{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+#close3{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
 // ---------------------------------------------------------------
 // D
 // ---------------------------------------------------------------
@@ -157,14 +185,17 @@ button.landing{
     text-align: center;
     font-weight: 200
     &:hover{
-      background red;
+      background darken(#282828, 10);
       text-decoration: none
+      color: lighten(linkcolor, 15)
+      text-shadow: 0px 0px 1px rgba(244, 0, 33, 0.7)
     }
     &.active-link{
     color: lighten(linkhovercol, 10)
     font-size: 1.2em
     font-weight: 300
-  }
+    text-decoration: underline
+    }
   }
 }
 
@@ -256,6 +287,7 @@ h3{
   font-family: mainfont
   font-size: fontsizeh3
 }
+
 h4{
   text-align: center
   font-family: mainfont
@@ -365,7 +397,7 @@ img{
     height: 250px
     .swiper-slide{
       object-fit: contain;
-      object-fit: center;
+      object-position: center;
       opacity: 0.0
       &.swiper-slide-active{
         opacity: 1
@@ -406,6 +438,55 @@ p{
   color: #000
 }
 
+#popup1{
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(2, 2, 2, 0.95);
+  top: 0px;
+  left: -120vw;
+  z-index: 9999;
+}
+
+#popup2{
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(2, 2, 2, 0.95);
+  top: 0px;
+  left: -120vw;
+  z-index: 9999;
+}
+
+#popup3{
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(2, 2, 2, 0.95);
+  top: 0px;
+  left: -120vw;
+  z-index: 9999;
+}
+
+.popup-content{
+  width: 80vw;
+  height: 80vh;
+  background: red;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  align-items: center;
+}
+
 // ---------------------------------------------------------------
 // Q
 // ---------------------------------------------------------------
@@ -431,8 +512,7 @@ p{
 // ---------------------------------------------------------------
 // S
 // ---------------------------------------------------------------
-::-moz-selection { background: #5af; color: #fff; text-shadow: none; }
-::selection { background: #5af; color: #fff; text-shadow: none; }
+
 
 section{
   padding-top: 130px
@@ -458,7 +538,8 @@ section{
           opacity: 1
         }
     }
-  }
+}
+
 // ---------------------------------------------------------------
 // T
 // ---------------------------------------------------------------
@@ -502,7 +583,7 @@ section{
 
 
 /* Small Devices*/
-@media (min-width : 991px) and (max-width : 991px){
+@media (max-width : 767px){
   body{
     font-size: 18px
   }
@@ -514,6 +595,10 @@ section{
 
   h3{
     font-size: 1.2em
+  }
+
+  section{
+    padding-top: 100px
   }
 
   .hammenu{
@@ -587,7 +672,7 @@ section{
       height: 250px
       .swiper-slide{
         object-fit: contain;
-        object-fit: center;
+        object-position: center;
         opacity: 0.0
         &.swiper-slide-active{
           opacity: 1
@@ -612,7 +697,7 @@ section{
   }
 }
 // Tablets
-@media only screen and (max-width : 991px) {
+@media (min-width : 768px) and (max-width : 991px){
   body{
     font-size: 18px
   }
@@ -626,51 +711,12 @@ section{
     font-size: 1.2em
   }
 
-  .hammenu{
-    display: flex
-    height: 100px
-    width: 100vw
-    background: navelements
-    font-size: 3em
-    text-align: right
-    align-items: center
-    justify-content: flex-end
-    padding-right: 30px
-    top: 0px
-    left: 0px
-    z-index: 2000
-    img{
-      position: absolute
-      left: 5px
-      top: 25px
-    }
-  }
-
-  .flex-nav{
-    width: 100vw
-    height: 0px
-    flex-wrap: wrap
-    flex-direction: column
-    display: flex
-    transition: all .6s ease-in-out
-    top: 0px
-    overflow: hidden
-    z-index: 1000
-    max-height: calc(100vh - 100px)
-    a{
-      width: 100vw;
-      flex: 2 1 50px
-      &.spacer-nav{
-        flex: 1 2 50px
-        &:hover{
-          background: none;
-        }
-      }
-    }
-  }
-
   p{
     font-size: 18px
+  }
+
+  section{
+    padding-top: 100px
   }
 
   .logo-landing{
@@ -697,7 +743,7 @@ section{
       height: 250px
       .swiper-slide{
         object-fit: contain;
-        object-fit: center;
+        object-position: center;
         opacity: 0.0
         &.swiper-slide-active{
           opacity: 1

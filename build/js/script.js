@@ -96,7 +96,6 @@ $(document).ready(function () {
       }
     }
   });
-  onzeKlanten.disableTouchControl();
 });
 
 // functie om client lagg te verkomen
@@ -120,7 +119,6 @@ function debounce(func, wait = 20, immediate = true) {
 function onScroll(e) {
   var scrollPos = $(document).scrollTop();
   $('.flex-nav a[href^="#"]').each(function () {
-    console.log('hi');
     var currLink = $(this);
     var refElement = $(currLink.attr("href"));
     if (refElement.position().top - 100 <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
@@ -134,20 +132,20 @@ function onScroll(e) {
 
 // Make nav fixed after the landing page
 function scrollfixnav() {
-  if (window.scrollY >= window.innerHeight - 100 && window.innerWidth <= 991) {
+  if (window.scrollY >= window.innerHeight - 100 && window.innerWidth < 768) {
     flexNav.style.position = 'fixed';
     flexNav.style.top = '100px';
     mobileMenu.style.position = 'fixed';
-  } else if (window.scrollY <= window.innerHeight && window.innerWidth <= 991) {
+  } else if (window.scrollY <= window.innerHeight && window.innerWidth < 768) {
     flexNav.style.position = 'relative';
     flexNav.style.top = '0px';
     mobileMenu.style.position = 'relative';
-  } else if (window.scrollY >= window.innerHeight - 100 && window.innerWidth >= 992) {
+  } else if (window.scrollY >= window.innerHeight - 100 && window.innerWidth >= 768) {
     flexNav.style.position = 'fixed';
     flexNav.style.top = '0px';
     flexNav.style.height = '100px';
     mobileMenu.style.position = 'fixed';
-  } else if (window.scrollY <= window.innerHeight && window.innerWidth >= 992) {
+  } else if (window.scrollY <= window.innerHeight && window.innerWidth >= 768) {
     flexNav.style.position = 'relative';
     flexNav.style.top = '0px';
     flexNav.style.height = '100px';
@@ -158,7 +156,7 @@ function scrollfixnav() {
 // Hamburger menu funtie
 function hamburgerMenu(e) {
   e.preventDefault();
-  if (window.innerWidth <= 991) {
+  if (window.innerWidth < 768) {
     flexNavJQ.height(flexNavJQ.height() == 0 ? `100vh` : `${ hiddenMob }px`);
   } else {
     return;
@@ -166,7 +164,7 @@ function hamburgerMenu(e) {
 }
 
 function hamburgerMenu2() {
-  if (window.innerWidth <= 991) {
+  if (window.innerWidth < 768) {
     flexNavJQ.height(flexNavJQ.height() == 0 ? `100vh` : `${ hiddenMob }px`);
   } else {
     return;
@@ -175,22 +173,22 @@ function hamburgerMenu2() {
 
 // zorgt voor een goede switch tussen mobiel en desktop
 function resizeFix() {
-  if (window.scrollY >= window.innerHeight - 100 && window.innerWidth >= 992) {
+  if (window.scrollY >= window.innerHeight - 100 && window.innerWidth >= 768) {
     flexNav.style.position = 'fixed';
     flexNav.style.top = '0px';
     flexNav.style.height = '100px';
     mobileMenu.style.position = 'fixed';
-  } else if (window.scrollY <= window.innerHeight && window.innerWidth >= 992) {
+  } else if (window.scrollY <= window.innerHeight && window.innerWidth >= 768) {
     flexNav.style.position = 'relative';
     flexNav.style.top = '0px';
     flexNav.style.height = '100px';
     mobileMenu.style.position = 'relative';
-  } else if (window.scrollY >= window.innerHeight - 100 && window.innerWidth <= 991) {
+  } else if (window.scrollY >= window.innerHeight - 100 && window.innerWidth < 768) {
     flexNav.style.position = 'fixed';
     flexNav.style.top = '100px';
     flexNav.style.height = '0px';
     mobileMenu.style.position = 'fixed';
-  } else if (window.scrollY <= window.innerHeight && window.innerWidth <= 991) {
+  } else if (window.scrollY <= window.innerHeight && window.innerWidth < 768) {
     flexNav.style.position = 'relative';
     flexNav.style.top = '0px';
     flexNav.style.height = '0px';
@@ -203,6 +201,7 @@ flexNavItems.forEach(function (link) {
   link.addEventListener('click', hamburgerMenu2);
 });
 
+// Ontdek ons button scroll
 function ontdekOns() {
   const watIsPopup = $('#watispopupled');
   $('html, body').stop().animate({
@@ -212,9 +211,75 @@ function ontdekOns() {
   });
 }
 
+// schaduw op popupled logo die muismove volgt
+const landingPage = document.querySelector('.landing-page');
+const popupledLogo = landingPage.querySelector('.logo-landing');
+const distance = 25;
+
+function popupledLogoShadow(e) {
+  const { offsetWidth: width, offsetHeight: height } = landingPage;
+  let { offsetX: x, offsetY: y } = e;
+
+  // zorgt dat als je over button of img gaat de offset niet 0 is
+  if (this !== e.target) {
+    x = x + e.target.offsetLeft;
+    y = y + e.target.offsetTop;
+  }
+
+  const xDistance = Math.round(x / width * distance - distance / 2);
+  const yDistance = Math.round(y / height * distance - distance / 2);
+
+  popupledLogo.style.filter = `
+  drop-shadow(${ xDistance }px ${ yDistance }px 4px rgba(0, 0, 0, 0.75))`;
+}
+
+// Functie voor pop up locaties 
+const image1 = document.querySelector('.image1');
+const image2 = document.querySelector('.image2');
+const image3 = document.querySelector('.image3');
+let popup1 = $('#popup1');
+let popup2 = $('#popup2');
+let popup3 = $('#popup3');
+const close1 = document.querySelector('#close1');
+const close2 = document.querySelector('#close2');
+const close3 = document.querySelector('#close3');
+
+function popUpCustom(name, dura) {
+  name.animate({ opacity: '1', left: '0px' }, dura);
+}
+
+function popUpCustomOut(name, dura) {
+  name.animate({ opacity: '0', left: '-120vw' }, dura);
+}
+
+// Event listener voor de popups
+image1.addEventListener('click', function () {
+  popUpCustom(popup1, 200);
+});
+image2.addEventListener('click', function () {
+  popUpCustom(popup2, 200);
+});
+image3.addEventListener('click', function () {
+  popUpCustom(popup3, 200);
+});
+
+close1.addEventListener('click', function () {
+  popUpCustomOut(popup1, 400);
+});
+
+close2.addEventListener('click', function () {
+  popUpCustomOut(popup2, 400);
+});
+
+close3.addEventListener('click', function () {
+  popUpCustomOut(popup3, 400);
+});
+
+//Event listeners
 document.addEventListener('scroll', debounce(onScroll, 10));
 document.addEventListener('scroll', debounce(scrollfixnav, 10));
 mobileMenu.addEventListener('click', hamburgerMenu);
 $(window).resize(resizeFix);
 ontdekOnsBut.addEventListener('click', ontdekOns);
+landingPage.addEventListener('mousemove', popupledLogoShadow);
 //# sourceMappingURL=script.js.map

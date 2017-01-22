@@ -24,14 +24,14 @@
     <img src="links/img/logo_1.svg" alt="logo popupled" class="logo-landing">
     <button class="landing" type="button">ontdek ons</button>
   </div>
-  <a href="" class="hammenu"><img src="links/img/logo_1.svg" alt="logo" height="50">&#9776;</a>
+  <a class="hammenu"><img src="links/img/logo_1.svg" alt="logo" height="50">&#9776;</a>
   <nav class="flex-nav">
     <a class="hidden-xs hidden-sm"><img src="links/img/logo_1.svg" alt="logo" height="90"></a>
     <a href="#watispopupled">wat is popupled</a>
     <a href="#over-ons">over ons</a>
     <a href="#waarom-ons">waarom ons</a>
     <a href="#contact">contact</a>
-    <a class="hidden-md hidden-lg spacer-nav"></a>
+    <a class="hidden-sm hidden-md hidden-lg spacer-nav"></a>
   </nav>
   <div class="container-fluid">
     <!--Wat is popupled sectie-->
@@ -42,7 +42,7 @@
         </div>
         <div class="col-xs-12 col-md-5 col-md-offset-1">
           <div class="row">
-            <div class="col-xs-4 col-xs-offset-4 col-md-offset-5">
+            <div class="hidden-sm hidden-xs col-md-4 col-md-offset-5">
               <img src="links/img/lamp@2x.png" alt="lamp">
             </div>
           </div>
@@ -54,7 +54,7 @@
         </div>
         <div class="col-xs-12 col-md-5">
           <div class="row">
-            <div class="col-xs-4 col-xs-offset-4 col-md-offset-3">
+            <div class="hidden-xs hidden-sm col-md-4 col-md-offset-3">
               <img src="links/img/wat_is_popupled-icon2@2x.png" alt="lamp">
             </div>
           </div>
@@ -119,6 +119,9 @@
             </div>
           </div>
           <div class="row">
+            <div class="col-xs-12">
+              <h2 class="blue borden">onze borden</h2>
+            </div>
             <!-- Desktop location images -->
             <div class="hidden-xs hidden-sm col-md-4">
               <div class="row">
@@ -133,7 +136,7 @@
             <div class="hidden-xs hidden-sm col-md-4">
               <div class="row">
                 <div class="col-md-10 col-md-offset-1">
-                  <div class="img-holder">
+                  <div class="img-holder image2">
                     <img src="links/img/locatie2.jpg" alt="locatie2" class="thumb" class="button">
                     <img src="links/img/fullscreenbutton.svg" alt="fullscreen button" class="button">
                   </div>
@@ -150,6 +153,32 @@
                 </div>
               </div>
             </div>
+
+            <!-- Popup's divs -->
+            <div class="hidden-xs hidden-sm col-md-12">
+              <div id="popup1">
+                <div class="popup-content">
+                  <div class="close" id="close1">
+                    <img src="links/img/close_button@3x.png" alt="close popup">
+                  </div>
+                </div>
+              </div>
+              <div id="popup2">
+                <div class="popup-content">
+                  <div class="close" id="close2">
+                    <img src="links/img/close_button@3x.png" alt="close popup">
+                  </div>
+                </div>
+              </div>
+              <div id="popup3">
+                <div class="popup-content">
+                  <div class="close" id="close3">
+                    <img src="links/img/close_button@3x.png" alt="close popup">
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <!-- Slider on mobile -->
             <div class="col-xs-12 hidden-md hidden-lg">
               <div class="swiper-container">
@@ -298,21 +327,21 @@
     </section>
   </div>
   <footer>
-    <div class="hidden-md hidden-lg contact-icon">
+    <div class="hidden-sm hidden-md hidden-lg contact-icon">
       <img src="links/img/phone-icon@2x.png" alt="">
       <p>06-10520429</p>
     </div>
-    <div class="hidden-md hidden-lg contact-icon">
+    <div class="hidden-sm hidden-md hidden-lg contact-icon">
       <img src="links/img/mail-icon@2x.png" alt="">
       <p>info@popupled.nl</p>
     </div>
-    <div class="hidden-md hidden-lg">
+    <div class="hidden-sm hidden-md hidden-lg">
       <a href="" target="blank"><img src="links/img/twitter@2x.png" alt=""></a>
     </div>
-    <div class="hidden-md hidden-lg">
+    <div class="hidden-sm hidden-md hidden-lg">
       <a href="" target="blank"><img src="links/img/linkedin-icon@2x.png" alt=""></a>
     </div>
-    <div class="hidden-md hidden-lg">
+    <div class="hidden-sm hidden-md hidden-lg">
       <a href="" target="blank"><img src="links/img/facebook-icon@2x.png" alt=""></a>
     </div>
     <p>Op alle overeenkomsten gesloten door popupled zijn de <a href="">algemene voorwaarden</a> van toepassing</p>
@@ -320,6 +349,7 @@
 
   <!-- Javascript -->
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="js/jquery.nicescroll.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.jquery.min.js"></script>
   <script>
     const flexNav = document.querySelector('.flex-nav');
@@ -329,6 +359,12 @@
     const hiddenMob = 0;
     const flexNavItems = document.querySelectorAll('.flex-nav a');
     const ontdekOnsBut = document.querySelector('.landing');
+
+    $(document).ready(
+      function() {
+        $('html').niceScroll();
+      }
+    );
   </script>
   <script src="js/script.js"></script>
 </body>
