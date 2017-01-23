@@ -221,7 +221,7 @@ const popupledLogo = landingPage.querySelector('.logo-landing');
 const distance = 25;
 
 function popupledLogoShadow(e) {
-  const { offsetWidth: width, offsetHeight: height } = landingPage;
+  const { offsetWidth: breedte, offsetHeight: hoogte } = landingPage;
   let { offsetX: x, offsetY: y } = e;
   
   // zorgt dat als je over button of img gaat de offset niet 0 is
@@ -230,8 +230,8 @@ function popupledLogoShadow(e) {
       y = y + e.target.offsetTop;
     }
 
-  const xDistance = Math.round((x / width * distance) - (distance / 2));
-  const yDistance = Math.round((y / height * distance) - (distance / 2));
+  const xDistance = Math.round((x / breedte * distance) - (distance / 2));
+  const yDistance = Math.round((y / hoogte * distance) - (distance / 2));
   
   popupledLogo.style.filter = `
   drop-shadow(${xDistance}px ${yDistance}px 4px rgba(0, 0, 0, 0.75))`;
@@ -245,40 +245,66 @@ const image3 = document.querySelector('.image3');
 let popupid1 = $('#popup1');
 let popupid2 = $('#popup2');
 let popupid3 = $('#popup3');
+const popupId1js = document.querySelector('#popup1');
+const popupId2js = document.querySelector('#popup2');
+const popupId3js = document.querySelector('#popup3');
 const closeid1 = document.querySelector('#close1');
 const closeid2 = document.querySelector('#close2');
 const closeid3 = document.querySelector('#close3');
 
-function popUpCustom(name, dura) {
-  name.animate({ opacity: '1', left: '0px'}, dura);
+function popUpCustom(name, namejs, dura) {
+  name.animate({ opacity: '1', left: '0px' }, dura);
+  namejs.style.transform = 'scale(1)';
+  
 }
 
-function popUpCustomOut(name, dura) {
-  name.animate({ opacity: '0', left: '-120vw'}, dura);
+function popUpCustomOut(name, namejs, dura) {
+  namejs.style.transform = 'scale(0)';
+  name.animate({ opacity: '0', left: '-1px' }, dura);
 }
 
 // Event listener voor de popups
 image1.addEventListener('click', function () {
-  popUpCustom(popupid1, 400);
+  popUpCustom(popupid1, popupId1js, 100);
 });
 image2.addEventListener('click', function () {
-  popUpCustom(popupid2, 400);
+  popUpCustom(popupid2, popupId2js, 100);
 });
 image3.addEventListener('click', function () {
-  popUpCustom(popupid3, 400);
+  popUpCustom(popupid3, popupId3js, 100);
 });
 
 close1.addEventListener('click', function () {
-  popUpCustomOut(popupid1, 400);
+  popUpCustomOut(popupid1, popupId1js, 100);
 });
 
 close2.addEventListener('click', function () {
-  popUpCustomOut(popupid2, 400);
+  popUpCustomOut(popupid2, popupId2js, 100);
 });
 
 close3.addEventListener('click', function () {
-  popUpCustomOut(popupid3, 400);
+  popUpCustomOut(popupid3, popupId3js, 100);
 })
+
+// Icon 3d rotation hover mouserelative
+const waaromOnsDiv = document.querySelector('#waarom-ons');
+const waaromOnsIcon = waaromOnsDiv.querySelector('.waaromOnsIcon');
+const rotDistance = 70;
+
+function waaromOnsRotation(e) {
+  const { offsetWidth: breedteW, offsetHeight: hoogteW } = waaromOnsDiv;
+  let { offsetX: xW, offsetY: yW } = e;
+  
+  // zorgt dat als je over button of img gaat de offset niet 0 is
+  if(this !== e.target) {
+      xW = xW + e.target.offsetLeft;
+      yW = yW + e.target.offsetTop;
+    }
+
+  const xWDistance = Math.round((xW / breedteW * rotDistance) - (rotDistance / 2));
+  waaromOnsIcon.style.transform = `rotateY(${xWDistance}deg)`;
+}
+
 
 //Event listeners
 document.addEventListener('scroll', debounce(onScroll, 10));
@@ -287,3 +313,4 @@ mobileMenu.addEventListener('click', hamburgerMenu);
 $(window).resize(resizeFix);
 ontdekOnsBut.addEventListener('click', ontdekOns);
 landingPage.addEventListener('mousemove', popupledLogoShadow);
+waaromOnsDiv.addEventListener('mousemove', debounce(waaromOnsRotation, 3));
