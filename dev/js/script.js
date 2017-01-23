@@ -259,25 +259,25 @@ function popUpCustomOut(name, dura) {
 
 // Event listener voor de popups
 image1.addEventListener('click', function () {
-  popUpCustom(popup1, 400);
+  popUpCustom(popupid1, 400);
 });
 image2.addEventListener('click', function () {
-  popUpCustom(popup2, 400);
+  popUpCustom(popupid2, 400);
 });
 image3.addEventListener('click', function () {
-  popUpCustom(popup3, 400);
+  popUpCustom(popupid3, 400);
 });
 
 close1.addEventListener('click', function () {
-  popUpCustomOut(popup1, 400);
+  popUpCustomOut(popupid1, 400);
 });
 
 close2.addEventListener('click', function () {
-  popUpCustomOut(popup2, 400);
+  popUpCustomOut(popupid2, 400);
 });
 
 close3.addEventListener('click', function () {
-  popUpCustomOut(popup3, 400);
+  popUpCustomOut(popupid3, 400);
 })
 
 //Event listeners

@@ -37,12 +37,7 @@ ehthumbs.db
 Thumbs.db
 
 node_modules/
-# images #
-*.png
-*.jpg
-*.svg
-*.gif
-*.mp4
+links/
 
 gulpfile.js
 package.json
