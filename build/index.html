@@ -15,9 +15,15 @@
   <meta http-equiv="pragma" content="no-cache" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.min.css">
+  <link rel="stylesheet" href="css/jquery-ui.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400" rel="stylesheet">
-  
+  <script>
+    (function(h,e,a,t,m,p) {
+    m=e.createElement(a);m.async=!0;m.src=t;
+    p=e.getElementsByTagName(a)[0];p.parentNode.insertBefore(m,p);
+    })(window,document,'script','https://u.heatmap.it/log.js');
+  </script>
 </head>
 <body>
   <div class="landing-page">
@@ -137,7 +143,7 @@
               <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                   <div class="img-holder image2">
-                    <img src="links/img/locatie2.jpg" alt="locatie2" class="thumb" class="button">
+                    <img src="links/img/locatie2.jpg" alt="locatie2" class="thumb">
                     <img src="links/img/fullscreenbutton.svg" alt="fullscreen button" class="button">
                   </div>
                 </div>
@@ -147,8 +153,8 @@
               <div class="row">
                 <div class="col-md-10">
                   <div class="img-holder image3">
-                    <img src="links/img/locatie3.jpg" alt="locatie3" class="thumb button">
-                    <img src="links/img/fullscreenbutton.svg" alt="fullscreen button">
+                    <img src="links/img/locatie3.jpg" alt="locatie3" class="thumb">
+                    <img src="links/img/fullscreenbutton.svg" alt="fullscreen button" class="button">
                   </div>
                 </div>
               </div>
@@ -158,7 +164,19 @@
             <div class="hidden-xs hidden-sm col-md-12" aria-hidden="true">
               <div id="popup1">
                 <div class="popup-content">
-                  <div class=""></div>
+                  <div class="location">
+                    <video src="links/vid/popuplocatie1.mp4" type="video/mp4" autoplay no-controls loop muted></video>
+                    <div class="description">
+                      <h3>
+                        locatie:<br>
+                        <small>Korte Lijnbaan</small>
+                      </h3>
+                      <h3>
+                        prijs:<br>
+                        <small>€99,99 per week</small>
+                      </h3>
+                    </div>
+                  </div>
                   <div class="close" id="close1">
                     <img src="links/img/close_button@3x.png" alt="close popup">
                   </div>
@@ -166,6 +184,19 @@
               </div>
               <div id="popup2">
                 <div class="popup-content">
+                  <div class="location">
+                    <video src="links/vid/popuplocatie3.mp4" type="video/mp4" autoplay no-controls loop muted></video>
+                    <div class="description">
+                      <h3>
+                        locatie:<br>
+                        <small>Stadhuisplein</small>
+                      </h3>
+                      <h3>
+                        prijs:<br>
+                        <small>€109,99 per week</small>
+                      </h3>
+                    </div>
+                  </div>
                   <div class="close" id="close2">
                     <img src="links/img/close_button@3x.png" alt="close popup">
                   </div>
@@ -173,6 +204,19 @@
               </div>
               <div id="popup3">
                 <div class="popup-content">
+                  <div class="location">
+                    <video src="links/vid/popuplocatie2.mp4" type="video/mp4" autoplay no-controls loop muted></video>
+                    <div class="description">
+                      <h3>
+                        locatie:<br>
+                        <small>het Weena</small>
+                      </h3>
+                      <h3>
+                        prijs:<br>
+                        <small>€89,99 per week</small>
+                      </h3>
+                    </div>
+                  </div>
                   <div class="close" id="close3">
                     <img src="links/img/close_button@3x.png" alt="close popup">
                   </div>
@@ -283,19 +327,55 @@
     </section>
     <!--Contact sectie-->
     <section id="contact">
-      <div class="row">
+      <div class="row relative">
         <div class="col-xs-12">
           <h1 class="green">contact</h1>
         </div>
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+        <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2 formulieren">
+          <button type="button" data-button="contact">contact formulier</button>
+          <button type="button" data-button="offerte">offerte aanvragen</button>
+        </div>
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 contactForm">
+          <h2 class="green">contact formulier:</h2>
           <form class="contact">
             <label for="naam">naam:</label>
-            <input type="text" placeholder="naam" id="naam">
+            <input type="text" placeholder="naam" id="naam" required>
             <label for="email">email:</label>
-            <input type="email" placeholder="email" id="email">
+            <input type="email" placeholder="email" id="email" required>
             <label for="message">bericht:</label>
-            <textarea name="message" id="message" placeholder="voer hier je bericht in"></textarea>
+            <textarea name="message" id="message" placeholder="voer hier je bericht in" required></textarea>
             <button type="submit">verzenden</button>
+          </form>
+        </div>
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 offerteForm">
+          <h2 class="green">offerte aanvragen:</h2>
+          <form class="offerte">
+            <label for="offnaam">naam:</label>
+            <input type="text"name="name" placeholder="naam" id="offnaam" required>
+            <label for="emailoff">email:</label>
+            <input type="email" id="emailoff" placeholder="example@example.com" required>
+            <label for="teloff">telefoon:</label>
+            <input type="tel" name="phone" placeholder="telefoon nummer" id="teloff" required>
+            <label for="companyoff">bedrijf:</label>
+            <input type="text" placeholder="bedrijfsnaam" id="companyoff">
+            <label for="">locatie:</label>
+            <select required id="locatieoff">
+              <option disabled selected value="">selecteer een locatie</option>
+              <option value="99.99" name="Korte Lijnbaan">Korte Lijnbaan</option>
+              <option value="109.99" name="Stadshuisplein">Stadhuisplein</option>
+              <option value="89.99" name="het Weena">het Weena</option>
+            </select>
+            <div class="col-xs-6 start-dat">
+              <label for="start-date">start datum:</label>
+              <input type="text" id="start-date" placeholder="Week --, ----" required>
+            </div>
+            <div class="col-xs-6">
+              <label for="end-date">eind datum:</label>
+              <input type="text" id="end-date" placeholder="Week --, ----" required>
+            </div>
+            <input type="checkbox" id="accept" required>
+            <label for="">ik ga akkoord met de <a href="http://www.popupled.nl/AV_PopUpLED_bv.pdf" target="blank">algemene voorwaarden</a></label>
+            <button type="submit" name="offerteGen">offerte aanvragen</button>
           </form>
         </div>
       </div>
@@ -303,15 +383,15 @@
         <div class="col-xs-12 col-md-8 col-md-offset-2"> <!-- start wrapper -->
           <div class="row flex-space">
             <div class="hidden-xs col-sm-4 col-lg-2">
-              <img src="links/img/twitter@3x.png" alt="Twitter logo">
+              <a href="https://twitter.com/popupled" target="blank"><img src="links/img/twitter@3x.png" alt="Twitter logo"></a>
               <p>@popupled</p>
             </div>
             <div class="hidden-xs col-sm-4 col-lg-2">
-              <img src="links/img/facebook-icon@3x.png" alt="facebook logo">
+              <a href="https://www.facebook.com/popupled" target="blank"><img src="links/img/facebook-icon@3x.png" alt="facebook logo"></a>
               <p>/popupled</p>
             </div>
             <div class="hidden-xs col-sm-4 col-lg-2">
-              <img src="links/img/linkedin-icon@3x.png" alt="linkedin logo">
+              <a href="https://www.linkedin.com/company/popupled/" target="blank"><img src="links/img/linkedin-icon@3x.png" alt="linkedin logo"></a>
               <p>/popupled</p>
             </div>
             <div class="hidden-xs col-sm-4 col-lg-2">
@@ -352,6 +432,8 @@
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="js/jquery.nicescroll.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
   <script>
     const flexNav = document.querySelector('.flex-nav');
     let flexNavJQ = $('.flex-nav');
@@ -364,6 +446,22 @@
     $(document).ready(
       function() {
         $('html').niceScroll();
+        $('#start-date').datepicker({
+          changeYear: true,
+          showWeek: true,
+            onSelect: function(dateText, inst) {
+              var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val()
+              $(this).val("Week " + $.datepicker.iso8601Week(new Date(dateText)) + ", " + year);
+            }
+        });
+        $('#end-date').datepicker({
+          changeYear: true,
+          showWeek: true,
+            onSelect: function(dateText, inst) {
+              var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val()
+              $(this).val("Week " + $.datepicker.iso8601Week(new Date(dateText)) + ", " + year);
+            }
+        });
       }
     );
   </script>
