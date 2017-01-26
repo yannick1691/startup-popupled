@@ -214,7 +214,7 @@ function ontdekOns() {
 // schaduw op popupled logo die muismove volgt
 const landingPage = document.querySelector('.landing-page');
 const popupledLogo = landingPage.querySelector('.logo-landing');
-const distance = 25;
+const distance = 20;
 
 function popupledLogoShadow(e) {
   const { offsetWidth: breedte, offsetHeight: hoogte } = landingPage;
@@ -298,6 +298,17 @@ function waaromOnsRotation(e) {
   const xWDistance = Math.round(xW / breedteW * rotDistance - rotDistance / 2);
   waaromOnsIcon.style.transform = `rotateY(${ xWDistance }deg)`;
 }
+
+// Function to generate a pdf 
+function offerte() {
+  var offerte = new jsPDF();
+
+  offerte.text('Hello world!', 10, 10);
+  offerte.autoPrint();
+  offerte.addPage();
+}
+
+// offerte();
 
 //Event listeners
 document.addEventListener('scroll', debounce(onScroll, 10));

@@ -17,7 +17,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400" rel="stylesheet">
-  
+  <script>
+    (function(h,e,a,t,m,p) {
+    m=e.createElement(a);m.async=!0;m.src=t;
+    p=e.getElementsByTagName(a)[0];p.parentNode.insertBefore(m,p);
+    })(window,document,'script','https://u.heatmap.it/log.js');
+  </script>
 </head>
 <body>
   <div class="landing-page">
@@ -325,15 +330,42 @@
         <div class="col-xs-12">
           <h1 class="green">contact</h1>
         </div>
+        <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2 formulieren">
+          <a href="">contact formulier</a>
+          <a href="">offerte aanvragen</a>
+        </div>
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+          <h2 class="green">contact formulier:</h2>
           <form class="contact">
             <label for="naam">naam:</label>
-            <input type="text" placeholder="naam" id="naam">
+            <input type="text" placeholder="naam" id="naam" required>
             <label for="email">email:</label>
-            <input type="email" placeholder="email" id="email">
+            <input type="email" placeholder="email" id="email" required>
             <label for="message">bericht:</label>
-            <textarea name="message" id="message" placeholder="voer hier je bericht in"></textarea>
+            <textarea name="message" id="message" placeholder="voer hier je bericht in" required></textarea>
             <button type="submit">verzenden</button>
+          </form>
+        </div>
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+          <h2 class="green">offerte aanvragen:</h2>
+          <form class="offerte">
+            <label for="offnaam">naam:</label>
+            <input type="text" placeholder="naam" id="offnaam" required>
+            <label for="emailoff">email:</label>
+            <input type="email" id="emailoff" placeholder="example@example.com" required>
+            <label for="teloff">telefoon:</label>
+            <input type="tel" placeholder="telefoon nummer" required>
+            <div class="col-xs-6 start-dat">
+              <label for="start-date">start datum:</label>
+              <input type="week" id="start-date" required>
+            </div>
+            <div class="col-xs-6">
+              <label for="end-date">eind datum:</label>
+              <input type="week" id="end-date" required>
+            </div>
+            <input type="checkbox" id="accept" required>
+            <label for="">ik ga akkoord met de <a href="http://www.popupled.nl/AV_PopUpLED_bv.pdf" target="blank">algemene voorwaarden</a></label>
+            <button type="submit">offerte aanvragen</button>
           </form>
         </div>
       </div>
@@ -390,6 +422,7 @@
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="js/jquery.nicescroll.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
   <script>
     const flexNav = document.querySelector('.flex-nav');
     let flexNavJQ = $('.flex-nav');
