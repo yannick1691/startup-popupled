@@ -42,3 +42,17 @@ links/
 gulpfile.js
 package.json
 \.vscode/
+
+build/js/jquery-ui\.min\.js
+
+build/js/jquery-ui\.min\.js\.map
+
+build/css/images/
+
+build/css/jquery-ui\.min\.css
+
+dev/css/images/
+
+dev/css/jquery-ui\.min\.css
+
+dev/js/jquery-ui\.min\.js

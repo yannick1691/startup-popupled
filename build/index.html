@@ -15,6 +15,7 @@
   <meta http-equiv="pragma" content="no-cache" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.min.css">
+  <link rel="stylesheet" href="css/jquery-ui.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400" rel="stylesheet">
   <script>
@@ -326,15 +327,15 @@
     </section>
     <!--Contact sectie-->
     <section id="contact">
-      <div class="row">
+      <div class="row relative">
         <div class="col-xs-12">
           <h1 class="green">contact</h1>
         </div>
         <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2 formulieren">
-          <a href="">contact formulier</a>
-          <a href="">offerte aanvragen</a>
+          <button type="button" data-button="contact">contact formulier</button>
+          <button type="button" data-button="offerte">offerte aanvragen</button>
         </div>
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 contactForm">
           <h2 class="green">contact formulier:</h2>
           <form class="contact">
             <label for="naam">naam:</label>
@@ -346,26 +347,35 @@
             <button type="submit">verzenden</button>
           </form>
         </div>
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 offerteForm">
           <h2 class="green">offerte aanvragen:</h2>
           <form class="offerte">
             <label for="offnaam">naam:</label>
-            <input type="text" placeholder="naam" id="offnaam" required>
+            <input type="text"name="name" placeholder="naam" id="offnaam" required>
             <label for="emailoff">email:</label>
             <input type="email" id="emailoff" placeholder="example@example.com" required>
             <label for="teloff">telefoon:</label>
-            <input type="tel" placeholder="telefoon nummer" required>
+            <input type="tel" name="phone" placeholder="telefoon nummer" id="teloff" required>
+            <label for="companyoff">bedrijf:</label>
+            <input type="text" placeholder="bedrijfsnaam" id="companyoff">
+            <label for="">locatie:</label>
+            <select required id="locatieoff">
+              <option disabled selected value="">selecteer een locatie</option>
+              <option value="99.99" name="Korte Lijnbaan">Korte Lijnbaan</option>
+              <option value="109.99" name="Stadshuisplein">Stadhuisplein</option>
+              <option value="89.99" name="het Weena">het Weena</option>
+            </select>
             <div class="col-xs-6 start-dat">
               <label for="start-date">start datum:</label>
-              <input type="week" id="start-date" required>
+              <input type="text" id="start-date" placeholder="Week --, ----" required>
             </div>
             <div class="col-xs-6">
               <label for="end-date">eind datum:</label>
-              <input type="week" id="end-date" required>
+              <input type="text" id="end-date" placeholder="Week --, ----" required>
             </div>
             <input type="checkbox" id="accept" required>
             <label for="">ik ga akkoord met de <a href="http://www.popupled.nl/AV_PopUpLED_bv.pdf" target="blank">algemene voorwaarden</a></label>
-            <button type="submit">offerte aanvragen</button>
+            <button type="submit" name="offerteGen">offerte aanvragen</button>
           </form>
         </div>
       </div>
@@ -423,6 +433,7 @@
   <script src="js/jquery.nicescroll.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
   <script>
     const flexNav = document.querySelector('.flex-nav');
     let flexNavJQ = $('.flex-nav');
@@ -435,6 +446,22 @@
     $(document).ready(
       function() {
         $('html').niceScroll();
+        $('#start-date').datepicker({
+          changeYear: true,
+          showWeek: true,
+            onSelect: function(dateText, inst) {
+              var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val()
+              $(this).val("Week " + $.datepicker.iso8601Week(new Date(dateText)) + ", " + year);
+            }
+        });
+        $('#end-date').datepicker({
+          changeYear: true,
+          showWeek: true,
+            onSelect: function(dateText, inst) {
+              var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val()
+              $(this).val("Week " + $.datepicker.iso8601Week(new Date(dateText)) + ", " + year);
+            }
+        });
       }
     );
   </script>
