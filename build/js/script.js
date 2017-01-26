@@ -213,7 +213,7 @@ function ontdekOns() {
 // schaduw op popupled logo die muismove volgt
 const landingPage = document.querySelector('.landing-page');
 const popupledLogo = landingPage.querySelector('.logo-landing');
-const distance = 20;
+const distance = 30;
 
 function popupledLogoShadow(e) {
   const { offsetWidth: breedte, offsetHeight: hoogte } = landingPage;
@@ -470,21 +470,49 @@ const contactFormulier = $('.contactForm');
 
 function contactFadeIn() {
   offerteFormulier.fadeOut(500);
+  offerteFormButton.style.textDecoration = 'none';
   setTimeout(function () {
     contactFormulier.fadeIn(500);
+    contactFormButton.style.textDecoration = 'underline';
   }, 450);
 }
 
 function offerteFadeIn() {
   contactFormulier.fadeOut(500);
+  contactFormButton.style.textDecoration = 'none';
   setTimeout(function () {
     offerteFormulier.fadeIn(500);
+    offerteFormButton.style.textDecoration = 'underline';
   }, 450);
+}
+
+// Functie om elementen in te laten scrollen on scroll
+const sliderImages = document.querySelectorAll('.slide-in');
+let SlideInHasRun = false;
+function scrollSlideIn(e) {
+  const scrollShowCase = document.querySelector('.scrollPosition');
+  scrollShowCase.innerHTML = `${ window.scrollY }`;
+  if (window.scrollY >= $('.slide-in').offset().top - (window.innerHeight - 50) && SlideInHasRun === false) {
+    slideIn($('.slide-in'), 900);
+    SlideInHasRun = true;
+  } else if (window.scrollY <= $('.slide-in').offset().top - (window.innerHeight - 50) && SlideInHasRun === true) {
+    slideOut($('.slide-in'), 900);
+    SlideInHasRun = false;
+  }
+}
+
+function slideIn(object, dura) {
+  object.stop().animate({ 'margin-left': '0px' }, dura);
+}
+
+function slideOut(object, dura) {
+  object.stop().animate({ 'margin-left': '-50vw' }, dura);
 }
 
 //Event listeners
 document.addEventListener('scroll', debounce(onScroll, 10));
 document.addEventListener('scroll', debounce(scrollfixnav, 10));
+document.addEventListener('scroll', debounce(scrollSlideIn, 10));
 mobileMenu.addEventListener('click', hamburgerMenu);
 $(window).resize(resizeFix);
 ontdekOnsBut.addEventListener('click', ontdekOns);
