@@ -217,7 +217,7 @@ function ontdekOns() {
 // schaduw op popupled logo die muismove volgt
 const landingPage = document.querySelector('.landing-page');
 const popupledLogo = landingPage.querySelector('.logo-landing');
-const distance = 20;
+const distance = 30;
 
 function popupledLogoShadow(e) {
   const { offsetWidth: breedte, offsetHeight: hoogte } = landingPage;
@@ -481,19 +481,99 @@ const contactFormulier = $('.contactForm');
 
 function contactFadeIn() {
   offerteFormulier.fadeOut(500);
+  offerteFormButton.style.textDecoration = 'none';
   setTimeout(function() {
     contactFormulier.fadeIn(500);
+    contactFormButton.style.textDecoration = 'underline';
   }, 450);
 }
 
 function offerteFadeIn() {
   contactFormulier.fadeOut(500);
+  contactFormButton.style.textDecoration = 'none';
   setTimeout(function() {
-    offerteFormulier.fadeIn(500)
+    offerteFormulier.fadeIn(500);
+    offerteFormButton.style.textDecoration = 'underline';
   }, 450);
 }
 
+// Functie om elementen in te laten scrollen on scroll
+// const sliderImages = document.querySelectorAll('.slide-in');
+// let SlideInHasRun = false;
+// let SlideInHasRun2 = false;
+// function scrollSlideIn(e) {
+//   if (window.scrollY >= $('.slide-in').offset().top-(window.innerHeight - 200) && SlideInHasRun === false) {
+//     slideInLeft($('.slide-in'), 900);
+//     slideInRight($('.slide-in2'), 900);
+//     SlideInHasRun = true;
+//   } else if (window.scrollY <= $('.slide-in').offset().top - (window.innerHeight - 200) && SlideInHasRun === true) {
+//     slideOutLeft($('.slide-in'), 900)
+//     slideOutRight($('.slide-in2'), 900);
+//     SlideInHasRun = false;
+//   } else if (window.scrollY >= $('.slide-in').offset().top - (window.innerHeight * 2) && SlideInHasRun === true) {
+//     slideOutLeft($('.slide-in'), 900)
+//     slideOutRight($('.slide-in2'), 900);
+//     SlideInHasRun = false;
+//   } else if (window.scrollY >= $('.slide-in3').offset().top-(window.innerHeight - 200) && SlideInHasRun2 === false) {
+//     slideInLeft($('.slide-in3'), 900);
+//     SlideInHasRun2 = true;
+//   } else if (window.scrollY <= $('.slide-in3').offset().top - (window.innerHeight - 200) && SlideInHasRun2 === true) {
+//     slideOutLeft($('.slide-in3'), 900)
+//     SlideInHasRun2 = false;
+//   }  else if (window.scrollY >= $('.slide-in3').offset().top - (window.innerHeight * 2) && SlideInHasRun2 === true) {
+//     slideOutLeft($('.slide-in'), 900)
+//     slideOutRight($('.slide-in2'), 900);
+//     SlideInHasRun = false;
+//   }
+// }
 
+// function slideInLeft(object, dura) {
+//   object.stop().animate({ 'margin-left': '0px', opacity: '1'}, dura);
+// }
+
+// function slideOutLeft(object, dura) {
+//   object.stop().animate({ 'margin-left': '-30vw', opacity: '0' }, dura);
+// }
+
+// function slideInRight(object, dura) {
+//   object.stop().animate({ 'margin-left': '0px', opacity: '1' }, dura);
+// }
+
+// function slideOutRight(object, dura) {
+//   object.stop().animate({ 'margin-left': '30vw', opacity: '0' }, dura);
+// }
+
+// Slide animations
+var controller = new ScrollMagic.Controller({globalSceneOptions: {duration: 800}});
+
+var scene = new ScrollMagic.Scene({
+  triggerElement: '#watispopupled',
+  offset: 80,
+})
+  .setClassToggle('.slide-in', 'activeSlide'); // toggle class
+
+  // build scenes
+new ScrollMagic.Scene({ triggerElement: "#watispopupled", offset: 90})
+					.setClassToggle(".slide-in3", "activeTop") // add class toggle
+					// .addIndicators() // add indicators (requires plugin)
+					.addTo(controller);
+	new ScrollMagic.Scene({triggerElement: "#watispopupled", offset: 80})
+					.setClassToggle(".slide-in2", "activeSlide") // add class toggle
+					// .addIndicators() // add indicators (requires plugin)
+					.addTo(controller);
+	new ScrollMagic.Scene({triggerElement: "#watispopupled", offset: 90})
+					.setClassToggle(".slide-in4", "activeTop") // add class toggle
+					// .addIndicators() // add indicators (requires plugin)
+					.addTo(controller);
+	new ScrollMagic.Scene({triggerElement: "#sec4"})
+					.setClassToggle("#high4", "active") // add class toggle
+					// .addIndicators() // add indicators (requires plugin)
+					.addTo(controller);
+
+// Add Scene to ScrollMagic Controller
+controller.addScene(
+  scene
+);
 
 //Event listeners
 document.addEventListener('scroll', debounce(onScroll, 10));

@@ -15,6 +15,48 @@ fontsizeinput = 0.7em
 navelements = linear-gradient(166.22deg, #1C1C1C 0%, #282828 100%)
 buttonFade = linear-gradient(166.24deg, #F5515F 0%, #F5515F 0.39%, #EE4A5A 8.44%, #E94656 13.64%, #9F041B 100%)
 
+
+// dev fase only
+  .scrollPosition{
+    position: fixed
+    top: 0px
+    left: 10px
+    z-index: 99999
+    color: mainred
+  }
+
+  .slide-in{
+    transition: all 0.8s ease;
+    margin-left: -30vw;
+    opacity: 0;
+  }
+
+  .slide-in2{
+    transition: all 0.8s ease;
+    margin-left: 30vw;
+    opacity: 0;
+  }
+
+  .slide-in3{
+    transition: all 0.8s ease;
+    margin-top: -30vh;
+    opacity: 0;
+  }
+
+  .slide-in4{
+    transition: all 0.8s ease;
+    margin-top: -30vh;
+    opacity: 0;
+  }
+
+  .activeSlide{
+    margin-left: 0;
+    opacity: 1;
+  }
+  .activeTop{
+    margin-top: 0;
+    opacity: 1;
+  }
 // ---------------------------------------------------------------
 // A
 // ---------------------------------------------------------------
@@ -74,6 +116,25 @@ button.landing{
 
 .borden{
   padding-top: 25px;
+}
+
+.button-switch{
+  background: buttonFade;
+  color: white;
+  border: none;
+  border-radius: 40px;
+  padding: 5px;
+  padding-right: 10%
+  padding-left: 10%
+  &:focus{
+    outline: none;
+  }
+  &:hover{
+    color: lighten(mainblue, 10);
+  }
+  &.contactKnop{
+    text-decoration: underline;
+  }
 }
 
 // ---------------------------------------------------------------
@@ -274,17 +335,12 @@ footer{
 }
 
 .formulieren{
-  border-bottom: 3px solid #333;
   text-align: center;
   font-family: mainfont;
   font-weight: 100;
   display: flex;
   border-radius: 3px;
-  a{
-    color: linkcolor;
-    width: 50%;
-    flex: 1;
-  }
+  justify-content: space-around;
 }
 // ---------------------------------------------------------------
 // G
