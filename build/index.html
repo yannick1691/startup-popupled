@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 	<title>popupled</title>
 	<meta name="keywords" content="popupled, etalage, window, led, adverteren, leegstand, ledscherm, winkel, vastged, makelaar, campagne"/>
-	<meta name="description" content="School project bootstrap Ticket-time"/>
+	<meta name="description" content="Popupled de nummer 1 oplossing voor leegstaande winkelpanden."/>
 	<meta name="author" content="Yannick Frisart" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -25,26 +25,29 @@
     })(window,document,'script','https://u.heatmap.it/log.js');
   </script>
 </head>
-<body>
-  <div class="landing-page">
+<body data-spy="scroll" data-target=".flex-nav" data-offset="100">
+  <header class="landing-page" id="landing-page">
     <img src="links/img/logo_1.svg" alt="logo popupled" class="logo-landing">
     <button class="landing" type="button">ontdek ons</button>
-  </div>
-  <a class="hammenu"><img src="links/img/logo_1.svg" alt="logo" height="50">&#9776;</a>
-  <nav class="flex-nav">
-    <a class="hidden-xs hidden-sm"><img src="links/img/logo_1.svg" alt="logo" height="90"></a>
-    <a href="#watispopupled">wat is popupled</a>
-    <a href="#over-ons">over ons</a>
-    <a href="#waarom-ons">waarom ons</a>
-    <a href="#contact">contact</a>
-    <a class="hidden-sm hidden-md hidden-lg spacer-nav"></a>
+  </header>
+  <nav class="flex-nav" data-spy="affix">
+    <a class="hammenu hidden-sm hidden-md hidden-lg"><img src="links/img/logo_1.svg" alt="logo" height="50">&#9776;</a>
+    <a class="hidden-xs hidden-sm" href="#landing-page"><img src="links/img/logo_1.svg" alt="logo" height="90"></a>
+    <ul class="nav flex-ul">
+      <li><a href="#watispopupled">wat is popupled</a></li>
+      <li><a href="#over-ons">over ons</a></li>
+      <li><a href="#watUkrijgt">voordelen</a></li>
+      <li><a href="#waarom-ons">waarom ons</a></li>
+      <li><a href="#contact">contact</a></li>
+      <a class="hidden-sm hidden-md hidden-lg spacer-nav"></a>
+    </ul>
   </nav>
   <div class="container-fluid">
     <!--Wat is popupled sectie-->
     <section id="watispopupled">
       <div class="row">
         <div class="col-xs-12">
-          <h1 class="green">wat is popupled?</h1>
+          <h1 class="green" id="watispopupled__h1_green">wat is popupled?</h1>
         </div>
         <div class="col-xs-12 col-md-5 col-md-offset-1">
           <div class="row">
@@ -89,7 +92,7 @@
       <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1">
           
-          <h1 class="blue">over ons</h1>
+          <h1 class="blue" id="over-ons__h1_blue">over ons</h1>
           <div class="row">
             <div class="col-xs-12 col-sm-10 col-sm-offset-1">
               <p>
@@ -99,27 +102,35 @@
               </p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+    <!--Voordelen sectie-->
+    <section id="watUkrijgt">
+      <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1">
           <div class="row">
             <div class="col-xs-12">
+              <h1 class="blue">voordelen</h1>
               <h2 class="blue">uw advertentie wordt</h2>
             </div>
           </div>
           <div class="row -center">
             <div class="col-xs-6 col-md-3 col-md-offset-1">
               <h3>
-                <span class="red number">1008</span><br>
+                <span class="red number" id="over-ons__number_red">1008</span><br>
                 minuten per week getoond
               </h3>
             </div>
             <div class="col-xs-6 col-md-4">
               <h3>
-                <span class="green number">385000</span><br>
+                <span class="green number" id="over-ons__number_green">385000</span><br>
                 keer langs gelopen per week
               </h3>
             </div>
             <div class="col-xs-12 col-md-3">
               <h3>
-                <span class="blue number">4920</span><br>
+                <span class="blue number" id="over-ons__number_blue">4920</span><br>
                 keer per week vertoond
               </h3>
             </div>
@@ -430,6 +441,7 @@
 
   <!-- Javascript -->
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src="js/jquery.nicescroll.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.jquery.min.js"></script>
@@ -441,16 +453,18 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
   <script>
     const flexNav = document.querySelector('.flex-nav');
-    let flexNavJQ = $('.flex-nav');
+    let flexNavJQ = $('.flex-ul');
     const mobileMenu = document.querySelector('.hammenu');
     const heightNav = window.innerHeight - 100;
     const hiddenMob = 0;
-    const flexNavItems = document.querySelectorAll('.flex-nav a');
+    const flexNavItems = document.querySelectorAll('.flex-ul li a');
     const ontdekOnsBut = document.querySelector('.landing');
 
     $(document).ready(
       function() {
         $('html').niceScroll();
+        $(".flex-nav").affix({offset: {top: $("header").outerHeight(true)} });
+        $('body').scrollspy({target: ".flex-nav", offset: 100});
         $('#start-date').datepicker({
           changeYear: true,
           showWeek: true,

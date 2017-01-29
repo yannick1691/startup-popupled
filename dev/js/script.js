@@ -1,6 +1,5 @@
 $(document).ready(function () {
   const wIPopup = document.querySelector('#watispopupled');
-  scrollfixnav();
   //smoothscroll
     $('.flex-nav a[href^="#"]').on('click', function (e) { // kijkt naar click op een nav element
         e.preventDefault(); // stop browser van het toevoegen van # aan url
@@ -13,9 +12,7 @@ $(document).ready(function () {
         $target = $(target);
         $('html, body').stop().animate({
             'scrollTop': $target.offset().top
-        }, 500, 'swing', function () {
-            $(document).on("scroll", onScroll);
-        });
+        }, 500, 'swing');
     });
     
   //initialize swiper when document ready  
@@ -114,50 +111,11 @@ function debounce(func, wait = 20, immediate = true) {
       };
 };
 
-// Functie om .active-link toe te voegen aan de link waar die nu is
-function onScroll(e){
-    var scrollPos = $(document).scrollTop();
-    $('.flex-nav a[href^="#"]').each(function () {
-        var currLink = $(this);
-        var refElement = $(currLink.attr("href"));
-        if (refElement.position().top-100 <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-            $('.flex-nav a').removeClass("active-link");
-            currLink.addClass("active-link");
-        }
-        else{
-            currLink.removeClass("active-link");
-        }
-    });
-}
-
-// Make nav fixed after the landing page
-function scrollfixnav() {
-  if (window.scrollY >= window.innerHeight - 100 && window.innerWidth < 768) {
-    flexNav.style.position = 'fixed';
-    flexNav.style.top = '100px';
-    mobileMenu.style.position = 'fixed';
-  } else if(window.scrollY <= window.innerHeight && window.innerWidth < 768) {
-    flexNav.style.position = 'relative';
-    flexNav.style.top = '0px';
-    mobileMenu.style.position = 'relative';
-  } else if (window.scrollY >= window.innerHeight - 100 && window.innerWidth >= 768) {
-    flexNav.style.position = 'fixed';
-    flexNav.style.top = '0px';
-    flexNav.style.height = '100px';
-    mobileMenu.style.position = 'fixed';
-  } else if(window.scrollY <= window.innerHeight && window.innerWidth >= 768) {
-    flexNav.style.position = 'relative';
-    flexNav.style.top = '0px';
-    flexNav.style.height = '100px';
-    mobileMenu.style.position = 'relative';
-  }
-}
-
 // Hamburger menu funtie
 function hamburgerMenu(e) {
   e.preventDefault();
   if (window.innerWidth < 768) {
-    flexNavJQ.height(flexNavJQ.height() == 0 ? `100vh` : `${hiddenMob}px`);
+    flexNavJQ.toggle();
   } else {
     return;
   }
@@ -165,42 +123,18 @@ function hamburgerMenu(e) {
 
 function hamburgerMenu2() {
   if (window.innerWidth < 768) {
-    flexNavJQ.height(flexNavJQ.height() == 0 ? `100vh` : `${hiddenMob}px`);
+    flexNavJQ.toggle();
   } else {
     return;
   }
 }
 
 
-// zorgt voor een goede switch tussen mobiel en desktop
-function resizeFix() {
-  if (window.scrollY >= window.innerHeight - 100 && window.innerWidth >= 768) {
-    flexNav.style.position = 'fixed';
-    flexNav.style.top = '0px'
-    flexNav.style.height = '100px'
-    mobileMenu.style.position = 'fixed';
-  } else if(window.scrollY <= window.innerHeight && window.innerWidth >= 768) {
-    flexNav.style.position = 'relative';
-    flexNav.style.top = '0px';
-    flexNav.style.height = '100px'
-    mobileMenu.style.position = 'relative';
-  }else if (window.scrollY >= window.innerHeight - 100 && window.innerWidth < 768) {
-    flexNav.style.position = 'fixed';
-    flexNav.style.top = '100px';
-    flexNav.style.height = '0px';
-    mobileMenu.style.position = 'fixed';
-  } else if(window.scrollY <= window.innerHeight && window.innerWidth < 768) {
-    flexNav.style.position = 'relative';
-    flexNav.style.top = '0px';
-    flexNav.style.height = '0px';
-    mobileMenu.style.position = 'relative';
-  }
-}
-
-
 // zorgt dat menu inklapt op mobiel als er wordt geklikt
 flexNavItems.forEach(function (link) {
-  link.addEventListener('click', hamburgerMenu2);
+  link.addEventListener('click', function() {
+    flexNavJQ.toggle();
+  });
 })
 
 
@@ -472,32 +406,78 @@ function offerteFadeIn() {
 }
 
 // Slide animations
-var controller = new ScrollMagic.Controller({globalSceneOptions: {duration: 300}});
+var controller = new ScrollMagic.Controller({globalSceneOptions: {}});
+
+// Tween animations
+var numberMinutenPerWeek = TweenMax.to('#over-ons__number_red', 1.2, {
+  color: '#36AEBA',
+  repeat: -1,
+  repeatDelay: 1.6,
+  yoyo: true
+});
+
+var numberLangsGeloopPerWeek = TweenMax.to('#over-ons__number_green', 1.2, {
+  color: '#E5272D',
+  repeat: -1,
+  delay: 1.1,
+  repeatDelay: 1.6,
+  yoyo: true
+});
+
+var keerVertoondPerWeek = TweenMax.to('#over-ons__number_blue', 1.2, {
+  color: '#007c00',
+  repeat: -1,
+  delay: 2.2,
+  repeatDelay: 1.6,
+  yoyo: true
+})
 
   // build scenes
-  new ScrollMagic.Scene({ triggerElement: "#watispopupled" })
-    .setTween('.slide-in', 0.1, {
+// Lamp icon animatie
+  new ScrollMagic.Scene({ triggerElement: "#watispopupled", offset: 80})
+    .setTween('.slide-in', 1, {
       scale: 1.01,
-      opacity: 1
+      opacity: 1,
     })
     .addIndicators({name: 'lamp animation'}) // add indicators (requires plugin)
     .addTo(controller);
-  new ScrollMagic.Scene({triggerElement: "#watispopupled"})
-    .setTween('.slide-in2', 0.1, {
+// Led scherm animatie
+  new ScrollMagic.Scene({triggerElement: "#watispopupled", offset: 80})
+    .setTween('.slide-in2', 1, {
       scale: 1.01,
       opacity: 1
     }) // add class toggle
     .addIndicators({name: 'led screen animation'}) // add indicators (requires plugin)
     .addTo(controller);
+// Wat is PopupLed h1 animation
+  new ScrollMagic.Scene({ triggerElement: "#watispopupled", offset: 50 })
+    .setTween('#watispopupled__h1_green', 0.4, {
+      'font-size': '2.8em',
+      color: '#00AF00'
+    })
+    .addIndicators({ name: 'Wat Is Popupled H1 animate in' })
+    .addTo(controller)
+// over-ons h1 animation
+  new ScrollMagic.Scene({ triggerElement: "#over-ons", offset: 50 })
+    .setTween('#over-ons__h1_blue', 0.5, {
+      'font-size': '2.8em',
+      color: '#36AEBA'
+    })
+    .addIndicators({ name: 'Wat Is Popupled H1 animate in' })
+    .addTo(controller)
+// Waarom Ons icon animatie
+  new ScrollMagic.Scene({ triggerElement: "#waarom-ons", offset: 120})
+    .setTween('.waaromOnsIcon', 1, {
+      rotation: 10
+    })
+    .addIndicators({ name: 'Waarom Ons icon Animatie' })
+    .addTo(controller);
 
 
 //Event listeners
-document.addEventListener('scroll', debounce(onScroll, 20));
-document.addEventListener('scroll', debounce(scrollfixnav, 20));
 mobileMenu.addEventListener('click', hamburgerMenu);
-$(window).resize(resizeFix);
 ontdekOnsBut.addEventListener('click', ontdekOns);
-landingPage.addEventListener('mousemove', debounce(popupledLogoShadow, 12));
+landingPage.addEventListener('mousemove', debounce(popupledLogoShadow, 3));
 offerteForm.addEventListener('submit', offerte);
 contactFormButton.addEventListener('click', contactFadeIn);
 offerteFormButton.addEventListener('click', offerteFadeIn);
