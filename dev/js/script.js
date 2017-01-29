@@ -497,52 +497,6 @@ function offerteFadeIn() {
   }, 450);
 }
 
-// Functie om elementen in te laten scrollen on scroll
-// const sliderImages = document.querySelectorAll('.slide-in');
-// let SlideInHasRun = false;
-// let SlideInHasRun2 = false;
-// function scrollSlideIn(e) {
-//   if (window.scrollY >= $('.slide-in').offset().top-(window.innerHeight - 200) && SlideInHasRun === false) {
-//     slideInLeft($('.slide-in'), 900);
-//     slideInRight($('.slide-in2'), 900);
-//     SlideInHasRun = true;
-//   } else if (window.scrollY <= $('.slide-in').offset().top - (window.innerHeight - 200) && SlideInHasRun === true) {
-//     slideOutLeft($('.slide-in'), 900)
-//     slideOutRight($('.slide-in2'), 900);
-//     SlideInHasRun = false;
-//   } else if (window.scrollY >= $('.slide-in').offset().top - (window.innerHeight * 2) && SlideInHasRun === true) {
-//     slideOutLeft($('.slide-in'), 900)
-//     slideOutRight($('.slide-in2'), 900);
-//     SlideInHasRun = false;
-//   } else if (window.scrollY >= $('.slide-in3').offset().top-(window.innerHeight - 200) && SlideInHasRun2 === false) {
-//     slideInLeft($('.slide-in3'), 900);
-//     SlideInHasRun2 = true;
-//   } else if (window.scrollY <= $('.slide-in3').offset().top - (window.innerHeight - 200) && SlideInHasRun2 === true) {
-//     slideOutLeft($('.slide-in3'), 900)
-//     SlideInHasRun2 = false;
-//   }  else if (window.scrollY >= $('.slide-in3').offset().top - (window.innerHeight * 2) && SlideInHasRun2 === true) {
-//     slideOutLeft($('.slide-in'), 900)
-//     slideOutRight($('.slide-in2'), 900);
-//     SlideInHasRun = false;
-//   }
-// }
-
-// function slideInLeft(object, dura) {
-//   object.stop().animate({ 'margin-left': '0px', opacity: '1'}, dura);
-// }
-
-// function slideOutLeft(object, dura) {
-//   object.stop().animate({ 'margin-left': '-30vw', opacity: '0' }, dura);
-// }
-
-// function slideInRight(object, dura) {
-//   object.stop().animate({ 'margin-left': '0px', opacity: '1' }, dura);
-// }
-
-// function slideOutRight(object, dura) {
-//   object.stop().animate({ 'margin-left': '30vw', opacity: '0' }, dura);
-// }
-
 // Slide animations
 var controller = new ScrollMagic.Controller({globalSceneOptions: {duration: 800}});
 
@@ -576,13 +530,13 @@ controller.addScene(
 );
 
 //Event listeners
-document.addEventListener('scroll', debounce(onScroll, 10));
-document.addEventListener('scroll', debounce(scrollfixnav, 10));
+document.addEventListener('scroll', debounce(onScroll, 20));
+document.addEventListener('scroll', debounce(scrollfixnav, 20));
 mobileMenu.addEventListener('click', hamburgerMenu);
 $(window).resize(resizeFix);
 ontdekOnsBut.addEventListener('click', ontdekOns);
-landingPage.addEventListener('mousemove', popupledLogoShadow);
-waaromOnsDiv.addEventListener('mousemove', debounce(waaromOnsRotation, 3));
+landingPage.addEventListener('mousemove', debounce(popupledLogoShadow, 12));
+waaromOnsDiv.addEventListener('mousemove', debounce(waaromOnsRotation, 10));
 offerteForm.addEventListener('submit', offerte);
 contactFormButton.addEventListener('click', contactFadeIn);
 offerteFormButton.addEventListener('click', offerteFadeIn);
