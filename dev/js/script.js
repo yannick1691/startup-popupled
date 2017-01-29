@@ -440,6 +440,12 @@ var keerVertoondPerWeek = TweenMax.to('#over-ons__number_blue', 1.2, {
   yoyo: true
 })
 
+var tl1 = new TimelineMax();
+tl1
+  .to('#waarom-ons__span_snel', 0.6, { 'font-size': '1.2em', color: '#333' })
+  .to('#waarom-ons__span_populair', 0.6, { 'font-size': '1.2em', color: '#333' })
+  .to('#waarom-ons__span_goedkoop', 0.6, { 'font-size': '1.2em', color: '#333' });
+
   // build scenes
 // Lamp icon animatie
   new ScrollMagic.Scene({ triggerElement: "#watispopupled", offset: 80})
@@ -473,6 +479,14 @@ var keerVertoondPerWeek = TweenMax.to('#over-ons__number_blue', 1.2, {
     })
     .addIndicators({ name: 'Wat Is Popupled H1 animate in' })
     .addTo(controller)
+// voordelen h1 animatie
+  new ScrollMagic.Scene({ triggerElement: "#watUkrijgt", offset: 80 })
+    .setTween('#wat-u-krijgt__h1_blue', 0.5, {
+      'font-size': '2.8em',
+      color: '#36AEBA'
+    })
+    .addIndicators({ name: 'voordelen H1 animatie' })
+    .addTo(controller);
 // Waarom Ons icon animatie
   new ScrollMagic.Scene({ triggerElement: "#waarom-ons", offset: 120})
     .setTween('.waaromOnsIcon', 1, {
@@ -480,8 +494,27 @@ var keerVertoondPerWeek = TweenMax.to('#over-ons__number_blue', 1.2, {
     })
     .addIndicators({ name: 'Waarom Ons icon Animatie' })
     .addTo(controller);
-
-
+// Waarom ons h1 animation 
+  new ScrollMagic.Scene({ triggerElement: "#waarom-ons", offset: 50 })
+    .setTween('#waarom-ons__h1_red', 0.7, {
+      'font-size': '2.8em',
+      color: '#E5272D'
+    })
+    .addIndicators({ name: 'Waarom Ons H1 Animatie' })
+    .addTo(controller);
+// Waarom ons snel - populair - goedkoop animatie
+  new ScrollMagic.Scene({ triggerElement: "#waarom-ons", offset: 150 })
+    .setTween(tl1)
+    .addIndicators({ name: 'Waarom ons snel - populair - goedkoop animatie' })
+    .addTo(controller);
+// Contact h1 animation
+  new ScrollMagic.Scene({ triggerElement: "#contact", offset: 50 })
+    .setTween('#contact__h1_green', 0.7, {
+      'font-size': '2.8em',
+      color: '#00AF00'
+    })
+    .addIndicators({ name: 'Contact h1 animatie' })
+    .addTo(controller);
 //Event listeners
 mobileMenu.addEventListener('click', hamburgerMenu);
 ontdekOnsBut.addEventListener('click', ontdekOns);
