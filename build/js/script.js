@@ -5,7 +5,6 @@ $(document).ready(function () {
     // kijkt naar click op een nav element
     e.preventDefault(); // stop browser van het toevoegen van # aan url
     $(document).off("scroll"); // stop scroll door gebruiker
-    $(this).addClass('active-link'); // voegt .active-link toe aan link
 
     //volgende code is voor het scrollen naar het element
     var target = this.hash,
@@ -132,7 +131,9 @@ function hamburgerMenu2() {
 // zorgt dat menu inklapt op mobiel als er wordt geklikt
 flexNavItems.forEach(function (link) {
   link.addEventListener('click', function () {
-    flexNavJQ.slideToggle(400);
+    if (window.innerWidth < 768) {
+      flexNavJQ.slideToggle(400);
+    }
   });
 });
 
