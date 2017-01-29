@@ -398,18 +398,22 @@ const contactFormulier = $('.contactForm');
 function contactFadeIn() {
   offerteFormulier.fadeOut(500);
   offerteFormButton.style.textDecoration = 'none';
+  offerteFormButton.style.transform = 'scale(1.0)';
   setTimeout(function() {
     contactFormulier.fadeIn(500);
     contactFormButton.style.textDecoration = 'underline';
+    contactFormButton.style.transform = 'scale(1.05)';
   }, 450);
 }
 
 function offerteFadeIn() {
   contactFormulier.fadeOut(500);
   contactFormButton.style.textDecoration = 'none';
+  contactFormButton.style.transform = 'scale(1)';
   setTimeout(function() {
     offerteFormulier.fadeIn(500);
     offerteFormButton.style.textDecoration = 'underline';
+    offerteFormButton.style.transform = 'scale(1.05)';
   }, 450);
 }
 
@@ -515,11 +519,48 @@ tl1
     })
     .addIndicators({ name: 'Contact h1 animatie' })
     .addTo(controller);
+
+// Formulier contact submit Event
+const contactFormSubmit = document.querySelector('#form-contact');
+const contactSucces = $('#form-contact__verzonden_succes');
+const bevestigingsBericht = document.querySelector('.form-contact-succes__p_bericht');
+const bevestigingUwBericht = document.querySelector('#form-contact-succes__p_uwbericht');
+let contactNaam = document.querySelector('#naam').value;
+let contactBericht = document.querySelector('#message').value;
+const contactBevestigingClose = document.querySelector('#form-contact-succes__button_close');
+
+function contactVerzonden(e) {
+  e.preventDefault();
+
+  contactNaam = document.querySelector('#naam').value;
+  contactBericht = document.querySelector('#message').value;
+  console.log(contactNaam);
+  
+  // Succes Bericht Animatie
+  contactSucces.slideToggle(600);
+
+  bevestigingsBericht.innerHTML = `uw bericht is ontvangen wij zullen zo spoedig met uw contact op nemen ${contactNaam}`;
+  bevestigingUwBericht.innerHTML = `uw bericht<br>${contactBericht}`;
+}
+
+function contactVerzondenClose(e) {
+  e.preventDefault();
+  
+  contactSucces.slideToggle(600);
+}
+
+
+
 //Event listeners
 mobileMenu.addEventListener('click', hamburgerMenu);
 ontdekOnsBut.addEventListener('click', ontdekOns);
 $(window).resize(resizeFix);
 landingPage.addEventListener('mousemove', debounce(popupledLogoShadow, 3));
+
+contactFormSubmit.addEventListener('submit', contactVerzonden);
+contactBevestigingClose.addEventListener('click', contactVerzondenClose);
 offerteForm.addEventListener('submit', offerte);
+
 contactFormButton.addEventListener('click', contactFadeIn);
 offerteFormButton.addEventListener('click', offerteFadeIn);
+
