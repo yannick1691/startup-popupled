@@ -434,7 +434,7 @@ var keerVertoondPerWeek = TweenMax.to('#over-ons__number_blue', 1.2, {
 });
 
 var tl1 = new TimelineMax();
-tl1.to('#waarom-ons__span_snel', 0.6, { 'font-size': '1.2em', color: '#333' }).to('#waarom-ons__span_populair', 0.6, { 'font-size': '1.2em', color: '#333' }).to('#waarom-ons__span_goedkoop', 0.6, { 'font-size': '1.2em', color: '#333' });
+tl1.to('#waarom-ons__span_snel', 0.8, { 'font-size': '1.2em', color: '#333' }).to('#waarom-ons__span_populair', 0.8, { 'font-size': '1.2em', color: '#333' }).to('#waarom-ons__span_goedkoop', 0.8, { 'font-size': '1.2em', color: '#333' });
 
 // build scenes
 // Lamp icon animatie
