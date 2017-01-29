@@ -378,20 +378,20 @@
             <label for="">locatie:</label>
             <select required id="locatieoff">
               <option disabled selected value="">selecteer een locatie</option>
-              <option value="99.99" name="Korte Lijnbaan">Korte Lijnbaan</option>
-              <option value="109.99" name="Stadshuisplein">Stadhuisplein</option>
-              <option value="89.99" name="het Weena">het Weena</option>
+              <option value="99.99" name="Korte Lijnbaan">Korte Lijnbaan   €99.99</option>
+              <option value="109.99" name="Stadshuisplein">Stadhuisplein   €109.99</option>
+              <option value="89.99" name="het Weena">het Weena   €89.99</option>
             </select>
             <div class="col-xs-6 start-dat">
               <label for="start-date">start datum:</label>
-              <input type="text" id="start-date" placeholder="Week --, ----" required>
+              <input type="text" id="start-date" placeholder="Week --, ----" required title="in welke week wilt u uw campagne starten">
             </div>
             <div class="col-xs-6">
               <label for="end-date">eind datum:</label>
-              <input type="text" id="end-date" placeholder="Week --, ----" required>
+              <input type="text" id="end-date" placeholder="Week --, ----" required title="in welke week wilt u uw campagne eindigen">
             </div>
             <input type="checkbox" id="accept" required>
-            <label for="">ik ga akkoord met de <a href="http://www.popupled.nl/AV_PopUpLED_bv.pdf" target="blank">algemene voorwaarden</a></label>
+            <label for="accept">op de offerte zijn de <a href="http://www.popupled.nl/AV_PopUpLED_bv.pdf" target="blank">algemene voorwaarden</a> van toepassing</label>
             <button type="submit" name="offerteGen">offerte aanvragen</button>
           </form>
         </div>
@@ -490,6 +490,13 @@
         });
       }
     );
+    $( function() {
+      $(document).tooltip({
+        classes: {
+          'ui-tooltip': 'custom-tooltip'
+        }
+      });
+    });
   </script>
   <script src="js/script.js"></script>
 </body>
