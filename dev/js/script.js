@@ -564,3 +564,40 @@ offerteForm.addEventListener('submit', offerte);
 contactFormButton.addEventListener('click', contactFadeIn);
 offerteFormButton.addEventListener('click', offerteFadeIn);
 
+
+// Local storage saving input 
+const contactInputs = document.querySelectorAll('#form-contact input');
+const contactNaamInput = document.querySelector('#naam');
+const contactEmailInput = document.querySelector('#email');
+const contactPhoneInput = document.querySelector('#telephone');
+const contactBerichtInput = document.querySelector('#message');
+const contactFormResetButton = document.querySelector('#form-contact__button_reset');
+
+contactNaamInput.value = localStorage.getItem('i1');
+contactEmailInput.value = localStorage.getItem('i2');
+contactPhoneInput.value = localStorage.getItem('i3');
+contactBerichtInput.value = localStorage.getItem('i4');
+
+contactNaamInput.addEventListener('change', function () {
+  localStorage.setItem('i1', contactNaamInput.value);
+});
+
+contactEmailInput.addEventListener('change', function () {
+  localStorage.setItem('i2', contactEmailInput.value);
+});
+
+contactPhoneInput.addEventListener('change', function () {
+  localStorage.setItem('i3', contactPhoneInput.value);
+});
+
+contactBerichtInput.addEventListener('input', function () {
+  localStorage.setItem('i4', contactBerichtInput.value);
+});
+
+contactFormResetButton.addEventListener('click', function (e) {
+  e.preventDefault();
+  localStorage.clear();
+  window.location.reload();
+});
+
+

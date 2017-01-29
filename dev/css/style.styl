@@ -14,6 +14,7 @@ fontsizeh4 = 1.2em
 fontsizeinput = 0.7em
 navelements = linear-gradient(166.22deg, #1C1C1C 0%, #282828 100%)
 buttonFade = linear-gradient(166.24deg, #F5515F 0%, #F5515F 0.39%, #EE4A5A 8.44%, #E94656 13.64%, #9F041B 100%)
+buttonDark = linear-gradient(166.24deg, #C72D3A 0%, #C72D3A 0.39%, #AD0919 8.44%, #75131D 13.64%, #5A111C 100%)
 buttonFadeGreen = linear-gradient(166.24deg, #0DF30D 0%, #0DF30D 0.39%, #09BC09 8.44%, #06A906 13.64%, #096609 100%)
 
 
@@ -409,6 +410,7 @@ footer{
 #form-contact__button_verzenden{
   border-radius: 10px;
   transition: all 0.26s ease-in-out;
+  margin-left: 0%;
   &:hover{
     transform: scale(0.965);
     border-radius: 180px;
@@ -501,6 +503,18 @@ footer{
     background: buttonFadeGreen;
     border-radius: 90px;
     width: 80%;
+  }
+}
+#form-contact__button_reset{
+  margin-left: 0%;
+  max-width: 25%;
+  margin-right: 25%;
+  transition: all 0.6s ease;
+  transform: scale(0.9);
+  &:hover{
+    transform: scale(0.7);
+    border-radius: 180px;
+    background: buttonDark;
   }
 }
 // ---------------------------------------------------------------
