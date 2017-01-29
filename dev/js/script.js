@@ -115,7 +115,7 @@ function debounce(func, wait = 20, immediate = true) {
 function hamburgerMenu(e) {
   e.preventDefault();
   if (window.innerWidth < 768) {
-    flexNavJQ.toggle();
+    flexNavJQ.slideToggle(400);
   } else {
     return;
   }
@@ -123,7 +123,7 @@ function hamburgerMenu(e) {
 
 function hamburgerMenu2() {
   if (window.innerWidth < 768) {
-    flexNavJQ.toggle();
+    flexNavJQ.slideToggle(400);
   } else {
     return;
   }
@@ -133,10 +133,17 @@ function hamburgerMenu2() {
 // zorgt dat menu inklapt op mobiel als er wordt geklikt
 flexNavItems.forEach(function (link) {
   link.addEventListener('click', function() {
-    flexNavJQ.toggle();
+    flexNavJQ.slideToggle(400);
   });
 })
 
+function resizeFix() {
+  if (window.innerWidth < 768) {
+    flexNavUl.style.display = 'none';
+  } else if (window.innerWidth >= 768) {
+    flexNavUl.style.display = 'flex';
+  }
+}
 
 // Ontdek ons button scroll
 function ontdekOns() {
@@ -477,6 +484,7 @@ var keerVertoondPerWeek = TweenMax.to('#over-ons__number_blue', 1.2, {
 //Event listeners
 mobileMenu.addEventListener('click', hamburgerMenu);
 ontdekOnsBut.addEventListener('click', ontdekOns);
+$(window).resize(resizeFix);
 landingPage.addEventListener('mousemove', debounce(popupledLogoShadow, 3));
 offerteForm.addEventListener('submit', offerte);
 contactFormButton.addEventListener('click', contactFadeIn);
