@@ -283,27 +283,7 @@ close2.addEventListener('click', function () {
 
 close3.addEventListener('click', function () {
   popUpCustomOut(popupid3, popupId3js, 100);
-})
-
-// Icon 3d rotation hover mouserelative
-const waaromOnsDiv = document.querySelector('#waarom-ons');
-const waaromOnsIcon = waaromOnsDiv.querySelector('.waaromOnsIcon');
-const rotDistance = 70;
-
-function waaromOnsRotation(e) {
-  const { offsetWidth: breedteW, offsetHeight: hoogteW } = waaromOnsDiv;
-  let { offsetX: xW, offsetY: yW } = e;
-  
-  // zorgt dat als je over button of img gaat de offset niet 0 is
-  if(this !== e.target) {
-      xW = xW + e.target.offsetLeft;
-      yW = yW + e.target.offsetTop;
-    }
-
-  const xWDistance = Math.round((xW / breedteW * rotDistance) - (rotDistance / 2));
-  waaromOnsIcon.style.transform = `rotateY(${xWDistance}deg)`;
-}
-
+});
 
 // Function to generate a pdf 
 const offerteForm = document.querySelector('.offerte');
@@ -336,7 +316,7 @@ function offerte(e) {
     month[11] = "december";
   let currentDate = new Date();
   let currentMonth = month[currentDate.getMonth()];
-  let currentDay = currentDate.getDay();
+  let currentDay = currentDate.getDate();
   let currentYear = currentDate.getFullYear();
   let currentOffDate = currentDay + ' ' + currentMonth + ' ' + currentYear;
 
@@ -366,7 +346,7 @@ function offerte(e) {
   }
 
   // random 'offerte number' generator
-  let offerteNummer = Math.round(Math.random() * 2323030000);
+  let offerteNummer = Math.round(Math.random() * 2323039214);
   console.log(offerteNummer);
 
   // calculate price
@@ -407,19 +387,19 @@ function offerte(e) {
   doc.setTextColor(54, 174, 189)
   doc.text('offerte', 15, 60)
   doc.setTextColor(229, 39, 45);
-  doc.text('NOT PAID', 85, 60)
   doc.setLineWidth(0.1)
   doc.setDrawColor(210)
   doc.line(10, 62, 200, 62); // horizontal line
   doc.line(10, 85, 200, 85); // horizontal line
+  doc.line(10, 95, 200, 95); // horizontal line
   doc.line(10, 110, 200, 109); // horizontal line
   doc.line(10, 134, 200, 134); // horizontal line
 
   doc.setFontSize(12)
   doc.setTextColor(200)
-  doc.text('tel: 06-10520429\remail: info@popupled.nl\radress: Meikeverstraat 9 A02 rotterdam\rKVK-nummer: 61836680', 120, 20);
-  doc.setTextColor(122)
-  doc.setFontType('bolditalic')
+  doc.text('tel: 06-10520429\remail: info@popupled.nl\radress: Meikeverstraat 9 A02 rotterdam 3061VH\rKVK-nummer: 61836680', 110, 20);
+  doc.setTextColor(120)
+  doc.setFontType('italic')
   doc.text(`${currentOffDate}`, 155, 60)
 
   doc.setTextColor(120)
@@ -427,30 +407,24 @@ function offerte(e) {
   doc.text(`naam: \remail: \rtel: \rbedrijf: `, 18, 67)
   doc.text(`${naamTarget}\r${emailTarget}\r${telTarget}\r${companyTarget}`, 52, 67)
 
-  doc.setFillColor(100)
-  doc.rect(0, 86, 300, 10, 'f')
   doc.setFontType('bold');
   doc.setTextColor(54, 174, 189)
   doc.text(`locatie`, 15, 92)
   doc.text(`aantal weken`, 70, 92)
   doc.text(`week prijs`, 130, 92)
-  doc.text(`total`, 180, 92)
+  doc.text(`totaal`, 180, 92)
 
-  doc.setFontType('normal')
-  doc.setTextColor(20)
-  doc.text(`${locationName}`, 16, 103)
-  doc.text(`${weeksHired}`, 71, 103)
-  doc.text(`€${waardeTarget}`, 131, 103)
-  doc.text(`€${totalWeeksPrice}`, 181, 103)
+  doc.setFontType('normal');
+  doc.setTextColor(20);
+  doc.text(`${locationName}`, 16, 103);
+  doc.text(`${weeksHired}`, 71, 103);
+  doc.text(`€ ${waardeTarget}`, 131, 103);
+  doc.text(`€ ${totalWeeksPrice}`, 181, 103);
 
-  doc.text(`subtotal`, 131, 115)
-  doc.text(`€${totalWeeksPrice}`, 181, 115)
-  doc.text(`btw procent`, 131, 122)
-  doc.text(`21%`, 181, 122)
-  doc.text(`btw`, 131, 129)
-  doc.text(`€${totalTax}`, 181, 129)
-  doc.text(`total price`, 131, 140)
-  doc.text(`€${totalPriceTax}`, 181, 140)
+  doc.setFillColor(0);
+  doc.text(`subtotaal\rbtw %\rbtw\r\r\rtotale prijs`, 131, 115);
+  doc.text(`€\r\r€\r\r\r€`, 181, 115);
+  doc.text(`${totalWeeksPrice}\r21\r${totalTax}\r\r\r${totalPriceTax}`, 185, 115);
   
   doc.setFontType('bold')
   doc.setTextColor(54, 174, 189)
@@ -460,7 +434,7 @@ function offerte(e) {
   doc.text(`*** disclaimer ***`, 85, 190)  
   doc.setFontType('normal')
   doc.setTextColor(30)
-  doc.text(`This offerte is in no way binding and popupled can deny or end partnership at any time\rThis offerte was created on ${currentOffDate}\rFor discussing prices or more information please contact info@popupled.nl\rPrices may change at anytime and are not binding.`, 15, 200)
+  doc.text(`Deze offerte is in geen enkele manier bindend en kan door popupled bv.\rDeze offerte is gegenereerd op ${currentOffDate}\rVoor het bespreken van prijzen of meer informatie contact info@popupled.nl of bel ons 06-10520429\rPrijzen kunnen veranderen op elk moment en de hier genoemde prijzen zien niet bindend.`, 15, 200)
 
   doc.setProperties({
     title: 'offerte popupled',
@@ -498,36 +472,24 @@ function offerteFadeIn() {
 }
 
 // Slide animations
-var controller = new ScrollMagic.Controller({globalSceneOptions: {duration: 800}});
-
-var scene = new ScrollMagic.Scene({
-  triggerElement: '#watispopupled',
-  offset: 80,
-})
-  .setClassToggle('.slide-in', 'activeSlide'); // toggle class
+var controller = new ScrollMagic.Controller({globalSceneOptions: {duration: 300}});
 
   // build scenes
-new ScrollMagic.Scene({ triggerElement: "#watispopupled", offset: 90})
-					.setClassToggle(".slide-in3", "activeTop") // add class toggle
-					// .addIndicators() // add indicators (requires plugin)
-					.addTo(controller);
-	new ScrollMagic.Scene({triggerElement: "#watispopupled", offset: 80})
-					.setClassToggle(".slide-in2", "activeSlide") // add class toggle
-					// .addIndicators() // add indicators (requires plugin)
-					.addTo(controller);
-	new ScrollMagic.Scene({triggerElement: "#watispopupled", offset: 90})
-					.setClassToggle(".slide-in4", "activeTop") // add class toggle
-					// .addIndicators() // add indicators (requires plugin)
-					.addTo(controller);
-	new ScrollMagic.Scene({triggerElement: "#sec4"})
-					.setClassToggle("#high4", "active") // add class toggle
-					// .addIndicators() // add indicators (requires plugin)
-					.addTo(controller);
+  new ScrollMagic.Scene({ triggerElement: "#watispopupled" })
+    .setTween('.slide-in', 0.1, {
+      scale: 1.01,
+      opacity: 1
+    })
+    .addIndicators({name: 'lamp animation'}) // add indicators (requires plugin)
+    .addTo(controller);
+  new ScrollMagic.Scene({triggerElement: "#watispopupled"})
+    .setTween('.slide-in2', 0.1, {
+      scale: 1.01,
+      opacity: 1
+    }) // add class toggle
+    .addIndicators({name: 'led screen animation'}) // add indicators (requires plugin)
+    .addTo(controller);
 
-// Add Scene to ScrollMagic Controller
-controller.addScene(
-  scene
-);
 
 //Event listeners
 document.addEventListener('scroll', debounce(onScroll, 20));
@@ -536,7 +498,6 @@ mobileMenu.addEventListener('click', hamburgerMenu);
 $(window).resize(resizeFix);
 ontdekOnsBut.addEventListener('click', ontdekOns);
 landingPage.addEventListener('mousemove', debounce(popupledLogoShadow, 12));
-waaromOnsDiv.addEventListener('mousemove', debounce(waaromOnsRotation, 10));
 offerteForm.addEventListener('submit', offerte);
 contactFormButton.addEventListener('click', contactFadeIn);
 offerteFormButton.addEventListener('click', offerteFadeIn);

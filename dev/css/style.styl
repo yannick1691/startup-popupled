@@ -26,35 +26,23 @@ buttonFade = linear-gradient(166.24deg, #F5515F 0%, #F5515F 0.39%, #EE4A5A 8.44%
   }
 
   .slide-in{
-    transition: all 0.8s ease;
-    margin-left: -30vw;
-    opacity: 0;
+    position: relative;
+    transform: scale(0.3);
+    opacity: 0.5;
   }
 
   .slide-in2{
-    transition: all 0.8s ease;
-    margin-left: 30vw;
-    opacity: 0;
-  }
-
-  .slide-in3{
-    transition: all 0.8s ease;
-    margin-top: -30vh;
-    opacity: 0;
-  }
-
-  .slide-in4{
-    transition: all 0.8s ease;
-    margin-top: -30vh;
-    opacity: 0;
+    position: relative;
+    transform: scale(0.3);
+    opacity: 0.5;
   }
 
   .activeSlide{
-    margin-left: 0;
+    left: 0;
     opacity: 1;
   }
   .activeTop{
-    margin-top: 0;
+    top: 0;
     opacity: 1;
   }
 // ---------------------------------------------------------------
