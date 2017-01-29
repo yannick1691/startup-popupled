@@ -352,23 +352,38 @@
           <button type="button" data-button="contact" class="button-switch contactKnop">contact formulier</button>
           <button type="button" data-button="offerte" class="button-switch">offerte aanvragen</button>
         </div>
+        <div class="col-xs-12 col-md-8">
+          <div id="form-contact__verzonden_succes">
+            <div id="form-contact-succes__wrapper_flex">
+              <div id="form-contact-succes__bedankt_main">
+                <h4>bedankt</h4>
+                <p class="form-contact-succes__p_bericht"> </p>
+                <button type="button" id="form-contact-succes__button_close">bevestigen</button>
+              </div>
+              <p id="form-contact-succes__p_uwbericht"></p>
+            </div>
+          </div>
+        </div>
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 contactForm">
           <h2 class="green">contact formulier:</h2>
-          <form class="contact">
+          <form class="contact" id="form-contact">
             <label for="naam">naam:</label>
-            <input type="text" placeholder="naam" id="naam" required>
+            <input type="text" name="name" placeholder="naam" id="naam" required>
             <label for="email">email:</label>
             <input type="email" placeholder="email" id="email" required>
+            <label for="telephone">telefoon:</label>
+            <input type="tel" id="telephone" placeholder="telefoon nummer" name="phone">
             <label for="message">bericht:</label>
             <textarea name="message" id="message" placeholder="voer hier je bericht in" required></textarea>
-            <button type="submit">verzenden</button>
+            <button type="reset" id="form-contact__button_reset">reset</button>
+            <button type="submit" id="form-contact__button_verzenden">verzenden</button>
           </form>
         </div>
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 offerteForm">
           <h2 class="green">offerte aanvragen:</h2>
           <form class="offerte">
             <label for="offnaam">naam:</label>
-            <input type="text"name="name" placeholder="naam" id="offnaam" required>
+            <input type="text" name="name" placeholder="naam" id="offnaam" required>
             <label for="emailoff">email:</label>
             <input type="email" id="emailoff" placeholder="example@example.com" required>
             <label for="teloff">telefoon:</label>
@@ -392,7 +407,7 @@
             </div>
             <input type="checkbox" id="accept" required>
             <label for="accept">op de offerte zijn de <a href="http://www.popupled.nl/AV_PopUpLED_bv.pdf" target="blank">algemene voorwaarden</a> van toepassing</label>
-            <button type="submit" name="offerteGen">offerte aanvragen</button>
+            <button type="submit" name="offerteGen" id="form-offerte__button_offerte-aanvragen">offerte aanvragen</button>
           </form>
         </div>
       </div>
@@ -470,6 +485,7 @@
     $(document).ready(
       function() {
         $('html').niceScroll();
+        $('#form-contact-succes__p_uwbericht').niceScroll();
         $(".flex-nav").affix({offset: {top: $("header").outerHeight(true)} });
         $('body').scrollspy({target: ".flex-nav", offset: 100});
         $('#start-date').datepicker({
@@ -491,7 +507,7 @@
       }
     );
     $( function() {
-      $(document).tooltip({
+      $('.offerteForm').tooltip({
         classes: {
           'ui-tooltip': 'custom-tooltip'
         }
