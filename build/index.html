@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 	<title>popupled</title>
 	<meta name="keywords" content="popupled, etalage, window, led, adverteren, leegstand, ledscherm, winkel, vastged, makelaar, campagne"/>
-	<meta name="description" content="School project bootstrap Ticket-time"/>
+	<meta name="description" content="Popupled de nummer 1 oplossing voor leegstaande winkelpanden."/>
 	<meta name="author" content="Yannick Frisart" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -15,6 +15,7 @@
   <meta http-equiv="pragma" content="no-cache" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.min.css">
+  <link rel="stylesheet" href="css/jquery-ui.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400" rel="stylesheet">
   <script>
@@ -24,31 +25,34 @@
     })(window,document,'script','https://u.heatmap.it/log.js');
   </script>
 </head>
-<body>
-  <div class="landing-page">
+<body data-spy="scroll" data-target=".flex-nav" data-offset="100">
+  <header class="landing-page" id="landing-page">
     <img src="links/img/logo_1.svg" alt="logo popupled" class="logo-landing">
     <button class="landing" type="button">ontdek ons</button>
-  </div>
-  <a class="hammenu"><img src="links/img/logo_1.svg" alt="logo" height="50">&#9776;</a>
-  <nav class="flex-nav">
-    <a class="hidden-xs hidden-sm"><img src="links/img/logo_1.svg" alt="logo" height="90"></a>
-    <a href="#watispopupled">wat is popupled</a>
-    <a href="#over-ons">over ons</a>
-    <a href="#waarom-ons">waarom ons</a>
-    <a href="#contact">contact</a>
-    <a class="hidden-sm hidden-md hidden-lg spacer-nav"></a>
+  </header>
+  <nav class="flex-nav" data-spy="affix">
+    <a class="hammenu hidden-sm hidden-md hidden-lg"><img src="links/img/logo_1.svg" alt="logo" height="50">&#9776;</a>
+    <a class="hidden-xs hidden-sm" href="#landing-page"><img src="links/img/logo_1.svg" alt="logo" height="90"></a>
+    <ul class="nav flex-ul">
+      <li><a href="#watispopupled">wat is popupled</a></li>
+      <li><a href="#over-ons">over ons</a></li>
+      <li><a href="#watUkrijgt">voordelen</a></li>
+      <li><a href="#waarom-ons">waarom ons</a></li>
+      <li><a href="#contact">contact</a></li>
+      <a class="hidden-sm hidden-md hidden-lg spacer-nav"></a>
+    </ul>
   </nav>
   <div class="container-fluid">
     <!--Wat is popupled sectie-->
     <section id="watispopupled">
       <div class="row">
         <div class="col-xs-12">
-          <h1 class="green">wat is popupled?</h1>
+          <h1 class="green" id="watispopupled__h1_green">wat is popupled?</h1>
         </div>
         <div class="col-xs-12 col-md-5 col-md-offset-1">
           <div class="row">
             <div class="hidden-sm hidden-xs col-md-4 col-md-offset-5">
-              <img src="links/img/lamp@2x.png" alt="led icon">
+              <img src="links/img/lamp@1,5x.svg" alt="led icon" class="slide-in">
             </div>
           </div>
           <div class="row">
@@ -60,7 +64,7 @@
         <div class="col-xs-12 col-md-5">
           <div class="row">
             <div class="hidden-xs hidden-sm col-md-4 col-md-offset-3">
-              <img src="links/img/wat_is_popupled-icon2@2x.png" alt="ledscherm met popupled logo">
+              <img src="links/img/wat_is_popupled-icon2@3.png" alt="ledscherm met popupled logo" class="slide-in2">
             </div>
           </div>
           <div class="row">
@@ -88,7 +92,7 @@
       <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1">
           
-          <h1 class="blue">over ons</h1>
+          <h1 class="blue" id="over-ons__h1_blue">over ons</h1>
           <div class="row">
             <div class="col-xs-12 col-sm-10 col-sm-offset-1">
               <p>
@@ -98,27 +102,35 @@
               </p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+    <!--Voordelen sectie-->
+    <section id="watUkrijgt">
+      <div class="row">
+        <div class="col-xs-12 col-md-10 col-md-offset-1">
           <div class="row">
             <div class="col-xs-12">
+              <h1 class="blue" id="wat-u-krijgt__h1_blue">voordelen</h1>
               <h2 class="blue">uw advertentie wordt</h2>
             </div>
           </div>
           <div class="row -center">
             <div class="col-xs-6 col-md-3 col-md-offset-1">
               <h3>
-                <span class="red number">1008</span><br>
+                <span class="red number" id="over-ons__number_red">1008</span><br>
                 minuten per week getoond
               </h3>
             </div>
             <div class="col-xs-6 col-md-4">
               <h3>
-                <span class="green number">385000</span><br>
+                <span class="green number" id="over-ons__number_green">385000</span><br>
                 keer langs gelopen per week
               </h3>
             </div>
             <div class="col-xs-12 col-md-3">
               <h3>
-                <span class="blue number">4920</span><br>
+                <span class="blue number" id="over-ons__number_blue">4920</span><br>
                 keer per week vertoond
               </h3>
             </div>
@@ -241,14 +253,20 @@
     <section id="waarom-ons">
       <div class="row"> <!-- start row header - img - sub Header -->
         <div class="col-xs-12"> <!-- start col-xs-12 -->
-          <h1 class="red">waarom ons</h1>
+          <h1 class="red" id="waarom-ons__h1_red">waarom ons</h1>
           <div class="row"> <!-- start row -->
             <!--<div class="col-xs-2 hidden-sm hidden-md hidden-lg"></div>-->
             <div class="col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-4 flex-center"> <!-- start waarom ons icon -->
               <img src="links/img/waarom_ons_icons.svg" alt="waarom ons icon" class="waaromOnsIcon">
             </div> <!-- end waarom ons icon -->
           </div> <!-- end row -->
-          <h3>snel - populair - goedkoop</h3>
+          <h3>
+            <span id="waarom-ons__span_snel">snel</span> 
+            - 
+            <span id="waarom-ons__span_populair">populair</span> 
+            - 
+            <span id="waarom-ons__span_goedkoop">goedkoop</span>
+          </h3>
         </div> <!-- end col-xs-12 -->
       </div> <!-- end row -->
       <div class="row"> <!-- start row intro -->
@@ -326,15 +344,15 @@
     </section>
     <!--Contact sectie-->
     <section id="contact">
-      <div class="row">
+      <div class="row relative">
         <div class="col-xs-12">
-          <h1 class="green">contact</h1>
+          <h1 class="green" id="contact__h1_green">contact</h1>
         </div>
-        <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2 formulieren">
-          <a href="">contact formulier</a>
-          <a href="">offerte aanvragen</a>
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 formulieren">
+          <button type="button" data-button="contact" class="button-switch contactKnop">contact formulier</button>
+          <button type="button" data-button="offerte" class="button-switch">offerte aanvragen</button>
         </div>
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 contactForm">
           <h2 class="green">contact formulier:</h2>
           <form class="contact">
             <label for="naam">naam:</label>
@@ -346,26 +364,35 @@
             <button type="submit">verzenden</button>
           </form>
         </div>
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 offerteForm">
           <h2 class="green">offerte aanvragen:</h2>
           <form class="offerte">
             <label for="offnaam">naam:</label>
-            <input type="text" placeholder="naam" id="offnaam" required>
+            <input type="text"name="name" placeholder="naam" id="offnaam" required>
             <label for="emailoff">email:</label>
             <input type="email" id="emailoff" placeholder="example@example.com" required>
             <label for="teloff">telefoon:</label>
-            <input type="tel" placeholder="telefoon nummer" required>
+            <input type="tel" name="phone" placeholder="telefoon nummer" id="teloff" required>
+            <label for="companyoff">bedrijf:</label>
+            <input type="text" placeholder="bedrijfsnaam" id="companyoff">
+            <label for="">locatie:</label>
+            <select required id="locatieoff">
+              <option disabled selected value="">selecteer een locatie</option>
+              <option value="99.99" name="Korte Lijnbaan">Korte Lijnbaan</option>
+              <option value="109.99" name="Stadshuisplein">Stadhuisplein</option>
+              <option value="89.99" name="het Weena">het Weena</option>
+            </select>
             <div class="col-xs-6 start-dat">
               <label for="start-date">start datum:</label>
-              <input type="week" id="start-date" required>
+              <input type="text" id="start-date" placeholder="Week --, ----" required>
             </div>
             <div class="col-xs-6">
               <label for="end-date">eind datum:</label>
-              <input type="week" id="end-date" required>
+              <input type="text" id="end-date" placeholder="Week --, ----" required>
             </div>
             <input type="checkbox" id="accept" required>
             <label for="">ik ga akkoord met de <a href="http://www.popupled.nl/AV_PopUpLED_bv.pdf" target="blank">algemene voorwaarden</a></label>
-            <button type="submit">offerte aanvragen</button>
+            <button type="submit" name="offerteGen">offerte aanvragen</button>
           </form>
         </div>
       </div>
@@ -420,21 +447,47 @@
 
   <!-- Javascript -->
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src="js/jquery.nicescroll.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.jquery.min.js"></script>
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
   <script>
     const flexNav = document.querySelector('.flex-nav');
-    let flexNavJQ = $('.flex-nav');
+    const flexNavUl = document.querySelector('.flex-ul');
+    let flexNavJQ = $('.flex-ul');
     const mobileMenu = document.querySelector('.hammenu');
     const heightNav = window.innerHeight - 100;
     const hiddenMob = 0;
-    const flexNavItems = document.querySelectorAll('.flex-nav a');
+    const flexNavItems = document.querySelectorAll('.flex-ul li a');
     const ontdekOnsBut = document.querySelector('.landing');
 
     $(document).ready(
       function() {
         $('html').niceScroll();
+        $(".flex-nav").affix({offset: {top: $("header").outerHeight(true)} });
+        $('body').scrollspy({target: ".flex-nav", offset: 100});
+        $('#start-date').datepicker({
+          changeYear: true,
+          showWeek: true,
+            onSelect: function(dateText, inst) {
+              var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val()
+              $(this).val("Week " + $.datepicker.iso8601Week(new Date(dateText)) + ", " + year);
+            }
+        });
+        $('#end-date').datepicker({
+          changeYear: true,
+          showWeek: true,
+            onSelect: function(dateText, inst) {
+              var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val()
+              $(this).val("Week " + $.datepicker.iso8601Week(new Date(dateText)) + ", " + year);
+            }
+        });
       }
     );
   </script>

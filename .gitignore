@@ -42,3 +42,7 @@ links/
 gulpfile.js
 package.json
 \.vscode/
+
+build/css/images/
+
+dev/css/images/
