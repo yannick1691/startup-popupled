@@ -99,6 +99,11 @@ function hamburgerMenu(e) {
   e.preventDefault();
   if (window.innerWidth < 768) {
     flexNavJQ.slideToggle(600);
+    $('#hamburger__img').slideToggle(600);
+    $('#flex-nav-icon__span1').toggleClass('flex-nav-icon__span1--open');
+    $('#flex-nav-icon__span2').toggleClass('flex-nav-icon__span2--open');
+    $('#flex-nav-icon__span3').toggleClass('flex-nav-icon__span3--open');
+    $('#flex-nav-icon__span4').toggleClass('flex-nav-icon__span4--open');
   } else {
     return;
   }
@@ -107,6 +112,11 @@ function hamburgerMenu(e) {
 function hamburgerMenu2() {
   if (window.innerWidth < 768) {
     flexNavJQ.slideToggle(600);
+    $('#hamburger__img').slideToggle(600);
+    $('#flex-nav-icon__span1').toggleClass('flex-nav-icon__span1--open');
+    $('#flex-nav-icon__span2').toggleClass('flex-nav-icon__span2--open');
+    $('#flex-nav-icon__span3').toggleClass('flex-nav-icon__span3--open');
+    $('#flex-nav-icon__span4').toggleClass('flex-nav-icon__span4--open');
   } else {
     return;
   }
@@ -117,6 +127,11 @@ flexNavItems.forEach(function (link) {
   link.addEventListener('click', function () {
     if (window.innerWidth < 768) {
       flexNavJQ.slideToggle(600);
+      $('#hamburger__img').slideToggle(600);
+      $('#flex-nav-icon__span1').toggleClass('flex-nav-icon__span1--open');
+      $('#flex-nav-icon__span2').toggleClass('flex-nav-icon__span2--open');
+      $('#flex-nav-icon__span3').toggleClass('flex-nav-icon__span3--open');
+      $('#flex-nav-icon__span4').toggleClass('flex-nav-icon__span4--open');
     }
   });
 });
@@ -124,8 +139,13 @@ flexNavItems.forEach(function (link) {
 function resizeFix() {
   if (window.innerWidth < 768) {
     flexNavUl.style.display = 'none';
+    $('#flex-nav-icon__span1').removeClass('flex-nav-icon__span1--open');
+    $('#flex-nav-icon__span2').removeClass('flex-nav-icon__span2--open');
+    $('#flex-nav-icon__span3').removeClass('flex-nav-icon__span3--open');
+    $('#flex-nav-icon__span4').removeClass('flex-nav-icon__span4--open');
   } else if (window.innerWidth >= 768) {
     flexNavUl.style.display = 'flex';
+    $('#hamburger__img').css({ display: '' });
   }
 }
 

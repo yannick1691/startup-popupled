@@ -946,9 +946,92 @@ section{
 // Z
 // ---------------------------------------------------------------
 
+#flex-nav-icon{
+  width 50px
+  height: 40px
+  position: relative
+  transform rotate(0deg)
+  transition: .5s ease-in-out
+  cursor: pointer
+  left: 90%
+  z-index: 9999999;
+}
 
+#flex-nav-icon__span1{
+  top: 0px;
+  display: block
+  background: mainblue
+  position: absolute
+  width: 100%
+  height: 8px
+  border-radius: 10px;
+  opacity: 1;
+  left: 0
+  transition: .25s ease-in-out
+}
 
+#flex-nav-icon__span2{
+  top 18px
+  display: block
+  background: mainblue
+  position: absolute
+  width: 100%
+  height: 8px
+  border-radius: 10px;
+  opacity: 1;
+  left: 0
+  transition: .25s ease-in-out
+}
 
+#flex-nav-icon__span3{
+  top 18px
+  display: block
+  background: mainblue
+  position: absolute
+  width: 100%
+  height: 8px
+  border-radius: 10px;
+  opacity: 1;
+  left: 0
+  transition: .25s ease-in-out
+}
+
+#flex-nav-icon__span4{
+  top: 36px
+  display: block
+  background: mainblue
+  position: absolute
+  width: 100%
+  height: 8px
+  border-radius: 10px;
+  opacity: 1;
+  left: 0
+  transition: .25s ease-in-out
+}
+
+.flex-nav-icon__span1--open{
+  top 18px !important
+  width 0% !important
+  left 50% !important
+  background: mainred !important
+}
+
+.flex-nav-icon__span2--open {
+  transform: rotate(45deg)
+  background: mainred !important
+}
+
+.flex-nav-icon__span3--open {
+  transform: rotate(-45deg)
+  background: mainred !important
+}
+
+.flex-nav-icon__span4--open {
+  top 18px !important
+  width 0% !important
+  left 50% !important
+  background: mainred !important
+}
 
 /* Small Devices*/
 @media (max-width : 767px){
@@ -990,11 +1073,12 @@ section{
         font-size: 2.5em
         text-align: right
         align-items: center
-        justify-content: flex-end
+        justify-content: space-between
         padding-right: 30px
         top: 0px
         left: 0px
         z-index: 2000
+        flex-direction: row
         img{
           position: absolute
           left: 5px
