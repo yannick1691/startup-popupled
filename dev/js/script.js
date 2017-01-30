@@ -151,9 +151,7 @@ function ontdekOns() {
   const watIsPopup = $('#watispopupled');
   $('html, body').stop().animate({
     'scrollTop': watIsPopup.offset().top-100
-  }, 500, 'swing', function () {
-    $(document).on("scroll", onScroll);
-  });
+  }, 500, 'swing');
 }
 
 // schaduw op popupled logo die muismove volgt
@@ -457,7 +455,7 @@ tl1
       scale: 1.01,
       opacity: 1,
     })
-    .addIndicators({name: 'lamp animation'}) // add indicators (requires plugin)
+    // .addIndicators({name: 'lamp animation'}) 
     .addTo(controller);
 // Led scherm animatie
   new ScrollMagic.Scene({triggerElement: "#watispopupled", offset: 80})
@@ -465,7 +463,7 @@ tl1
       scale: 1.01,
       opacity: 1
     }) // add class toggle
-    .addIndicators({name: 'led screen animation'}) // add indicators (requires plugin)
+    // .addIndicators({name: 'led screen animation'})
     .addTo(controller);
 // Wat is PopupLed h1 animation
   new ScrollMagic.Scene({ triggerElement: "#watispopupled", offset: 50 })
@@ -473,7 +471,7 @@ tl1
       'font-size': '2.8em',
       color: '#00AF00'
     })
-    .addIndicators({ name: 'Wat Is Popupled H1 animate in' })
+    // .addIndicators({ name: 'Wat Is Popupled H1 animate in' })
     .addTo(controller)
 // over-ons h1 animation
   new ScrollMagic.Scene({ triggerElement: "#over-ons", offset: 50 })
@@ -481,7 +479,7 @@ tl1
       'font-size': '2.8em',
       color: '#36AEBA'
     })
-    .addIndicators({ name: 'Wat Is Popupled H1 animate in' })
+    // .addIndicators({ name: 'Wat Is Popupled H1 animate in' })
     .addTo(controller)
 // voordelen h1 animatie
   new ScrollMagic.Scene({ triggerElement: "#watUkrijgt", offset: 80 })
@@ -489,14 +487,14 @@ tl1
       'font-size': '2.8em',
       color: '#36AEBA'
     })
-    .addIndicators({ name: 'voordelen H1 animatie' })
+    // .addIndicators({ name: 'voordelen H1 animatie' })
     .addTo(controller);
 // Waarom Ons icon animatie
   new ScrollMagic.Scene({ triggerElement: "#waarom-ons", offset: 120})
     .setTween('.waaromOnsIcon', 1, {
       rotation: 10
     })
-    .addIndicators({ name: 'Waarom Ons icon Animatie' })
+    // .addIndicators({ name: 'Waarom Ons icon Animatie' })
     .addTo(controller);
 // Waarom ons h1 animation 
   new ScrollMagic.Scene({ triggerElement: "#waarom-ons", offset: 50 })
@@ -504,12 +502,12 @@ tl1
       'font-size': '2.8em',
       color: '#E5272D'
     })
-    .addIndicators({ name: 'Waarom Ons H1 Animatie' })
+    // .addIndicators({ name: 'Waarom Ons H1 Animatie' })
     .addTo(controller);
 // Waarom ons snel - populair - goedkoop animatie
   new ScrollMagic.Scene({ triggerElement: "#waarom-ons", offset: 150 })
     .setTween(tl1)
-    .addIndicators({ name: 'Waarom ons snel - populair - goedkoop animatie' })
+    // .addIndicators({ name: 'Waarom ons snel - populair - goedkoop animatie' })
     .addTo(controller);
 // Contact h1 animation
   new ScrollMagic.Scene({ triggerElement: "#contact", offset: 50 })
@@ -517,7 +515,7 @@ tl1
       'font-size': '2.8em',
       color: '#00AF00'
     })
-    .addIndicators({ name: 'Contact h1 animatie' })
+    // .addIndicators({ name: 'Contact h1 animatie' })
     .addTo(controller);
 
 // Formulier contact submit Event
@@ -590,7 +588,7 @@ contactPhoneInput.addEventListener('change', function () {
   localStorage.setItem('i3', contactPhoneInput.value);
 });
 
-contactBerichtInput.addEventListener('input', function () {
+contactBerichtInput.addEventListener('change', function () {
   localStorage.setItem('i4', contactBerichtInput.value);
 });
 
@@ -601,3 +599,33 @@ contactFormResetButton.addEventListener('click', function (e) {
 });
 
 
+// define elements and variables
+const onzeBorden1 = document.querySelector('#onze-borden--1');
+const onzeBorden2 = document.querySelector('#onze-borden--2');
+const onzeBorden3 = document.querySelector('#onze-borden--3');
+const onzeBorden1Hover = document.querySelector('#onze-borden__1--hover');
+const onzeBorden2Hover = document.querySelector('#onze-borden__2--hover');
+const onzeBorden3Hover = document.querySelector('#onze-borden__3--hover');
+
+
+// Function animate hover
+function location1Hover() {
+
+  // define animations
+  var onzeBorden1HoverAnimation = TweenMax.to(onzeBorden1Hover, 0.7, {
+    top: '0px',
+    background: 'rgba(0, 0, 0, 0.9)'
+  });
+}
+
+function location1MouseLeave() {
+  // define animations
+  var onzeBorden1HoverAnimation = TweenMax.to(onzeBorden1Hover, 0.4, {
+    top: '250px',
+    background: 'rgba(89.8%, 15.3%, 17.6%, 0.9)'
+  });
+}
+
+
+onzeBorden1.addEventListener('mouseover', location1Hover);
+onzeBorden1.addEventListener('mouseleave', location1MouseLeave);
