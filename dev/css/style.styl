@@ -19,38 +19,9 @@ buttonFadeGreen = linear-gradient(166.24deg, #0DF30D 0%, #0DF30D 0.39%, #09BC09 
 
 
 // dev fase only
-  .scrollPosition{
-    position: fixed
-    top: 0px
-    left: 10px
-    z-index: 99999
-    color: mainred
-    font-size: fontsizep;
-  }
 
   .container-fluid{
     overflow-x: hidden;
-  }
-
-  .slide-in{
-    position: relative;
-    transform: scale(0.3);
-    opacity: 0.5;
-  }
-
-  .slide-in2{
-    position: relative;
-    transform: scale(0.3);
-    opacity: 0.5;
-  }
-
-  .activeSlide{
-    left: 0;
-    opacity: 1;
-  }
-  .activeTop{
-    top: 0;
-    opacity: 1;
   }
 // ---------------------------------------------------------------
 // A
@@ -225,11 +196,6 @@ button.landing{
   display: block;
   opacity: 1;
   z-index: 999;
-}
-
-#contact__h1_green{
-  color: background;
-  font-size: 1.2em;
 }
 
 .custom-tooltip{
@@ -777,17 +743,13 @@ img{
   }
 }
 
-#over-ons__h1_blue{
-  color: background;
-  font-size: 1.2em;
-}
-
 .onze-borden{
   width: 100%;
   height: 250px;
-  border: 2px solid red;
   overflow: hidden;
   position: relative;
+  cursor: pointer;
+  background: rgba(0,0,0,0.85);
 }
 
 .onze-borden__caption{
@@ -805,6 +767,18 @@ img{
   position: absolute;
   top: 252px;
   left: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.onze-borden__p{
+  color: mainred;
+}
+
+.onze-borden__p--blue{
+  color: mainblue;
 }
 // ---------------------------------------------------------------
 // P
@@ -954,36 +928,6 @@ section{
   .waaromOnsIcon{
     max-width: 350px;
     transform: rotateX(0deg);
-  }
-
-  #watispopupled__h1_green{
-    color: background;
-    font-size: 1.2em;
-  }
-
-  #waarom-ons__h1_red{
-    color: background;
-    font-size: 1.2em;
-  }
-
-  #waarom-ons__span_snel{
-    color: background;
-    font-size: 1em;
-  }
-
-  #waarom-ons__span_populair{
-    color: background;
-    font-size: 1em;
-  }
-
-  #waarom-ons__span_goedkoop{
-    color: background;
-    font-size: 1em;
-  }
-
-  #wat-u-krijgt__h1_blue{
-    color: background;
-    font-size: 1.2em;
   }
 
   .whitespace{
