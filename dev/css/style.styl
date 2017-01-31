@@ -20,6 +20,10 @@ buttonFadeGreen = linear-gradient(166.24deg, #0DF30D 0%, #0DF30D 0.39%, #09BC09 
 
 // dev fase only
 
+html{
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+}
   .container-fluid{
     overflow-x: hidden;
   }
@@ -49,8 +53,8 @@ buttonFadeGreen = linear-gradient(166.24deg, #0DF30D 0%, #0DF30D 0.39%, #09BC09 
 // ---------------------------------------------------------------
 body{
   background-color: background
-  overflow-x: hidden
-  max-width: 100vw
+  // overflow-x: hidden
+  // max-width: 100vw
   font-size: fontsizep;
   font-family: mainfont
   position: relative;
@@ -94,13 +98,14 @@ button.landing{
 }
 
 .button-switch{
-  background: buttonFade;
-  color: white;
+  background: none;
+  color: mainred;
   border: none;
-  border-radius: 40px;
   padding: 5px;
   padding-right: 10%
   padding-left: 10%
+  white-space: nowrap
+  transition: all 1s ease-in-out;
   &:focus{
     outline: none;
   }
@@ -112,6 +117,83 @@ button.landing{
   }
 }
 
+.contact-knop{
+  height: 60px;
+  width: 300px;
+  flex: 0 0 300px;
+  align-self: center
+  margin 5px
+}
+
+.contact-knop__rect{
+  width: 100%;
+  height: 60px;
+  stroke-dasharray: 0 1000
+  stroke-dashoffset: 700
+  stroke-width: 3px;
+  fill: transparent;
+  transition: all 0.4s ease-in;
+  stroke: mainred
+}
+
+.contact-knop:hover {
+  .contact-knop__rect{
+    stroke-dasharray: 1000 0
+    stroke-width: 2px;
+    stroke: lighten(mainred, 10)
+  }
+  .contact-knop__text{
+    fill: maingreen
+    text-decoration: underline;
+  }
+}
+
+.contact-knop__text{
+  fill: mainred;
+  font-size: 18px;
+  line-height: 10;
+  position: relative;
+   transition: all 0.7s ease;
+  pointer-events: none;
+}
+
+.offerte-knop{
+  height: 60px;
+  width: 300px;
+  margin: 5px;
+}
+
+.offerte-knop__rect{
+  width: 100%;
+  height: 60px;
+  stroke-dasharray: 1000 1000
+  stroke-dashoffset: -1000
+  stroke-width: 3px;
+  fill: transparent;
+  transition: all 0.4s ease-in;
+  stroke: mainred
+}
+
+.offerte-knop:hover {
+  .offerte-knop__rect{
+    stroke-dashoffset: 0
+    stroke-width: 2px;
+    stroke: lighten(mainred, 10)
+  }
+  .offerte-knop__text{
+    fill: maingreen
+    text-decoration: underline;
+  }
+}
+
+.offerte-knop__text{
+  fill: mainred;
+  font-size: 18px;
+  line-height: 10;
+  position: relative;
+  transition: all 0.7s ease;
+  pointer-events: none;
+}
 // ---------------------------------------------------------------
 // C
 // ---------------------------------------------------------------
@@ -350,6 +432,12 @@ footer{
     justify-content: center
     &.contact-icon{
       flex 1 1 50%
+      flex-direction: column;
+      color: mainred;
+      font-size: 24px
+      &:hover{
+        color: lighten(mainred, 10)
+      }
     }
   }
   a{
@@ -370,7 +458,8 @@ footer{
   font-weight: 100;
   display: flex;
   border-radius: 3px;
-  justify-content: space-around;
+  justify-content: center;
+  flex-wrap: wrap
 }
 
 #form-contact__button_verzenden{
@@ -945,6 +1034,11 @@ section{
 // ---------------------------------------------------------------
 // Z
 // ---------------------------------------------------------------
+
+.contact-icon--deskop{
+  font-size: 24px
+}
+
 
 #flex-nav-icon{
   width 50px

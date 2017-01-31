@@ -1,4 +1,6 @@
 $(document).ready(function () {
+  const contactKnoperino = document.querySelector('.contact-knop');
+  contactKnoperino.style.textDecoration = 'underline';
   const wIPopup = document.querySelector('#watispopupled');
   //smoothscroll
     $('.flex-nav a[href^="#"]').on('click', function (e) { // kijkt naar click op een nav element
@@ -10,7 +12,7 @@ $(document).ready(function () {
             menu = target;
         $target = $(target);
         $('html, body').stop().animate({
-            'scrollTop': $target.offset().top
+            'scrollTop': $target.offset().top+10
         }, 500, 'swing');
     });
     
@@ -343,30 +345,26 @@ function offerte(e) {
 
 
 // Function om tussen contact en offerte te switchen
-const contactFormButton = document.querySelector('button[data-button="contact"]');
-const offerteFormButton = document.querySelector('button[data-button="offerte"]');
+const contactFormButton = document.querySelector('.contact-knop');
+const offerteFormButton = document.querySelector('.offerte-knop');
 const offerteFormulier = $('.offerteForm');
 const contactFormulier = $('.contactForm');
 
 function contactFadeIn() {
   offerteFormulier.fadeOut(500);
   offerteFormButton.style.textDecoration = 'none';
-  offerteFormButton.style.transform = 'scale(1.0)';
   setTimeout(function() {
     contactFormulier.fadeIn(500);
     contactFormButton.style.textDecoration = 'underline';
-    contactFormButton.style.transform = 'scale(1.05)';
   }, 450);
 }
 
 function offerteFadeIn() {
   contactFormulier.fadeOut(500);
   contactFormButton.style.textDecoration = 'none';
-  contactFormButton.style.transform = 'scale(1)';
   setTimeout(function() {
     offerteFormulier.fadeIn(500);
     offerteFormButton.style.textDecoration = 'underline';
-    offerteFormButton.style.transform = 'scale(1.05)';
   }, 450);
 }
 
@@ -474,7 +472,29 @@ function location3MouseLeave() {
   });
 }
 
+// function border animations
+// function borderAnimationContactIn() {
+//   var borderAnimationIn1 = new TimelineMax()
+//     .to('.contact-knop__rect', 0.4, {
+//       'stroke-dashoffset': 0,
+//       'stroke-dasharray': '500 1000',
+//       'stroke-width': '2px',
+//       delay: 0
+//     })
+//     .to('.contact-knop__rect', 0.9, {
+//       'stroke-dasharray': '1000 1000',
+//       delay: 0.5
+//     })
+// }
 
+// function borderAnimationContactOut() {
+//   var tl1 = new TimelineMax();
+//   tl1
+//     .to('.contact-knop__rect', 0.2, {
+//       'stroke-dasharray': '500 1000',
+//       'stroke-dashoffset': -1000
+//     })
+// }
 
 //Event listeners
 mobileMenu.addEventListener('click', hamburgerMenu);
@@ -487,6 +507,8 @@ contactBevestigingClose.addEventListener('click', contactVerzondenClose);
 offerteForm.addEventListener('submit', offerte);
 
 contactFormButton.addEventListener('click', contactFadeIn);
+// contactFormButton.addEventListener('mouseenter', borderAnimationContactIn);
+// contactFormButton.addEventListener('mouseleave', borderAnimationContactOut);
 offerteFormButton.addEventListener('click', offerteFadeIn);
 
 // Event listener voor de popups
@@ -541,3 +563,4 @@ onzeBorden2.addEventListener('mouseover', location2Hover);
 onzeBorden2.addEventListener('mouseleave', location2MouseLeave);
 onzeBorden3.addEventListener('mouseover', location3Hover);
 onzeBorden3.addEventListener('mouseleave', location3MouseLeave);
+
