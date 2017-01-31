@@ -1035,8 +1035,211 @@ section{
 // Z
 // ---------------------------------------------------------------
 
-.contact-icon--deskop{
-  font-size: 24px
+.contact-icon-email__i{
+  font-size: 35px
+  transition: all 0.3s ease;
+  color: mainred
+  &:hover{
+    color: mainblue
+    transform: rotate(12deg)
+  }
+}
+.contact-icon-nummer__i{
+  font-size: 35px
+  transition: all 0.3s ease;
+  color: mainred
+  &:hover{
+    color: mainblue
+    transform: rotate(12deg)
+  }
+}
+
+.contact-icon-number__p{
+  white-space: nowrap
+  transition: all 0.3s ease;
+  color: background
+  transform: translateX(-10px);
+  &:hover{
+    color: #000
+    transform: translateX(0px);
+  }
+}
+
+.contact-icon-email__p{
+  transition: all 0.3s ease;
+  color: background
+  transform: translateX(-10px);
+  &:hover{
+    color: #000
+    transform: translateX(0px);
+  }
+}
+
+.social-icon-facebook__p{
+  transition: all 0.3s ease;
+  color: background
+  transform: translateX(-10px);
+  &:hover{
+    color: #000
+    transform: translateX(0px);
+  }
+}
+
+.social-icon-facebook__p{
+  transition: all 0.3s ease;
+  color: background
+  transform: translateX(-10px);
+  &:hover{
+    color: #000
+    transform: translateX(0px);
+  }
+}
+.social-icon-twitter__p{
+  transition: all 0.3s ease;
+  color: background
+  transform: translateX(-10px);
+  &:hover{
+    color: #000
+    transform: translateX(0px);
+  }
+}
+.social-icon-linkedin__p{
+  transition: all 0.3s ease;
+  color: background
+  transform: translateX(-10px);
+  &:hover{
+    color: #000
+    transform: translateX(0px);
+  }
+}
+
+.social-icon-twitter__i{
+  font-size: 35px;
+  color: mainred
+  transition: all 0.3s ease, transform 1s ease-in-out;
+  &:hover{
+    color: mainblue
+  }
+}
+.social-icon-facebook__i{
+  font-size: 35px;
+  color: mainred
+  transition: all 0.3s ease, transform 3s ease;
+  &:hover{
+    color: mainblue
+  }
+}
+.social-icon-linkedin__i{
+  font-size: 35px;
+  color: mainred
+  transition: all 0.3s ease;
+  &:hover{
+    color: mainblue
+  }
+}
+
+.social-icon-facebook{
+  position: relative
+  &:hover{
+    .social-icon-facebook__i{
+      color: mainblue
+      animation: tada 1.4s ease-in-out
+    }
+    .social-icon-facebook__p{
+      color: #000
+      transform: translateX(0px)
+    }
+  }
+}
+
+.social-icon-twitter{
+  position: relative
+  &:hover{
+    .social-icon-twitter__i{
+      color: mainblue
+      animation: tada 1.4s ease-in-out
+    }
+    .social-icon-twitter__p{
+      color: #000
+      transform: translateX(0px)
+    }
+  }
+}
+
+.social-icon-linkedin{
+  position: relative
+  &:hover{
+    .social-icon-linkedin__i{
+      color: mainblue
+      animation: tada 1.4s ease-in-out
+    }
+    .social-icon-linkedin__p{
+      color: #000
+      transform: translateX(0px)
+    }
+  }
+}
+
+.contact-icon-nummer{
+  position: relative
+  &:hover{
+    .contact-icon-nummer__i{
+      animation: tada 1.4s ease-in-out 
+      color: mainblue
+    }
+    .contact-icon-number__p{
+      color: #000
+      transform: translateX(0px);
+    }
+  }
+}
+
+.contact-icon-email{
+  position: relative
+  &:hover{
+    .contact-icon-email__i{
+      animation: tada 1.4s ease-in-out 
+      color: mainblue
+    }
+    .contact-icon-email__p{
+      color: #000
+      transform: translateX(0px);
+    }
+  }
+}
+
+@keyframes tada {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  10%, 20% {
+    -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+  }
+
+  30%, 50%, 70%, 90% {
+    -webkit-transform: scale3d(1.5, 1.5, 1.5) rotate3d(0, 0, 1, 3deg);
+    transform: scale3d(1.5, 1.5, 1.5) rotate3d(0, 0, 1, 3deg);
+  }
+
+  40%, 60%, 80% {
+    -webkit-transform: scale3d(1.5, 1.5, 1.5) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(1.5, 1.5, 1.5) rotate3d(0, 0, 1, -3deg);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+
+
+.baseline{
+  justify-content: center
+  align-content: baseline
 }
 
 

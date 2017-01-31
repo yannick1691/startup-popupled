@@ -7,12 +7,6 @@
 	<meta name="description" content="Popupled de nummer 1 oplossing voor leegstaande winkelpanden."/>
 	<meta name="author" content="Yannick Frisart" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta http-equiv="cache-control" content="max-age=0" />
-  <meta http-equiv="cache-control" content="no-cache" />
-  <meta http-equiv="expires" content="0" />
-  <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
-  <meta http-equiv="pragma" content="no-cache" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.min.css">
   <link rel="stylesheet" href="css/jquery-ui.min.css">
@@ -48,7 +42,7 @@
       <li><a href="#watUkrijgt">voordelen</a></li>
       <li><a href="#waarom-ons">waarom ons</a></li>
       <li><a href="#contact">contact</a></li>
-      <a class="hidden-sm hidden-md hidden-lg spacer-nav"></a>
+      <li><a class="hidden-sm hidden-md hidden-lg spacer-nav"></a></li>
     </ul>
   </nav>
   <div class="container-fluid">
@@ -206,7 +200,7 @@
               <div id="popup1">
                 <div class="popup-content">
                   <div class="location">
-                    <video src="links/vid/popuplocatie1.mp4" type="video/mp4" autoplay no-controls loop muted></video>
+                    <video src="links/vid/popuplocatie1.mp4" autoplay loop muted></video>
                     <div class="description">
                       <h3>
                         locatie:<br>
@@ -226,7 +220,7 @@
               <div id="popup2">
                 <div class="popup-content">
                   <div class="location">
-                    <video src="links/vid/popuplocatie3.mp4" autoplay no-controls="true" loop muted></video>
+                    <video src="links/vid/popuplocatie3.mp4" autoplay loop muted></video>
                     <div class="description">
                       <h3>
                         locatie:<br>
@@ -246,7 +240,7 @@
               <div id="popup3">
                 <div class="popup-content">
                   <div class="location">
-                    <video src="links/vid/popuplocatie2.mp4" type="video/mp4" autoplay no-controls loop muted></video>
+                    <video src="links/vid/popuplocatie2.mp4" autoplay loop muted></video>
                     <div class="description">
                       <h3>
                         locatie:<br>
@@ -426,12 +420,12 @@
             <input type="tel" name="phone" placeholder="telefoon nummer" id="teloff" required>
             <label for="companyoff">bedrijf:</label>
             <input type="text" placeholder="bedrijfsnaam" id="companyoff">
-            <label for="">locatie:</label>
+            <label for="locatieoff">locatie:</label>
             <select required id="locatieoff">
               <option disabled selected value="">selecteer een locatie</option>
-              <option value="99.99" name="Korte Lijnbaan">Korte Lijnbaan   €99.99</option>
-              <option value="109.99" name="Stadshuisplein">Stadhuisplein   €109.99</option>
-              <option value="89.99" name="het Weena">het Weena   €89.99</option>
+              <option value="99.99" data-locationname="Korte Lijnbaan">Korte Lijnbaan   €99.99</option>
+              <option value="109.99" data-locationname="Stadshuisplein">Stadhuisplein   €109.99</option>
+              <option value="89.99" data-locationname="het Weena">het Weena   €89.99</option>
             </select>
             <div class="col-xs-6 start-dat">
               <label for="start-date">start datum:</label>
@@ -449,26 +443,26 @@
       </div>
       <div class="row"><!-- start icons contact -->
         <div class="col-xs-12 col-md-8 col-md-offset-2"> <!-- start wrapper -->
-          <div class="row flex-space">
-            <div class="hidden-xs col-sm-4 col-lg-2">
-              <a href="https://twitter.com/popupled" target="blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-              <p>@popupled</p>
+          <div class="row flex-space baseline">
+            <div class="hidden-xs col-sm-4 col-lg-2 social-icon-twitter">
+              <a href="https://twitter.com/popupled" target="blank"><i class="fa fa-twitter social-icon-twitter__i" aria-hidden="true"></i></a>
+              <p class="social-icon-twitter__p">@popupled</pclass>
             </div>
-            <div class="hidden-xs col-sm-4 col-lg-2">
-              <a href="https://www.facebook.com/popupled" target="blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-              <p>/popupled</p>
+            <div class="hidden-xs col-sm-4 col-lg-2 social-icon-facebook">
+              <a href="https://www.facebook.com/popupled" target="blank"><i class="fa fa-facebook social-icon-facebook__i" aria-hidden="true"></i></a>
+              <p class="social-icon-facebook__p">/popupled</p>
             </div>
-            <div class="hidden-xs col-sm-4 col-lg-2">
-              <a href="https://www.linkedin.com/company/popupled/" target="blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-              <p>/popupled</p>
+            <div class="hidden-xs col-sm-4 col-lg-2 social-icon-linkedin">
+              <a href="https://www.linkedin.com/company/popupled/" target="blank"><i class="fa fa-linkedin social-icon-linkedin__i" aria-hidden="true"></i></a>
+              <p class="social-icon-linkedin__p">/popupled</p>
             </div>
-            <div class="hidden-xs col-sm-4 col-lg-2">
-              <i class="fa fa-envelope contact-icon--deskop" aria-hidden="true"></i>
-              <p>info@popupled.nl</p>
+            <div class="hidden-xs col-sm-4 col-lg-2 contact-icon-email">
+              <i class="fa fa-envelope contact-icon-email__i" aria-hidden="true"></i>
+              <p class="contact-icon-email__p">info@popupled.nl</p>
             </div>
-            <div class="hidden-xs col-sm-4 col-lg-2">
-              <i class="fa fa-phone contact-icon--deskop" aria-hidden="true"></i>
-              <p>06-10520429</p>
+            <div class="hidden-xs col-sm-4 col-lg-2 contact-icon-nummer">
+              <i class="fa fa-phone contact-icon-nummer__i" aria-hidden="true"></i>
+              <p class="contact-icon-number__p">06-10520429</p>
             </div>
           </div><!-- end sub row -->
         </div><!-- end wrapper -->
