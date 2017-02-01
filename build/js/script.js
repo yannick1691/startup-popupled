@@ -1,22 +1,41 @@
 $(document).ready(function () {
+  $('#loading-screen').css({ display: 'none' });
+  resizeFix();
+
+  var placeholder = document.querySelector('.landing-page-img'),
+      small = placeholder.querySelector('.placeholder__img');
+
+  // 1: load small image and show it
+  var img = new Image();
+  img.src = small.src;
+  img.onload = function () {
+    small.classList.add('loaded');
+  };
+
+  // 2: load large image
+  var imgLarge = new Image();
+  imgLarge.src = placeholder.dataset.large;
+  imgLarge.onload = function () {
+    imgLarge.classList.add('loaded');
+  };
+  placeholder.appendChild(imgLarge);
+
+  const contactKnoperino = document.querySelector('.contact-knop');
+  contactKnoperino.style.textDecoration = 'underline';
   const wIPopup = document.querySelector('#watispopupled');
-  scrollfixnav();
   //smoothscroll
   $('.flex-nav a[href^="#"]').on('click', function (e) {
     // kijkt naar click op een nav element
     e.preventDefault(); // stop browser van het toevoegen van # aan url
     $(document).off("scroll"); // stop scroll door gebruiker
-    $(this).addClass('active-link'); // voegt .active-link toe aan link
 
     //volgende code is voor het scrollen naar het element
     var target = this.hash,
         menu = target;
     $target = $(target);
     $('html, body').stop().animate({
-      'scrollTop': $target.offset().top
-    }, 500, 'swing', function () {
-      $(document).on("scroll", onScroll);
-    });
+      'scrollTop': $target.offset().top + 10
+    }, 500, 'swing');
   });
 
   //initialize swiper when document ready  
@@ -97,66 +116,17 @@ $(document).ready(function () {
   });
 });
 
-// functie om client lagg te verkomen
-function debounce(func, wait = 20, immediate = true) {
-  var timeout;
-  return function () {
-    var context = this,
-        args = arguments;
-    var later = function () {
-      timeout = null;
-      if (!immediate) func.apply(context, args);
-    };
-    var callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) func.apply(context, args);
-  };
-};
-
-// Functie om .active-link toe te voegen aan de link waar die nu is
-function onScroll(e) {
-  var scrollPos = $(document).scrollTop();
-  $('.flex-nav a[href^="#"]').each(function () {
-    var currLink = $(this);
-    var refElement = $(currLink.attr("href"));
-    if (refElement.position().top - 100 <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-      $('.flex-nav a').removeClass("active-link");
-      currLink.addClass("active-link");
-    } else {
-      currLink.removeClass("active-link");
-    }
-  });
-}
-
-// Make nav fixed after the landing page
-function scrollfixnav() {
-  if (window.scrollY >= window.innerHeight - 100 && window.innerWidth < 768) {
-    flexNav.style.position = 'fixed';
-    flexNav.style.top = '100px';
-    mobileMenu.style.position = 'fixed';
-  } else if (window.scrollY <= window.innerHeight && window.innerWidth < 768) {
-    flexNav.style.position = 'relative';
-    flexNav.style.top = '0px';
-    mobileMenu.style.position = 'relative';
-  } else if (window.scrollY >= window.innerHeight - 100 && window.innerWidth >= 768) {
-    flexNav.style.position = 'fixed';
-    flexNav.style.top = '0px';
-    flexNav.style.height = '100px';
-    mobileMenu.style.position = 'fixed';
-  } else if (window.scrollY <= window.innerHeight && window.innerWidth >= 768) {
-    flexNav.style.position = 'relative';
-    flexNav.style.top = '0px';
-    flexNav.style.height = '100px';
-    mobileMenu.style.position = 'relative';
-  }
-}
-
+// Start menu Functions
 // Hamburger menu funtie
 function hamburgerMenu(e) {
   e.preventDefault();
   if (window.innerWidth < 768) {
-    flexNavJQ.height(flexNavJQ.height() == 0 ? `100vh` : `${ hiddenMob }px`);
+    flexNavJQ.slideToggle(600);
+    $('#hamburger__img').slideToggle(600);
+    $('#flex-nav-icon__span1').toggleClass('flex-nav-icon__span1--open');
+    $('#flex-nav-icon__span2').toggleClass('flex-nav-icon__span2--open');
+    $('#flex-nav-icon__span3').toggleClass('flex-nav-icon__span3--open');
+    $('#flex-nav-icon__span4').toggleClass('flex-nav-icon__span4--open');
   } else {
     return;
   }
@@ -164,78 +134,54 @@ function hamburgerMenu(e) {
 
 function hamburgerMenu2() {
   if (window.innerWidth < 768) {
-    flexNavJQ.height(flexNavJQ.height() == 0 ? `100vh` : `${ hiddenMob }px`);
+    flexNavJQ.slideToggle(600);
+    $('#hamburger__img').slideToggle(600);
+    $('#flex-nav-icon__span1').toggleClass('flex-nav-icon__span1--open');
+    $('#flex-nav-icon__span2').toggleClass('flex-nav-icon__span2--open');
+    $('#flex-nav-icon__span3').toggleClass('flex-nav-icon__span3--open');
+    $('#flex-nav-icon__span4').toggleClass('flex-nav-icon__span4--open');
   } else {
     return;
   }
 }
 
-// zorgt voor een goede switch tussen mobiel en desktop
-function resizeFix() {
-  if (window.scrollY >= window.innerHeight - 100 && window.innerWidth >= 768) {
-    flexNav.style.position = 'fixed';
-    flexNav.style.top = '0px';
-    flexNav.style.height = '100px';
-    mobileMenu.style.position = 'fixed';
-  } else if (window.scrollY <= window.innerHeight && window.innerWidth >= 768) {
-    flexNav.style.position = 'relative';
-    flexNav.style.top = '0px';
-    flexNav.style.height = '100px';
-    mobileMenu.style.position = 'relative';
-  } else if (window.scrollY >= window.innerHeight - 100 && window.innerWidth < 768) {
-    flexNav.style.position = 'fixed';
-    flexNav.style.top = '100px';
-    flexNav.style.height = '0px';
-    mobileMenu.style.position = 'fixed';
-  } else if (window.scrollY <= window.innerHeight && window.innerWidth < 768) {
-    flexNav.style.position = 'relative';
-    flexNav.style.top = '0px';
-    flexNav.style.height = '0px';
-    mobileMenu.style.position = 'relative';
-  }
-}
-
 // zorgt dat menu inklapt op mobiel als er wordt geklikt
 flexNavItems.forEach(function (link) {
-  link.addEventListener('click', hamburgerMenu2);
+  link.addEventListener('click', function () {
+    if (window.innerWidth < 768) {
+      flexNavJQ.slideToggle(600);
+      $('#hamburger__img').slideToggle(600);
+      $('#flex-nav-icon__span1').toggleClass('flex-nav-icon__span1--open');
+      $('#flex-nav-icon__span2').toggleClass('flex-nav-icon__span2--open');
+      $('#flex-nav-icon__span3').toggleClass('flex-nav-icon__span3--open');
+      $('#flex-nav-icon__span4').toggleClass('flex-nav-icon__span4--open');
+    }
+  });
 });
+
+function resizeFix() {
+  if (window.innerWidth < 768) {
+    flexNavUl.style.display = 'none';
+    $('#flex-nav-icon__span1').removeClass('flex-nav-icon__span1--open');
+    $('#flex-nav-icon__span2').removeClass('flex-nav-icon__span2--open');
+    $('#flex-nav-icon__span3').removeClass('flex-nav-icon__span3--open');
+    $('#flex-nav-icon__span4').removeClass('flex-nav-icon__span4--open');
+    $('html').niceScroll({ horizrailenabled: false, cursorwidth: '0px', cursorminheight: 0 });
+  } else if (window.innerWidth >= 768) {
+    flexNavUl.style.display = 'flex';
+    $('#hamburger__img').css({ display: '' });
+  }
+}
 
 // Ontdek ons button scroll
 function ontdekOns() {
   const watIsPopup = $('#watispopupled');
   $('html, body').stop().animate({
     'scrollTop': watIsPopup.offset().top - 100
-  }, 500, 'swing', function () {
-    $(document).on("scroll", onScroll);
-  });
-}
-
-// schaduw op popupled logo die muismove volgt
-const landingPage = document.querySelector('.landing-page');
-const popupledLogo = landingPage.querySelector('.logo-landing');
-const distance = 30;
-
-function popupledLogoShadow(e) {
-  const { offsetWidth: breedte, offsetHeight: hoogte } = landingPage;
-  let { offsetX: x, offsetY: y } = e;
-
-  // zorgt dat als je over button of img gaat de offset niet 0 is
-  if (this !== e.target) {
-    x = x + e.target.offsetLeft;
-    y = y + e.target.offsetTop;
-  }
-
-  const xDistance = Math.round(x / breedte * distance - distance / 2);
-  const yDistance = Math.round(y / hoogte * distance - distance / 2);
-
-  popupledLogo.style.filter = `
-  drop-shadow(${ xDistance }px ${ yDistance }px 4px rgba(0, 0, 0, 0.75))`;
+  }, 500, 'swing');
 }
 
 // Functie voor pop up locaties 
-const image1 = document.querySelector('.image1');
-const image2 = document.querySelector('.image2');
-const image3 = document.querySelector('.image3');
 let popupid1 = $('#popup1');
 let popupid2 = $('#popup2');
 let popupid3 = $('#popup3');
@@ -254,48 +200,6 @@ function popUpCustom(name, namejs, dura) {
 function popUpCustomOut(name, namejs, dura) {
   namejs.style.transform = 'scale(0)';
   name.animate({ opacity: '0', left: '-1px' }, dura);
-}
-
-// Event listener voor de popups
-image1.addEventListener('click', function () {
-  popUpCustom(popupid1, popupId1js, 100);
-});
-image2.addEventListener('click', function () {
-  popUpCustom(popupid2, popupId2js, 100);
-});
-image3.addEventListener('click', function () {
-  popUpCustom(popupid3, popupId3js, 100);
-});
-
-close1.addEventListener('click', function () {
-  popUpCustomOut(popupid1, popupId1js, 100);
-});
-
-close2.addEventListener('click', function () {
-  popUpCustomOut(popupid2, popupId2js, 100);
-});
-
-close3.addEventListener('click', function () {
-  popUpCustomOut(popupid3, popupId3js, 100);
-});
-
-// Icon 3d rotation hover mouserelative
-const waaromOnsDiv = document.querySelector('#waarom-ons');
-const waaromOnsIcon = waaromOnsDiv.querySelector('.waaromOnsIcon');
-const rotDistance = 70;
-
-function waaromOnsRotation(e) {
-  const { offsetWidth: breedteW, offsetHeight: hoogteW } = waaromOnsDiv;
-  let { offsetX: xW, offsetY: yW } = e;
-
-  // zorgt dat als je over button of img gaat de offset niet 0 is
-  if (this !== e.target) {
-    xW = xW + e.target.offsetLeft;
-    yW = yW + e.target.offsetTop;
-  }
-
-  const xWDistance = Math.round(xW / breedteW * rotDistance - rotDistance / 2);
-  waaromOnsIcon.style.transform = `rotateY(${ xWDistance }deg)`;
 }
 
 // Function to generate a pdf 
@@ -329,7 +233,7 @@ function offerte(e) {
   month[11] = "december";
   let currentDate = new Date();
   let currentMonth = month[currentDate.getMonth()];
-  let currentDay = currentDate.getDay();
+  let currentDay = currentDate.getDate();
   let currentYear = currentDate.getFullYear();
   let currentOffDate = currentDay + ' ' + currentMonth + ' ' + currentYear;
 
@@ -358,7 +262,7 @@ function offerte(e) {
   }
 
   // random 'offerte number' generator
-  let offerteNummer = Math.round(Math.random() * 2323030000);
+  let offerteNummer = Math.round(Math.random() * 2323039214);
   console.log(offerteNummer);
 
   // calculate price
@@ -397,19 +301,19 @@ function offerte(e) {
   doc.setTextColor(54, 174, 189);
   doc.text('offerte', 15, 60);
   doc.setTextColor(229, 39, 45);
-  doc.text('NOT PAID', 85, 60);
   doc.setLineWidth(0.1);
   doc.setDrawColor(210);
   doc.line(10, 62, 200, 62); // horizontal line
   doc.line(10, 85, 200, 85); // horizontal line
+  doc.line(10, 95, 200, 95); // horizontal line
   doc.line(10, 110, 200, 109); // horizontal line
   doc.line(10, 134, 200, 134); // horizontal line
 
   doc.setFontSize(12);
   doc.setTextColor(200);
-  doc.text('tel: 06-10520429\remail: info@popupled.nl\radress: Meikeverstraat 9 A02 rotterdam\rKVK-nummer: 61836680', 120, 20);
-  doc.setTextColor(122);
-  doc.setFontType('bolditalic');
+  doc.text('tel: 06-10520429\remail: info@popupled.nl\radress: Meikeverstraat 9 A02 rotterdam 3061VH\rKVK-nummer: 61836680', 110, 20);
+  doc.setTextColor(120);
+  doc.setFontType('italic');
   doc.text(`${ currentOffDate }`, 155, 60);
 
   doc.setTextColor(120);
@@ -417,30 +321,24 @@ function offerte(e) {
   doc.text(`naam: \remail: \rtel: \rbedrijf: `, 18, 67);
   doc.text(`${ naamTarget }\r${ emailTarget }\r${ telTarget }\r${ companyTarget }`, 52, 67);
 
-  doc.setFillColor(100);
-  doc.rect(0, 86, 300, 10, 'f');
   doc.setFontType('bold');
   doc.setTextColor(54, 174, 189);
   doc.text(`locatie`, 15, 92);
   doc.text(`aantal weken`, 70, 92);
   doc.text(`week prijs`, 130, 92);
-  doc.text(`total`, 180, 92);
+  doc.text(`totaal`, 180, 92);
 
   doc.setFontType('normal');
   doc.setTextColor(20);
   doc.text(`${ locationName }`, 16, 103);
   doc.text(`${ weeksHired }`, 71, 103);
-  doc.text(`€${ waardeTarget }`, 131, 103);
-  doc.text(`€${ totalWeeksPrice }`, 181, 103);
+  doc.text(`€ ${ waardeTarget }`, 131, 103);
+  doc.text(`€ ${ totalWeeksPrice }`, 181, 103);
 
-  doc.text(`subtotal`, 131, 115);
-  doc.text(`€${ totalWeeksPrice }`, 181, 115);
-  doc.text(`btw procent`, 131, 122);
-  doc.text(`21%`, 181, 122);
-  doc.text(`btw`, 131, 129);
-  doc.text(`€${ totalTax }`, 181, 129);
-  doc.text(`total price`, 131, 140);
-  doc.text(`€${ totalPriceTax }`, 181, 140);
+  doc.setFillColor(0);
+  doc.text(`subtotaal\rbtw %\rbtw\r\r\rtotale prijs`, 131, 115);
+  doc.text(`€\r\r€\r\r\r€`, 181, 115);
+  doc.text(`${ totalWeeksPrice }\r21\r${ totalTax }\r\r\r${ totalPriceTax }`, 185, 115);
 
   doc.setFontType('bold');
   doc.setTextColor(54, 174, 189);
@@ -450,7 +348,7 @@ function offerte(e) {
   doc.text(`*** disclaimer ***`, 85, 190);
   doc.setFontType('normal');
   doc.setTextColor(30);
-  doc.text(`This offerte is in no way binding and popupled can deny or end partnership at any time\rThis offerte was created on ${ currentOffDate }\rFor discussing prices or more information please contact info@popupled.nl\rPrices may change at anytime and are not binding.`, 15, 200);
+  doc.text(`Deze offerte is in geen enkele manier bindend en kan door popupled bv.\rDeze offerte is gegenereerd op ${ currentOffDate }\rVoor het bespreken van prijzen of meer informatie contact info@popupled.nl of bel ons 06-10520429\rPrijzen kunnen veranderen op elk moment en de hier genoemde prijzen zien niet bindend.`, 15, 200);
 
   doc.setProperties({
     title: 'offerte popupled',
@@ -463,8 +361,8 @@ function offerte(e) {
 }
 
 // Function om tussen contact en offerte te switchen
-const contactFormButton = document.querySelector('button[data-button="contact"]');
-const offerteFormButton = document.querySelector('button[data-button="offerte"]');
+const contactFormButton = document.querySelector('.contact-knop');
+const offerteFormButton = document.querySelector('.offerte-knop');
 const offerteFormulier = $('.offerteForm');
 const contactFormulier = $('.contactForm');
 
@@ -486,86 +384,197 @@ function offerteFadeIn() {
   }, 450);
 }
 
-// Functie om elementen in te laten scrollen on scroll
-// const sliderImages = document.querySelectorAll('.slide-in');
-// let SlideInHasRun = false;
-// let SlideInHasRun2 = false;
-// function scrollSlideIn(e) {
-//   if (window.scrollY >= $('.slide-in').offset().top-(window.innerHeight - 200) && SlideInHasRun === false) {
-//     slideInLeft($('.slide-in'), 900);
-//     slideInRight($('.slide-in2'), 900);
-//     SlideInHasRun = true;
-//   } else if (window.scrollY <= $('.slide-in').offset().top - (window.innerHeight - 200) && SlideInHasRun === true) {
-//     slideOutLeft($('.slide-in'), 900)
-//     slideOutRight($('.slide-in2'), 900);
-//     SlideInHasRun = false;
-//   } else if (window.scrollY >= $('.slide-in').offset().top - (window.innerHeight * 2) && SlideInHasRun === true) {
-//     slideOutLeft($('.slide-in'), 900)
-//     slideOutRight($('.slide-in2'), 900);
-//     SlideInHasRun = false;
-//   } else if (window.scrollY >= $('.slide-in3').offset().top-(window.innerHeight - 200) && SlideInHasRun2 === false) {
-//     slideInLeft($('.slide-in3'), 900);
-//     SlideInHasRun2 = true;
-//   } else if (window.scrollY <= $('.slide-in3').offset().top - (window.innerHeight - 200) && SlideInHasRun2 === true) {
-//     slideOutLeft($('.slide-in3'), 900)
-//     SlideInHasRun2 = false;
-//   }  else if (window.scrollY >= $('.slide-in3').offset().top - (window.innerHeight * 2) && SlideInHasRun2 === true) {
-//     slideOutLeft($('.slide-in'), 900)
-//     slideOutRight($('.slide-in2'), 900);
-//     SlideInHasRun = false;
-//   }
+// Formulier contact submit Event
+const contactFormSubmit = document.querySelector('#form-contact');
+const contactSucces = $('#form-contact__verzonden_succes');
+const bevestigingsBericht = document.querySelector('.form-contact-succes__p_bericht');
+const bevestigingUwBericht = document.querySelector('#form-contact-succes__p_uwbericht');
+let contactNaam = document.querySelector('#naam').value;
+let contactBericht = document.querySelector('#message').value;
+const contactBevestigingClose = document.querySelector('#form-contact-succes__button_close');
+
+function contactVerzonden(e) {
+  e.preventDefault();
+
+  contactNaam = document.querySelector('#naam').value;
+  contactBericht = document.querySelector('#message').value;
+  console.log(contactNaam);
+
+  // Succes Bericht Animatie
+  contactSucces.slideToggle(600);
+
+  bevestigingsBericht.innerHTML = `uw bericht is ontvangen wij zullen zo spoedig met uw contact op nemen ${ contactNaam }`;
+  bevestigingUwBericht.innerHTML = `uw bericht<br>${ contactBericht }`;
+}
+
+function contactVerzondenClose(e) {
+  e.preventDefault();
+
+  contactSucces.slideToggle(600);
+}
+
+// Local storage saving input 
+const contactInputs = document.querySelectorAll('#form-contact input');
+const contactNaamInput = document.querySelector('#naam');
+const contactEmailInput = document.querySelector('#email');
+const contactPhoneInput = document.querySelector('#telephone');
+const contactBerichtInput = document.querySelector('#message');
+const contactFormResetButton = document.querySelector('#form-contact__button_reset');
+
+// local storage
+contactNaamInput.value = localStorage.getItem('i1');
+contactEmailInput.value = localStorage.getItem('i2');
+contactPhoneInput.value = localStorage.getItem('i3');
+contactBerichtInput.value = localStorage.getItem('i4');
+
+// define elements and variables
+const onzeBorden1 = document.querySelector('#onze-borden--1');
+const onzeBorden2 = document.querySelector('#onze-borden--2');
+const onzeBorden3 = document.querySelector('#onze-borden--3');
+const onzeBorden1Hover = document.querySelector('#onze-borden__1--hover');
+const onzeBorden2Hover = document.querySelector('#onze-borden__2--hover');
+const onzeBorden3Hover = document.querySelector('#onze-borden__3--hover');
+
+// Function animate hover
+function location1Hover() {
+
+  // define animations
+  var onzeBorden1HoverAnimation = TweenMax.to(onzeBorden1Hover, 0.7, {
+    top: '0px',
+    background: 'rgba(0, 0, 0, 0.9)'
+  });
+}
+
+function location1MouseLeave() {
+  // define animations
+  var onzeBorden1HoverAnimation = TweenMax.to(onzeBorden1Hover, 0.4, {
+    top: '250px',
+    background: 'rgba(89.8%, 15.3%, 17.6%, 0.9)'
+  });
+}
+
+function location2Hover() {
+
+  // define animations
+  var onzeBorden2HoverAnimation = TweenMax.to(onzeBorden2Hover, 0.7, {
+    top: '0px',
+    background: 'rgba(0, 0, 0, 0.9)'
+  });
+}
+
+function location2MouseLeave() {
+  // define animations
+  var onzeBorden2HoverAnimation = TweenMax.to(onzeBorden2Hover, 0.4, {
+    top: '250px',
+    background: 'rgba(89.8%, 15.3%, 17.6%, 0.9)'
+  });
+}
+
+function location3Hover() {
+
+  // define animations
+  var onzeBorden3HoverAnimation = TweenMax.to(onzeBorden3Hover, 0.7, {
+    top: '0px',
+    background: 'rgba(0, 0, 0, 0.9)'
+  });
+}
+
+function location3MouseLeave() {
+  // define animations
+  var onzeBorden3HoverAnimation = TweenMax.to(onzeBorden3Hover, 0.4, {
+    top: '250px',
+    background: 'rgba(89.8%, 15.3%, 17.6%, 0.9)'
+  });
+}
+
+// function border animations
+// function borderAnimationContactIn() {
+//   var borderAnimationIn1 = new TimelineMax()
+//     .to('.contact-knop__rect', 0.4, {
+//       'stroke-dashoffset': 0,
+//       'stroke-dasharray': '500 1000',
+//       'stroke-width': '2px',
+//       delay: 0
+//     })
+//     .to('.contact-knop__rect', 0.9, {
+//       'stroke-dasharray': '1000 1000',
+//       delay: 0.5
+//     })
 // }
 
-// function slideInLeft(object, dura) {
-//   object.stop().animate({ 'margin-left': '0px', opacity: '1'}, dura);
+// function borderAnimationContactOut() {
+//   var tl1 = new TimelineMax();
+//   tl1
+//     .to('.contact-knop__rect', 0.2, {
+//       'stroke-dasharray': '500 1000',
+//       'stroke-dashoffset': -1000
+//     })
 // }
-
-// function slideOutLeft(object, dura) {
-//   object.stop().animate({ 'margin-left': '-30vw', opacity: '0' }, dura);
-// }
-
-// function slideInRight(object, dura) {
-//   object.stop().animate({ 'margin-left': '0px', opacity: '1' }, dura);
-// }
-
-// function slideOutRight(object, dura) {
-//   object.stop().animate({ 'margin-left': '30vw', opacity: '0' }, dura);
-// }
-
-// Slide animations
-var controller = new ScrollMagic.Controller({ globalSceneOptions: { duration: 800 } });
-
-var scene = new ScrollMagic.Scene({
-  triggerElement: '#watispopupled',
-  offset: 80
-}).setClassToggle('.slide-in', 'activeSlide'); // toggle class
-
-// build scenes
-new ScrollMagic.Scene({ triggerElement: "#watispopupled", offset: 90 }).setClassToggle(".slide-in3", "activeTop") // add class toggle
-// .addIndicators() // add indicators (requires plugin)
-.addTo(controller);
-new ScrollMagic.Scene({ triggerElement: "#watispopupled", offset: 80 }).setClassToggle(".slide-in2", "activeSlide") // add class toggle
-// .addIndicators() // add indicators (requires plugin)
-.addTo(controller);
-new ScrollMagic.Scene({ triggerElement: "#watispopupled", offset: 90 }).setClassToggle(".slide-in4", "activeTop") // add class toggle
-// .addIndicators() // add indicators (requires plugin)
-.addTo(controller);
-new ScrollMagic.Scene({ triggerElement: "#sec4" }).setClassToggle("#high4", "active") // add class toggle
-// .addIndicators() // add indicators (requires plugin)
-.addTo(controller);
-
-// Add Scene to ScrollMagic Controller
-controller.addScene(scene);
 
 //Event listeners
-document.addEventListener('scroll', debounce(onScroll, 10));
-document.addEventListener('scroll', debounce(scrollfixnav, 10));
 mobileMenu.addEventListener('click', hamburgerMenu);
-$(window).resize(resizeFix);
 ontdekOnsBut.addEventListener('click', ontdekOns);
-landingPage.addEventListener('mousemove', popupledLogoShadow);
-waaromOnsDiv.addEventListener('mousemove', debounce(waaromOnsRotation, 3));
+$(window).resize(resizeFix);
+// landingPage.addEventListener('mousemove', debounce(popupledLogoShadow, 3));
+
+contactFormSubmit.addEventListener('submit', contactVerzonden);
+contactBevestigingClose.addEventListener('click', contactVerzondenClose);
 offerteForm.addEventListener('submit', offerte);
+
 contactFormButton.addEventListener('click', contactFadeIn);
+// contactFormButton.addEventListener('mouseenter', borderAnimationContactIn);
+// contactFormButton.addEventListener('mouseleave', borderAnimationContactOut);
 offerteFormButton.addEventListener('click', offerteFadeIn);
+
+// Event listener voor de popups
+onzeBorden1.addEventListener('click', function () {
+  popUpCustom(popupid1, popupId1js, 100);
+});
+onzeBorden2.addEventListener('click', function () {
+  popUpCustom(popupid2, popupId2js, 100);
+});
+onzeBorden3.addEventListener('click', function () {
+  popUpCustom(popupid3, popupId3js, 100);
+});
+
+close1.addEventListener('click', function () {
+  popUpCustomOut(popupid1, popupId1js, 100);
+});
+
+close2.addEventListener('click', function () {
+  popUpCustomOut(popupid2, popupId2js, 100);
+});
+
+close3.addEventListener('click', function () {
+  popUpCustomOut(popupid3, popupId3js, 100);
+});
+
+contactNaamInput.addEventListener('change', function () {
+  localStorage.setItem('i1', contactNaamInput.value);
+});
+
+contactEmailInput.addEventListener('change', function () {
+  localStorage.setItem('i2', contactEmailInput.value);
+});
+
+contactPhoneInput.addEventListener('change', function () {
+  localStorage.setItem('i3', contactPhoneInput.value);
+});
+
+contactBerichtInput.addEventListener('change', function () {
+  localStorage.setItem('i4', contactBerichtInput.value);
+});
+
+contactFormResetButton.addEventListener('click', function (e) {
+  e.preventDefault();
+  localStorage.clear();
+  window.location.reload();
+});
+
+onzeBorden1.addEventListener('mouseover', location1Hover);
+onzeBorden1.addEventListener('mouseleave', location1MouseLeave);
+onzeBorden2.addEventListener('mouseover', location2Hover);
+onzeBorden2.addEventListener('mouseleave', location2MouseLeave);
+onzeBorden3.addEventListener('mouseover', location3Hover);
+onzeBorden3.addEventListener('mouseleave', location3MouseLeave);
 //# sourceMappingURL=script.js.map
