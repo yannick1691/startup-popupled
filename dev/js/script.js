@@ -1,4 +1,27 @@
 $(document).ready(function () {
+  $('#loading-screen').css({ display: 'none' });
+  resizeFix();
+
+    var placeholder = document.querySelector('.landing-page-img'),
+      small = placeholder.querySelector('.placeholder__img')
+  
+    // 1: load small image and show it
+    var img = new Image();
+      img.src = small.src;
+      img.onload = function () {
+      small.classList.add('loaded');
+    };
+  
+    // 2: load large image
+    var imgLarge = new Image();
+      imgLarge.src = placeholder.dataset.large; 
+      imgLarge.onload = function () {
+      imgLarge.classList.add('loaded');
+    };
+  placeholder.appendChild(imgLarge);
+
+  const contactKnoperino = document.querySelector('.contact-knop');
+  contactKnoperino.style.textDecoration = 'underline';
   const wIPopup = document.querySelector('#watispopupled');
   //smoothscroll
     $('.flex-nav a[href^="#"]').on('click', function (e) { // kijkt naar click op een nav element
@@ -10,7 +33,7 @@ $(document).ready(function () {
             menu = target;
         $target = $(target);
         $('html, body').stop().animate({
-            'scrollTop': $target.offset().top
+            'scrollTop': $target.offset().top+10
         }, 500, 'swing');
     });
     
@@ -98,6 +121,11 @@ function hamburgerMenu(e) {
   e.preventDefault();
   if (window.innerWidth < 768) {
     flexNavJQ.slideToggle(600);
+    $('#hamburger__img').slideToggle(600);
+    $('#flex-nav-icon__span1').toggleClass('flex-nav-icon__span1--open');
+    $('#flex-nav-icon__span2').toggleClass('flex-nav-icon__span2--open');
+    $('#flex-nav-icon__span3').toggleClass('flex-nav-icon__span3--open');
+    $('#flex-nav-icon__span4').toggleClass('flex-nav-icon__span4--open');
   } else {
     return;
   }
@@ -106,6 +134,11 @@ function hamburgerMenu(e) {
 function hamburgerMenu2() {
   if (window.innerWidth < 768) {
     flexNavJQ.slideToggle(600);
+    $('#hamburger__img').slideToggle(600);
+    $('#flex-nav-icon__span1').toggleClass('flex-nav-icon__span1--open');
+    $('#flex-nav-icon__span2').toggleClass('flex-nav-icon__span2--open');
+    $('#flex-nav-icon__span3').toggleClass('flex-nav-icon__span3--open');
+    $('#flex-nav-icon__span4').toggleClass('flex-nav-icon__span4--open');
   } else {
     return;
   }
@@ -117,6 +150,11 @@ flexNavItems.forEach(function (link) {
   link.addEventListener('click', function () {
     if (window.innerWidth < 768) {
       flexNavJQ.slideToggle(600);
+      $('#hamburger__img').slideToggle(600);
+      $('#flex-nav-icon__span1').toggleClass('flex-nav-icon__span1--open');
+      $('#flex-nav-icon__span2').toggleClass('flex-nav-icon__span2--open');
+      $('#flex-nav-icon__span3').toggleClass('flex-nav-icon__span3--open');
+      $('#flex-nav-icon__span4').toggleClass('flex-nav-icon__span4--open');
     }
   });
 })
@@ -124,8 +162,14 @@ flexNavItems.forEach(function (link) {
 function resizeFix() {
   if (window.innerWidth < 768) {
     flexNavUl.style.display = 'none';
+    $('#flex-nav-icon__span1').removeClass('flex-nav-icon__span1--open');
+    $('#flex-nav-icon__span2').removeClass('flex-nav-icon__span2--open');
+    $('#flex-nav-icon__span3').removeClass('flex-nav-icon__span3--open');
+    $('#flex-nav-icon__span4').removeClass('flex-nav-icon__span4--open');
+    $('html').niceScroll({ horizrailenabled: false, cursorwidth: '0px', cursorminheight: 0 });
   } else if (window.innerWidth >= 768) {
     flexNavUl.style.display = 'flex';
+    $('#hamburger__img').css({ display: '' });
   }
 }
 
@@ -323,30 +367,26 @@ function offerte(e) {
 
 
 // Function om tussen contact en offerte te switchen
-const contactFormButton = document.querySelector('button[data-button="contact"]');
-const offerteFormButton = document.querySelector('button[data-button="offerte"]');
+const contactFormButton = document.querySelector('.contact-knop');
+const offerteFormButton = document.querySelector('.offerte-knop');
 const offerteFormulier = $('.offerteForm');
 const contactFormulier = $('.contactForm');
 
 function contactFadeIn() {
   offerteFormulier.fadeOut(500);
   offerteFormButton.style.textDecoration = 'none';
-  offerteFormButton.style.transform = 'scale(1.0)';
   setTimeout(function() {
     contactFormulier.fadeIn(500);
     contactFormButton.style.textDecoration = 'underline';
-    contactFormButton.style.transform = 'scale(1.05)';
   }, 450);
 }
 
 function offerteFadeIn() {
   contactFormulier.fadeOut(500);
   contactFormButton.style.textDecoration = 'none';
-  contactFormButton.style.transform = 'scale(1)';
   setTimeout(function() {
     offerteFormulier.fadeIn(500);
     offerteFormButton.style.textDecoration = 'underline';
-    offerteFormButton.style.transform = 'scale(1.05)';
   }, 450);
 }
 
@@ -454,7 +494,29 @@ function location3MouseLeave() {
   });
 }
 
+// function border animations
+// function borderAnimationContactIn() {
+//   var borderAnimationIn1 = new TimelineMax()
+//     .to('.contact-knop__rect', 0.4, {
+//       'stroke-dashoffset': 0,
+//       'stroke-dasharray': '500 1000',
+//       'stroke-width': '2px',
+//       delay: 0
+//     })
+//     .to('.contact-knop__rect', 0.9, {
+//       'stroke-dasharray': '1000 1000',
+//       delay: 0.5
+//     })
+// }
 
+// function borderAnimationContactOut() {
+//   var tl1 = new TimelineMax();
+//   tl1
+//     .to('.contact-knop__rect', 0.2, {
+//       'stroke-dasharray': '500 1000',
+//       'stroke-dashoffset': -1000
+//     })
+// }
 
 //Event listeners
 mobileMenu.addEventListener('click', hamburgerMenu);
@@ -467,6 +529,8 @@ contactBevestigingClose.addEventListener('click', contactVerzondenClose);
 offerteForm.addEventListener('submit', offerte);
 
 contactFormButton.addEventListener('click', contactFadeIn);
+// contactFormButton.addEventListener('mouseenter', borderAnimationContactIn);
+// contactFormButton.addEventListener('mouseleave', borderAnimationContactOut);
 offerteFormButton.addEventListener('click', offerteFadeIn);
 
 // Event listener voor de popups
@@ -521,3 +585,4 @@ onzeBorden2.addEventListener('mouseover', location2Hover);
 onzeBorden2.addEventListener('mouseleave', location2MouseLeave);
 onzeBorden3.addEventListener('mouseover', location3Hover);
 onzeBorden3.addEventListener('mouseleave', location3MouseLeave);
+

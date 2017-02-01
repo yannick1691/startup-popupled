@@ -7,15 +7,11 @@
 	<meta name="description" content="Popupled de nummer 1 oplossing voor leegstaande winkelpanden."/>
 	<meta name="author" content="Yannick Frisart" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta http-equiv="cache-control" content="max-age=0" />
-  <meta http-equiv="cache-control" content="no-cache" />
-  <meta http-equiv="expires" content="0" />
-  <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
-  <meta http-equiv="pragma" content="no-cache" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.min.css">
   <link rel="stylesheet" href="css/jquery-ui.min.css">
+  <script src="https://use.fontawesome.com/0c5dafdd99.js"></script>
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400" rel="stylesheet">
   <script>
@@ -27,11 +23,22 @@
 </head>
 <body data-spy="scroll" data-target=".flex-nav" data-offset="100">
   <header class="landing-page" id="landing-page">
+    <div class="landing-page-img" data-large="links/img/landing_page_image@3x.jpg">
+      <img src="links/img/landing_page_img-thumb.jpg" class="placeholder__img">
+    </div>
     <img src="links/img/logo_1.svg" alt="logo popupled" class="logo-landing">
     <button class="landing" type="button">ontdek ons</button>
   </header>
   <nav class="flex-nav" data-spy="affix">
-    <a class="hammenu hidden-sm hidden-md hidden-lg"><img src="links/img/logo_1.svg" alt="logo" height="50">&#9776;</a>
+    <a class="hammenu hidden-sm hidden-md hidden-lg">
+      <img src="links/img/logo_1.svg" alt="logo" height="50" id="hamburger__img">
+      <div id="flex-nav-icon">
+        <span id="flex-nav-icon__span1"></span>
+        <span id="flex-nav-icon__span2"></span>
+        <span id="flex-nav-icon__span3"></span>
+        <span id="flex-nav-icon__span4"></span>
+      </div>
+    </a>
     <a class="hidden-xs hidden-sm" href="#landing-page"><img src="links/img/logo_1.svg" alt="logo" height="90"></a>
     <ul class="nav flex-ul">
       <li><a href="#watispopupled">wat is popupled</a></li>
@@ -39,7 +46,6 @@
       <li><a href="#watUkrijgt">voordelen</a></li>
       <li><a href="#waarom-ons">waarom ons</a></li>
       <li><a href="#contact">contact</a></li>
-      <a class="hidden-sm hidden-md hidden-lg spacer-nav"></a>
     </ul>
   </nav>
   <div class="container-fluid">
@@ -56,7 +62,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-2">
+            <div class="col-sm-10 col-sm-offset-1 col-md-offset-2">
               <p>PopUpLED creëert oplossingen voor winkelgebieden, waarbij iedereen profiteert. Wij nemen leegstaande winkelpanden onder handen en plaatsen er hoogwaardige, interactieve LED-schermen in de etalages. Hierdoor veranderen de winkels in ‘no-time’ in aantrekkelijke objecten voor zowel potentiële huurders als voorbijgangers.</p>
             </div>
           </div>
@@ -75,7 +81,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-offset-1">
           <div class="row">
             <div class="col-xs-12 col-md-10 col-md-offset-1">
               <div class="hidden-xs hidden-sm whitespace"></div>
@@ -197,7 +203,7 @@
               <div id="popup1">
                 <div class="popup-content">
                   <div class="location">
-                    <video src="links/vid/popuplocatie1.mp4" type="video/mp4" autoplay no-controls loop muted></video>
+                    <video src="links/vid/popuplocatie1.mp4" autoplay loop muted></video>
                     <div class="description">
                       <h3>
                         locatie:<br>
@@ -217,7 +223,7 @@
               <div id="popup2">
                 <div class="popup-content">
                   <div class="location">
-                    <video src="links/vid/popuplocatie3.mp4" type="video/mp4" autoplay no-controls loop muted></video>
+                    <video src="links/vid/popuplocatie3.mp4" autoplay loop muted></video>
                     <div class="description">
                       <h3>
                         locatie:<br>
@@ -237,7 +243,7 @@
               <div id="popup3">
                 <div class="popup-content">
                   <div class="location">
-                    <video src="links/vid/popuplocatie2.mp4" type="video/mp4" autoplay no-controls loop muted></video>
+                    <video src="links/vid/popuplocatie2.mp4" autoplay loop muted></video>
                     <div class="description">
                       <h3>
                         locatie:<br>
@@ -311,15 +317,16 @@
         </div> <!-- end col intro -->
       </div> <!-- end row intro -->
       <div class="row"> <!-- start row effectief - laagdrempelig - voordeel -->
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1"> <!-- start col main -->
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-offset-1"> <!-- start col main -->
           <div class="row"> <!-- start row sub row -->
             <div class="col-md-10 col-md-offset-1"> <!-- start main colum sub -->
-              <div class=" col-xs-12 col-md-6 col-lg-4 no-gutter"> <!-- start col effectief -->
-                <h4>effectief</h4>
-                <p>
-                  Uit onderzoek blijkt dat winkelstraten zonder lege winkels aantrekkelijker gevonden worden door consumenten. Voor u dus dubbel handig, geen leegstand in de buurt en ook nog een extra etalage! Adverteren op het scherm van PopUpLED betekent opvallen: bewegend en lichtgevend beeld op een zichtbare en logische plek: de etalage. Dat is aandacht op ooghoogte.
-                </p>
-              </div> <!-- end col effectief -->
+              <div class="row waarom-ons__row--sub">
+                <div class=" col-xs-12 col-md-6 col-lg-4 no-gutter"> <!-- start col effectief -->
+                  <h4>effectief</h4>
+                  <p>
+                    Uit onderzoek blijkt dat winkelstraten zonder lege winkels aantrekkelijker gevonden worden door consumenten. Voor u dus dubbel handig, geen leegstand in de buurt en ook nog een extra etalage! Adverteren op het scherm van PopUpLED betekent opvallen: bewegend en lichtgevend beeld op een zichtbare en logische plek: de etalage. Dat is aandacht op ooghoogte.
+                  </p>
+                </div> <!-- end col effectief -->
               <div class="hidden-xs hidden-sm col-md-6 col-lg-4"><!-- start col voordeel -->
                 <h4>voordeel</h4>
                 <p>
@@ -332,12 +339,13 @@
                   Voordeel voor u is dat u het reclame-oppervlak van uw winkel kunt uitbreiden met een extra etalage. Hierop kunt u bijvoorbeeld uw aanbiedingen voor deze periode aangeven, indien u net verhuisd bent aangeven waar u nu gevestigd bent, of gewoon een algemene advertentie plaatsen. Vrijwel alles is mogelijk!
                 </p>
               </div><!-- end col voordeel -->
-              <div class="col-xs-12 col-md-12 col-lg-4 no-gutter"> <!-- start col laagdrempelig -->
+              <div class="col-xs-12 col-lg-4 no-gutter"> <!-- start col laagdrempelig -->
                 <h4>laagdrempelig</h4>
                 <p>
                   Voor een laag bedrag kunt u op onze etalagevullende schermen adverteren. Indien nodig regelt PopUpLED de gewenste advertentie.
                 </p>
-              </div> <!-- end col laagdrempelig -->
+                </div> <!-- end col -->
+              </div> <!-- end row -->
             </div> <!-- end col main colum sub -->
           </div> <!-- end row sub row -->
         </div> <!-- end col main -->
@@ -370,8 +378,14 @@
           <h1 class="green" id="contact__h1_green">contact</h1>
         </div>
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 formulieren">
-          <button type="button" data-button="contact" class="button-switch contactKnop">contact formulier</button>
-          <button type="button" data-button="offerte" class="button-switch">offerte aanvragen</button>
+          <svg class="contact-knop">
+            <rect height="60" width="300" class="contact-knop__rect"></rect>
+            <text x="98" y="35" fill="red" class="contact-knop__text">contact formulier</text>
+          </svg>
+          <svg class="offerte-knop">
+            <rect height="60" width="300" class="offerte-knop__rect"></rect>
+            <text x="98" y="35" fill="red" class="offerte-knop__text">offerte aanvragen</text>
+          </svg>
         </div>
         <div class="col-xs-12 col-md-8">
           <div id="form-contact__verzonden_succes">
@@ -396,7 +410,7 @@
             <input type="tel" id="telephone" placeholder="telefoon nummer" name="phone">
             <label for="message">bericht:</label>
             <textarea name="message" id="message" placeholder="voer hier je bericht in" required></textarea>
-            <button type="reset" id="form-contact__button_reset">reset</button>
+            <button type="reset" id="form-contact__button_reset" class="hidden-xs">reset</button>
             <button type="submit" id="form-contact__button_verzenden">verzenden</button>
           </form>
         </div>
@@ -411,12 +425,12 @@
             <input type="tel" name="phone" placeholder="telefoon nummer" id="teloff" required>
             <label for="companyoff">bedrijf:</label>
             <input type="text" placeholder="bedrijfsnaam" id="companyoff">
-            <label for="">locatie:</label>
+            <label for="locatieoff">locatie:</label>
             <select required id="locatieoff">
               <option disabled selected value="">selecteer een locatie</option>
-              <option value="99.99" name="Korte Lijnbaan">Korte Lijnbaan   €99.99</option>
-              <option value="109.99" name="Stadshuisplein">Stadhuisplein   €109.99</option>
-              <option value="89.99" name="het Weena">het Weena   €89.99</option>
+              <option value="99.99" data-locationname="Korte Lijnbaan">Korte Lijnbaan   €99.99</option>
+              <option value="109.99" data-locationname="Stadshuisplein">Stadhuisplein   €109.99</option>
+              <option value="89.99" data-locationname="het Weena">het Weena   €89.99</option>
             </select>
             <div class="col-xs-6 start-dat">
               <label for="start-date">start datum:</label>
@@ -434,26 +448,26 @@
       </div>
       <div class="row"><!-- start icons contact -->
         <div class="col-xs-12 col-md-8 col-md-offset-2"> <!-- start wrapper -->
-          <div class="row flex-space">
-            <div class="hidden-xs col-sm-4 col-lg-2">
-              <a href="https://twitter.com/popupled" target="blank"><img src="links/img/twitter@3x.png" alt="Twitter logo"></a>
-              <p>@popupled</p>
+          <div class="row flex-space baseline">
+            <div class="hidden-xs col-sm-4 col-lg-2 social-icon-twitter">
+              <a href="https://twitter.com/popupled" target="blank"><i class="fa fa-twitter social-icon-twitter__i" aria-hidden="true"></i></a>
+              <p class="social-icon-twitter__p">@popupled</p>
             </div>
-            <div class="hidden-xs col-sm-4 col-lg-2">
-              <a href="https://www.facebook.com/popupled" target="blank"><img src="links/img/facebook-icon@3x.png" alt="facebook logo"></a>
-              <p>/popupled</p>
+            <div class="hidden-xs col-sm-4 col-lg-2 social-icon-facebook">
+              <a href="https://www.facebook.com/popupled" target="blank"><i class="fa fa-facebook social-icon-facebook__i" aria-hidden="true"></i></a>
+              <p class="social-icon-facebook__p">/popupled</p>
             </div>
-            <div class="hidden-xs col-sm-4 col-lg-2">
-              <a href="https://www.linkedin.com/company/popupled/" target="blank"><img src="links/img/linkedin-icon@3x.png" alt="linkedin logo"></a>
-              <p>/popupled</p>
+            <div class="hidden-xs col-sm-4 col-lg-2 social-icon-linkedin">
+              <a href="https://www.linkedin.com/company/popupled/" target="blank"><i class="fa fa-linkedin social-icon-linkedin__i" aria-hidden="true"></i></a>
+              <p class="social-icon-linkedin__p">/popupled</p>
             </div>
-            <div class="hidden-xs col-sm-4 col-lg-2">
-              <img src="links/img/mail-icon@3x.png" alt="mail icon">
-              <p>info@popupled.nl</p>
+            <div class="hidden-xs col-sm-4 col-lg-2 contact-icon-email">
+              <i class="fa fa-envelope contact-icon-email__i" aria-hidden="true"></i>
+              <p class="contact-icon-email__p">info@popupled.nl</p>
             </div>
-            <div class="hidden-xs col-sm-4 col-lg-2">
-              <img src="links/img/phone-icon@3x.png" alt="telefoon icon">
-              <p>06-10520429</p>
+            <div class="hidden-xs col-sm-4 col-lg-2 contact-icon-nummer">
+              <i class="fa fa-phone contact-icon-nummer__i" aria-hidden="true"></i>
+              <p class="contact-icon-number__p">06-10520429</p>
             </div>
           </div><!-- end sub row -->
         </div><!-- end wrapper -->
@@ -461,22 +475,22 @@
     </section>
   </div>
   <footer>
-    <div class="hidden-sm hidden-md hidden-lg contact-icon">
-      <img src="links/img/phone-icon@2x.png" alt="phone icon">
-      <p>06-10520429</p>
+    <div class="hidden-sm hidden-md hidden-lg contact-icon-nummer">
+      <i class="fa fa-phone contact-icon-nummer__i" aria-hidden="true"></i>
+      <p class="contact-icon-number__p--a">06-10520429</p>
     </div>
     <div class="hidden-sm hidden-md hidden-lg contact-icon">
-      <img src="links/img/mail-icon@2x.png" alt="mail icon">
-      <p>info@popupled.nl</p>
+      <i class="fa fa-envelope contact-icon-email" aria-hidden="true"></i>
+      <p class="contact-icon-email__p--a">info@popupled.nl</p>
     </div>
     <div class="hidden-sm hidden-md hidden-lg">
-      <a href="https://twitter.com/popupled" target="blank"><img src="links/img/twitter@2x.png" alt="klik om naar twitter pagina popupled te gaan"></a>
+      <a href="https://twitter.com/popupled" target="blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
     </div>
     <div class="hidden-sm hidden-md hidden-lg">
-      <a href="https://www.linkedin.com/company/popupled/" target="blank"><img src="links/img/linkedin-icon@2x.png" alt="klik om naar linkedin pagina popupled te gaan"></a>
+      <a href="https://www.linkedin.com/company/popupled/" target="blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
     </div>
     <div class="hidden-sm hidden-md hidden-lg">
-      <a href="https://www.facebook.com/popupled" target="blank"><img src="links/img/facebook-icon@2x.png" alt="klik om naar facebook pagina popupled te gaan"></a>
+      <a href="https://www.facebook.com/popupled" target="blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
     </div>
     <p>Op alle overeenkomsten gesloten door popupled zijn de <a href="http://www.popupled.nl/AV_PopUpLED_bv.pdf">algemene voorwaarden</a> van toepassing</p>
   </footer>
@@ -501,7 +515,7 @@
 
     $(document).ready(
       function() {
-        $('html').niceScroll();
+        $('html').niceScroll({horizrailenabled:false});
         $('#form-contact-succes__p_uwbericht').niceScroll();
         $(".flex-nav").affix({offset: {top: $("header").outerHeight(true)} });
         $('body').scrollspy({target: ".flex-nav", offset: 100});
