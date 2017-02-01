@@ -1,7 +1,7 @@
 $(document).ready(function () {
   $('#loading-screen').css({ display: 'none' });
+  console.clear();
   resizeFix();
-
   var placeholder = document.querySelector('.landing-page-img'),
       small = placeholder.querySelector('.placeholder__img');
 
@@ -577,4 +577,5 @@ onzeBorden2.addEventListener('mouseover', location2Hover);
 onzeBorden2.addEventListener('mouseleave', location2MouseLeave);
 onzeBorden3.addEventListener('mouseover', location3Hover);
 onzeBorden3.addEventListener('mouseleave', location3MouseLeave);
-//# sourceMappingURL=script.js.map
+
+console.clear();
