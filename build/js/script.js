@@ -1,4 +1,25 @@
 $(document).ready(function () {
+  $('#loading-screen').css({ display: 'none' });
+  resizeFix();
+
+  var placeholder = document.querySelector('.landing-page-img'),
+      small = placeholder.querySelector('.placeholder__img');
+
+  // 1: load small image and show it
+  var img = new Image();
+  img.src = small.src;
+  img.onload = function () {
+    small.classList.add('loaded');
+  };
+
+  // 2: load large image
+  var imgLarge = new Image();
+  imgLarge.src = placeholder.dataset.large;
+  imgLarge.onload = function () {
+    imgLarge.classList.add('loaded');
+  };
+  placeholder.appendChild(imgLarge);
+
   const contactKnoperino = document.querySelector('.contact-knop');
   contactKnoperino.style.textDecoration = 'underline';
   const wIPopup = document.querySelector('#watispopupled');
@@ -145,6 +166,7 @@ function resizeFix() {
     $('#flex-nav-icon__span2').removeClass('flex-nav-icon__span2--open');
     $('#flex-nav-icon__span3').removeClass('flex-nav-icon__span3--open');
     $('#flex-nav-icon__span4').removeClass('flex-nav-icon__span4--open');
+    $('html').niceScroll({ horizrailenabled: false, cursorwidth: '0px', cursorminheight: 0 });
   } else if (window.innerWidth >= 768) {
     flexNavUl.style.display = 'flex';
     $('#hamburger__img').css({ display: '' });

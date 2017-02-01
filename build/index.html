@@ -7,6 +7,7 @@
 	<meta name="description" content="Popupled de nummer 1 oplossing voor leegstaande winkelpanden."/>
 	<meta name="author" content="Yannick Frisart" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.min.css">
   <link rel="stylesheet" href="css/jquery-ui.min.css">
@@ -22,6 +23,9 @@
 </head>
 <body data-spy="scroll" data-target=".flex-nav" data-offset="100">
   <header class="landing-page" id="landing-page">
+    <div class="landing-page-img" data-large="links/img/landing_page_image@3x.jpg">
+      <img src="links/img/landing_page_img-thumb.jpg" class="placeholder__img">
+    </div>
     <img src="links/img/logo_1.svg" alt="logo popupled" class="logo-landing">
     <button class="landing" type="button">ontdek ons</button>
   </header>
@@ -42,7 +46,6 @@
       <li><a href="#watUkrijgt">voordelen</a></li>
       <li><a href="#waarom-ons">waarom ons</a></li>
       <li><a href="#contact">contact</a></li>
-      <li><a class="hidden-sm hidden-md hidden-lg spacer-nav"></a></li>
     </ul>
   </nav>
   <div class="container-fluid">
@@ -59,7 +62,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-2">
+            <div class="col-sm-10 col-sm-offset-1 col-md-offset-2">
               <p>PopUpLED creëert oplossingen voor winkelgebieden, waarbij iedereen profiteert. Wij nemen leegstaande winkelpanden onder handen en plaatsen er hoogwaardige, interactieve LED-schermen in de etalages. Hierdoor veranderen de winkels in ‘no-time’ in aantrekkelijke objecten voor zowel potentiële huurders als voorbijgangers.</p>
             </div>
           </div>
@@ -78,7 +81,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-offset-1">
           <div class="row">
             <div class="col-xs-12 col-md-10 col-md-offset-1">
               <div class="hidden-xs hidden-sm whitespace"></div>
@@ -314,15 +317,16 @@
         </div> <!-- end col intro -->
       </div> <!-- end row intro -->
       <div class="row"> <!-- start row effectief - laagdrempelig - voordeel -->
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1"> <!-- start col main -->
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-offset-1"> <!-- start col main -->
           <div class="row"> <!-- start row sub row -->
             <div class="col-md-10 col-md-offset-1"> <!-- start main colum sub -->
-              <div class=" col-xs-12 col-md-6 col-lg-4 no-gutter"> <!-- start col effectief -->
-                <h4>effectief</h4>
-                <p>
-                  Uit onderzoek blijkt dat winkelstraten zonder lege winkels aantrekkelijker gevonden worden door consumenten. Voor u dus dubbel handig, geen leegstand in de buurt en ook nog een extra etalage! Adverteren op het scherm van PopUpLED betekent opvallen: bewegend en lichtgevend beeld op een zichtbare en logische plek: de etalage. Dat is aandacht op ooghoogte.
-                </p>
-              </div> <!-- end col effectief -->
+              <div class="row waarom-ons__row--sub">
+                <div class=" col-xs-12 col-md-6 col-lg-4 no-gutter"> <!-- start col effectief -->
+                  <h4>effectief</h4>
+                  <p>
+                    Uit onderzoek blijkt dat winkelstraten zonder lege winkels aantrekkelijker gevonden worden door consumenten. Voor u dus dubbel handig, geen leegstand in de buurt en ook nog een extra etalage! Adverteren op het scherm van PopUpLED betekent opvallen: bewegend en lichtgevend beeld op een zichtbare en logische plek: de etalage. Dat is aandacht op ooghoogte.
+                  </p>
+                </div> <!-- end col effectief -->
               <div class="hidden-xs hidden-sm col-md-6 col-lg-4"><!-- start col voordeel -->
                 <h4>voordeel</h4>
                 <p>
@@ -335,12 +339,13 @@
                   Voordeel voor u is dat u het reclame-oppervlak van uw winkel kunt uitbreiden met een extra etalage. Hierop kunt u bijvoorbeeld uw aanbiedingen voor deze periode aangeven, indien u net verhuisd bent aangeven waar u nu gevestigd bent, of gewoon een algemene advertentie plaatsen. Vrijwel alles is mogelijk!
                 </p>
               </div><!-- end col voordeel -->
-              <div class="col-xs-12 col-md-12 col-lg-4 no-gutter"> <!-- start col laagdrempelig -->
+              <div class="col-xs-12 col-lg-4 no-gutter"> <!-- start col laagdrempelig -->
                 <h4>laagdrempelig</h4>
                 <p>
                   Voor een laag bedrag kunt u op onze etalagevullende schermen adverteren. Indien nodig regelt PopUpLED de gewenste advertentie.
                 </p>
-              </div> <!-- end col laagdrempelig -->
+                </div> <!-- end col -->
+              </div> <!-- end row -->
             </div> <!-- end col main colum sub -->
           </div> <!-- end row sub row -->
         </div> <!-- end col main -->
@@ -405,7 +410,7 @@
             <input type="tel" id="telephone" placeholder="telefoon nummer" name="phone">
             <label for="message">bericht:</label>
             <textarea name="message" id="message" placeholder="voer hier je bericht in" required></textarea>
-            <button type="reset" id="form-contact__button_reset">reset</button>
+            <button type="reset" id="form-contact__button_reset" class="hidden-xs">reset</button>
             <button type="submit" id="form-contact__button_verzenden">verzenden</button>
           </form>
         </div>
@@ -470,13 +475,13 @@
     </section>
   </div>
   <footer>
-    <div class="hidden-sm hidden-md hidden-lg contact-icon">
-      <i class="fa fa-phone" aria-hidden="true"></i>
-      <p>06-10520429</p>
+    <div class="hidden-sm hidden-md hidden-lg contact-icon-nummer">
+      <i class="fa fa-phone contact-icon-nummer__i" aria-hidden="true"></i>
+      <p class="contact-icon-number__p--a">06-10520429</p>
     </div>
     <div class="hidden-sm hidden-md hidden-lg contact-icon">
-      <i class="fa fa-envelope" aria-hidden="true"></i>
-      <p>info@popupled.nl</p>
+      <i class="fa fa-envelope contact-icon-email" aria-hidden="true"></i>
+      <p class="contact-icon-email__p--a">info@popupled.nl</p>
     </div>
     <div class="hidden-sm hidden-md hidden-lg">
       <a href="https://twitter.com/popupled" target="blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
